@@ -1,0 +1,18 @@
+﻿@using System;
+@using System.Collections.Generic;
+
+@{
+    ViewBag.Title = "SelectCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Select a category</h2>
+<div>
+    <p><input type="button" value="Games" class="btn btn-success" onclick="location.href='@Url.Action("Games", "Quiz")'" /></p>
+</div>
+<div>
+    <p><input type="button" value="Science/Nature" class="btn btn-success" onclick="location.href='@Url.Action("ScienceNature", "Quiz")'" /></p>
+</div>
+<div>
+    <p><input type="button" value="History" class="btn btn-success" onclick="location.href='@Url.Action("History", "Quiz")'" /></p>
+</div>

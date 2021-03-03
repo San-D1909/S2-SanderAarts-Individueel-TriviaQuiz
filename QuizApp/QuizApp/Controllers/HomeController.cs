@@ -12,17 +12,5 @@ namespace QuizApp.Controllers
         {
             return View();
         }
-
-        public ActionResult QuizPage()
-        {
-
-            return View();
-        }
-
-        public ActionResult Tutorial()
-        {
-
-            return View();
-        }
     }
 }
