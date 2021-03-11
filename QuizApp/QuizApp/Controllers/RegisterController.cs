@@ -11,6 +11,10 @@ namespace QuizApp.Controllers
 {
     public class RegisterController : Controller
     {
+        public ActionResult Index()
+        {
+            return View("Register");
+        }
         public ActionResult Register(RegisterModel RegistrationModel)
         {
             if (!ModelState.IsValid)

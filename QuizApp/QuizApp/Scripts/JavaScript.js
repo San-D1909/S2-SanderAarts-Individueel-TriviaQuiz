@@ -1,6 +1,8 @@
-﻿var url = 'https://opentdb.com/api.php?';
+﻿function CreateUrl(category)
+{
+var url = 'https://opentdb.com/api.php?';
 var amount = '1'
-var category = '15'
+var category = category
 var difficulty = 'medium'
 var type = 'multiple'
 
@@ -21,4 +23,7 @@ jQuery.getJSON(urlString, function (result) {
     $(".answer2").append(answers[2])
     $(".answer3").append(answers[3])
 });
+
+}
+
 

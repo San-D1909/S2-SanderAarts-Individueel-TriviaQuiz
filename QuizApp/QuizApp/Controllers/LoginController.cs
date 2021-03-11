@@ -17,15 +17,11 @@ namespace QuizApp.Controllers
 
         public ActionResult Login(UserModel userModel)
         {
-            if(!ModelState.IsValid)
-            { 
-                return View("Login");
-            }
-            else
+            if(ModelState.IsValid)
             {
                 SecurityService security = new SecurityService();
                 userModel = security.Authenticate(userModel);
-                if (userModel.Unique_id != "0")
+                if (userModel.Unique_id != "0" && userModel.Unique_id != null)
                 {
                     TempData["unique_id"] = userModel.Unique_id;
                     return RedirectToAction("", "Home");
@@ -35,7 +31,13 @@ namespace QuizApp.Controllers
                     return View("LoginError");
                 }
             }
+            else
+            {
+                return View("Login");
+            }    
+
         }
+
         public ActionResult NoAccount()
         {
             return View("~/Views/register/register.cshtml");
