@@ -6,38 +6,13 @@ using MySql.Data.MySqlClient;
 using System.Web.Mvc;
 using QuizApp.Models;
 
-
 namespace QuizApp
 {
-    public class Database
+    public class Login
     {
-        public static bool StoreUserData(string Fname, string Lname, string Email, string Password, string Adress, int Gender, string BirthDay)
+        public static UserModel SelectUserData(string Uname, string Password, UserModel userModel)
         {
-            string StoreData = "INSERT INTO `user`(`firstname`, `lastname`, `email`, `password`,  `adres`, `gender`, `birth_day`) VALUES ('" + Fname + "','" + Lname + "','" + Email + "','" + Password + "', '" + Adress + "','" + Gender + "','" + BirthDay + "');";
-            MySqlConnection databaseConnection = new MySqlConnection(QuizApp.Models.DB_Credentials.DbConnectionString);
-            MySqlCommand StoreRegisterData = new MySqlCommand(StoreData, databaseConnection);
-            if (Fname == null || Lname == null || Password == null || Email == null || Adress == null || BirthDay == null)
-            {
-                return false;
-            }
-            else
-            {
-                try
-                {
-                    databaseConnection.Open();
-                    MySqlDataReader executeString = StoreRegisterData.ExecuteReader();
-                    databaseConnection.Close();
-                    return true;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("error: " + e.Message);
-                    return false;
-                }
-            }
-        }
-        public static UserModel SelectUserData(string Uname, string Password,UserModel userModel)
-        {
+
             if (Uname != null)
             {
                 List<string> Commands = new List<string>
@@ -50,7 +25,7 @@ namespace QuizApp
             };
                 List<string> userInfo = new List<string> { };
                 MySqlConnection databaseConnection = new MySqlConnection(QuizApp.Models.DB_Credentials.DbConnectionString);
-                for (int i = 0; i < Commands.Count;i++)
+                for (int i = 0; i < Commands.Count; i++)
                 {
 
                     MySqlCommand command = new MySqlCommand(Commands[i], databaseConnection);
@@ -59,7 +34,7 @@ namespace QuizApp
                     {
                         databaseConnection.Open();
                         MySqlDataReader executeString = command.ExecuteReader();
-                        while(executeString.Read())
+                        while (executeString.Read())
                         {
                             string output = executeString.GetString(0);
                             if (output != "")
@@ -95,10 +70,7 @@ namespace QuizApp
                     return userModel;
                 }
             }
-            else
-            {
                 return null;
-            }
         }
     }
 }

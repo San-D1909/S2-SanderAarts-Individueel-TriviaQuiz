@@ -1,26 +1,30 @@
-﻿@{
+﻿@model QuizApp.Models.QuestionModel
+@{
     ViewBag.Title = "QuizPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<h2>QuizPage</h2>
+<h2>Quiz</h2>
 
 <head>
     <title> API</title>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <script src="~/Scripts/JavaScript.js"></script>
-
+@*    <script src="~/Scripts/JavaScript.js"></script>
+*@
 </head>
 <body>
     <div class="question-container">
-        <p class="question"></p>
-        <button class="answer0"></button>
-        <button class="answer1"></button>
-        <button class="answer2"></button>
-        <button class="answer3"></button>
-    </div>
-    <script>
+        <p class="question">@Html.Raw(Model.question)</p>
+        <form id="questionForm" method="post" action="#">
+            <input id="answer" type="hidden" value=""/>
+        </form>
+        @foreach (var answer in Model.answers)
+            {
+                <button class="answer" onclick="$('#answer').val(`@Html.Raw(answer)`);$('#questionForm').submit()">@Html.Raw(answer)</button>
+            }
+        </div>
+@*    <script>
         CreateUrl(@ViewData["Category"])
-    </script>
+    </script>*@
 </body>

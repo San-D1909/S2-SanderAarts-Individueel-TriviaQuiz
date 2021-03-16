@@ -10,7 +10,7 @@ namespace QuizApp.Services.Data
     {
         internal UserModel FindByUser(UserModel user)
         {
-            UserModel userModel = Database.SelectUserData(user.Email, user.Password,user);
+            UserModel userModel = Login.SelectUserData(user.Email, user.Password,user);
             if (userModel != null)
             {
                 return userModel;
@@ -22,7 +22,7 @@ namespace QuizApp.Services.Data
         }
         internal bool StoreUser(RegisterModel registration)
         {
-            if(QuizApp.Database.StoreUserData(registration.First_Name, registration.Last_Name, registration.Email, registration.Password, registration.Adress, (int)registration.Gender, registration.Birth_Day))
+            if(QuizApp.Register.StoreUserData(registration.First_Name, registration.Last_Name, registration.Email, registration.Password, registration.Adress, (int)registration.Gender, registration.Birth_Day))
             {
                 return true;
             }

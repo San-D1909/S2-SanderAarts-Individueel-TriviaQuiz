@@ -8,11 +8,13 @@
 
 <h2>Select a category</h2>
 <div>
-    <p><input type="button" value="Games" class="btn btn-success" onclick="location.href='@Url.Action("Games", "Quiz")'" /></p>
+    <p>
+        <a href="@Url.Action("Category", "Quiz", new { id = 15 })" class="btn btn-success">Games</a>
+    </p>
 </div>
 <div>
-    <p><input type="button" value="Science/Nature" class="btn btn-success" onclick="location.href='@Url.Action("ScienceNature", "Quiz")'" /></p>
+    <p><input type="button" value="Science/Nature" class="btn btn-success" onclick="location.href='@Url.Action("Category", "Quiz", new { id = 17 })'" /></p>
 </div>
 <div>
-    <p><input type="button" value="History" class="btn btn-success" onclick="location.href='@Url.Action("History", "Quiz")'" /></p>
+    <p><input type="button" value="History" class="btn btn-success" onclick="location.href='@Url.Action("Category", "Quiz", new { id = 23 })'" /></p>
 </div>
