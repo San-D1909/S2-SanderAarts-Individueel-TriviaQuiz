@@ -34,56 +34,5 @@ namespace QuizApp.Controllers
 
             return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
         }
-
-        public ActionResult GetQuestionModel()
-        {
-            APIRequestModel apiRequestModel = new APIRequestModel { };
-            apiRequestModel.Category = "15";
-            QuestionModel questionmodel = APIRequest.GetQuestion(apiRequestModel);
-
-            questionmodel.answers = questionmodel.incorrect_answers;
-            questionmodel.answers.Add(questionmodel.correct_answer);
-            Shuffle(questionmodel.answers);
-
-            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
-        }
-
-        public ActionResult Games()
-        {
-            APIRequestModel apiRequestModel = new APIRequestModel { };
-            apiRequestModel.Category = "15";
-            QuestionModel questionmodel = APIRequest.GetQuestion(apiRequestModel);
-
-            questionmodel.answers = questionmodel.incorrect_answers;
-            questionmodel.answers.Add(questionmodel.correct_answer);
-            Shuffle(questionmodel.answers);
-
-            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
-        }
-
-        public ActionResult ScienceNature()
-        {
-            APIRequestModel apiRequestModel = new APIRequestModel { };
-            apiRequestModel.Category = "17";
-            QuestionModel questionmodel = APIRequest.GetQuestion(apiRequestModel);
-
-            questionmodel.answers = questionmodel.incorrect_answers;
-            questionmodel.answers.Add(questionmodel.correct_answer);
-            Shuffle(questionmodel.answers);
-
-            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
-        }
-        public ActionResult History()
-        {
-            APIRequestModel apiRequestModel = new APIRequestModel { };
-            apiRequestModel.Category = "23";
-            QuestionModel questionmodel = APIRequest.GetQuestion(apiRequestModel);
-
-            questionmodel.answers = questionmodel.incorrect_answers;
-            questionmodel.answers.Add(questionmodel.correct_answer);
-            Shuffle(questionmodel.answers);
-
-            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
-        }
     }
 }
