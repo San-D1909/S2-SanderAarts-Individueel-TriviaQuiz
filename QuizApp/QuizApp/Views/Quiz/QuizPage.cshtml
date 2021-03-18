@@ -1,30 +1,44 @@
-﻿@model QuizApp.Models.QuestionModel
+﻿
+
+@model QuizApp.Models.QuestionModel
 @{
     ViewBag.Title = "QuizPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{int questionNumber = 0; }
+@if (TempData.Peek("Current_Question") != null)
+{
+    questionNumber = (int)TempData.Peek("Current_Question");
+}
+else
+{
+    TempData["Current_Question"] = 1;
+    questionNumber = (int)TempData.Peek("Current_Question");
+}
 
 <h2>Quiz</h2>
 
 <head>
     <title> API</title>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-@*    <script src="~/Scripts/JavaScript.js"></script>
-*@
 </head>
 <body>
-    <div class="question-container">
-        <p class="question">@Html.Raw(Model.question)</p>
-        <form id="questionForm" method="post" action="#">
-            <input id="answer" type="hidden" value=""/>
-        </form>
-        @foreach (var answer in Model.answers)
+    <div class="row">
+        <div class="col-8">
+            <p class="question">@Html.Raw(Model.question)</p>
+            @foreach (var answer in Model.answers)
             {
-                <button class="answer" onclick="$('#answer').val(`@Html.Raw(answer)`);$('#questionForm').submit()">@Html.Raw(answer)</button>
+                <div>
+                    <a href="@Url.Action("CheckAnswer", "CheckAnswer", new { chosen = Html.Raw(answer)})" class="btn btn-success">@Html.Raw(answer)</a>
+                </div>
             }
         </div>
-@*    <script>
-        CreateUrl(@ViewData["Category"])
-    </script>*@
+        <div class="col-4">
+            <div class="container=fluid">
+                <h5> Current question: @questionNumber / 10</h5>
+                <h5>Current Score: @TempData.Peek("Score")</h5>
+            </div>
+        </div>
+    </div>
 </body>

@@ -22,16 +22,17 @@ namespace QuizApp.Controllers
                 list[n] = value;
             }
         }
-        public ActionResult Category(string Id)
+        public ActionResult Category(string category)
         {
+            //Creates list with correct answer at random index
             APIRequestModel apiRequestModel = new APIRequestModel { };
-            apiRequestModel.Category = Id;
+            apiRequestModel.Category = category;
             QuestionModel questionmodel = APIRequest.GetQuestion(apiRequestModel);
-
             questionmodel.answers = questionmodel.incorrect_answers;
             questionmodel.answers.Add(questionmodel.correct_answer);
             Shuffle(questionmodel.answers);
-
+            TempData["correct"] = questionmodel.correct_answer;
+            TempData["Category"] = category;
             return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
         }
     }

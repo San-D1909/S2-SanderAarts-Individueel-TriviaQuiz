@@ -11,13 +11,13 @@ namespace QuizApp.Controllers
         // GET: Scoreboard
         public ActionResult Scoreboard()
         {
-            if (TempData["unique_id"] != null)
+            if (TempData.Peek("unique_id") != null)
             {
                 return View();
             }
             else
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Index", "Login");
             }
         }
     }

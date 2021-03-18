@@ -10,13 +10,13 @@ namespace QuizApp.Controllers
     {
         public ActionResult Tutorial()
         {
-            if (TempData["unique_id"] != null)
+            if (TempData.Peek("unique_id") != null)
             {
                 return View();
             }
             else
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Index", "Login");
             }
         }
     }

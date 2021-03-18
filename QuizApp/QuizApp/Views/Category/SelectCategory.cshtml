@@ -9,12 +9,16 @@
 <h2>Select a category</h2>
 <div>
     <p>
-        <a href="@Url.Action("Category", "Quiz", new { id = 15 })" class="btn btn-success">Games</a>
+        <a href="@Url.Action("Category", "Quiz", new { category = 15 })" class="btn btn-success">Games</a>
     </p>
 </div>
 <div>
-    <p><input type="button" value="Science/Nature" class="btn btn-success" onclick="location.href='@Url.Action("Category", "Quiz", new { id = 17 })'" /></p>
+    <p>
+        <a href="@Url.Action("Category", "Quiz", new { category = 17 })" class="btn btn-success">Science/Nature</a>
+    </p>
 </div>
 <div>
-    <p><input type="button" value="History" class="btn btn-success" onclick="location.href='@Url.Action("Category", "Quiz", new { id = 23 })'" /></p>
+    <p>
+        <a href="@Url.Action("Category", "Quiz", new { category = 23 })" class="btn btn-success">History</a>
+    </p>
 </div>
