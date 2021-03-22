@@ -13,6 +13,7 @@ namespace QuizApp.Controllers
         {
             if (TempData.Peek("unique_id")!=null)
             {
+                TempData["score"] = 0.0;
                 return View();
             }
             else

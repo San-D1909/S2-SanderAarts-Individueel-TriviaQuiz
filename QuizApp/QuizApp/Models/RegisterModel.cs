@@ -30,13 +30,7 @@ namespace QuizApp.Models
         [Required(ErrorMessage = "This field is required")]
 
         public string Adress { get; set; }
-        [Required(ErrorMessage = "This field is required")]
 
-        public GenderType Gender 
-        { 
-            get { return Gender; }
-            set{Gender = value;} 
-        }
         [DisplayName("Birth Day")]
         [Required(ErrorMessage = "This field is required")]
 
@@ -44,13 +38,6 @@ namespace QuizApp.Models
 
 
 
-        public enum GenderType
-        {
-            [Display(Name = "Female")]
-            Female = 0,
-            [Display(Name = "Male")]
-            Male = 1
-        }
     }
 
 }

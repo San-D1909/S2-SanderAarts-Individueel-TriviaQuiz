@@ -16,8 +16,7 @@ namespace QuizApp
             string requestString = "" + apiRequestModel.BaseURL + "amount=" + apiRequestModel.Amount + "&category=" + apiRequestModel.Category + "&type=" + apiRequestModel.Type + "";
             WebRequest requestObject = WebRequest.Create(requestString);
             requestObject.Method = "GET";
-            HttpWebResponse responseObject = null;
-            responseObject = (HttpWebResponse)requestObject.GetResponse();
+            HttpWebResponse responseObject = (HttpWebResponse)requestObject.GetResponse();
             string resultJSON = null; 
             using(Stream stream  = responseObject.GetResponseStream())
             {

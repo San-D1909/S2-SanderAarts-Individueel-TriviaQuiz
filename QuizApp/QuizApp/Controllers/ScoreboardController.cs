@@ -20,5 +20,9 @@ namespace QuizApp.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
+        public ActionResult FinalScore()
+        {
+            return View("FinalScorePage");
+        }
     }
 }
