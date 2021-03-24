@@ -8,7 +8,7 @@ namespace QuizApp
 {
     public class CalculateScore
     {
-        public static ScoreModel Calculator(double timeUsed)
+        public static ScoreModel Calculation(double timeUsed)
         {
             ScoreModel scoreModel = new ScoreModel { };
             double maxTime = scoreModel.MaxTime;

@@ -9,7 +9,7 @@ namespace QuizApp.Controllers
 {
     public class QuizController : Controller
     {
-        public List<T> Shuffle<T>(IList<T> list)
+        public List<T> Shuffle<T>(List<T> list)
         {//Creates list with correct answer at random index
             
             Random random = new Random();
@@ -18,7 +18,7 @@ namespace QuizApp.Controllers
         }
         public QuestionModel CreateQuestion(APIRequestModel apiRequestModel)
         {
-            QuestionModel questionmodel = APIRequest.GetQuestion(apiRequestModel);
+            QuestionModel questionmodel = APIRequest.JSON_To_Model(apiRequestModel);
 
             //Saves the correct answer to a TempData.
             TempData["correct"] = questionmodel.correct_answer;

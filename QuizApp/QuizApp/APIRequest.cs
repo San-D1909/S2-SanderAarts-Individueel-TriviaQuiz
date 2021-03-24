@@ -11,8 +11,9 @@ namespace QuizApp
 {
     public class APIRequest
     {
-        public static string Get_API_JSON(APIRequestModel apiRequestModel)
+        public static string Get_JSON_From_API(APIRequestModel apiRequestModel)
         {
+            //Creates a variable URL based on user input.
             string requestString = "" + apiRequestModel.BaseURL + "amount=" + apiRequestModel.Amount + "&category=" + apiRequestModel.Category + "&type=" + apiRequestModel.Type + "";
             WebRequest requestObject = WebRequest.Create(requestString);
             requestObject.Method = "GET";
@@ -24,16 +25,17 @@ namespace QuizApp
                 resultJSON = sr.ReadToEnd();
                 sr.Close();
             }
+            //Manipulate string to useable JSON
             resultJSON = resultJSON.Replace("{\"response_code\":0,\"results\":[", "");
             resultJSON = resultJSON.Remove(resultJSON.Length-2, 2);
             return resultJSON;
         }
 
 
-        public static QuestionModel GetQuestion(APIRequestModel apiRequestModel)
+        public static QuestionModel JSON_To_Model(APIRequestModel apiRequestModel)
         {
             QuestionModel questionModel = new QuestionModel { };
-            string rawJSON = Get_API_JSON(apiRequestModel);
+            string rawJSON = Get_JSON_From_API(apiRequestModel);
             questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
             return questionModel;
         }

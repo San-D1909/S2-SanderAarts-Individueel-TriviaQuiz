@@ -175,7 +175,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CalculateScore.cs" />
-    <Compile Include="CheckAnswer.cs" />
+    <Compile Include="CompareAnswers.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckAnswerController.cs" />
     <Compile Include="Controllers\EndScoreController.cs" />
