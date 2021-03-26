@@ -12,7 +12,15 @@ namespace QuizApp
         {
             ScoreModel scoreModel = new ScoreModel { };
             double maxTime = scoreModel.MaxTime;
-            scoreModel.Score = ((maxTime - timeUsed) /maxTime) * 100;
+            scoreModel.Score = ((maxTime - timeUsed) / maxTime) * 100;
+            if(timeUsed>=5&&timeUsed<=20)
+            {
+                scoreModel.Score = scoreModel.Score / 2;
+            }
+            if (timeUsed > 20)
+            {
+                scoreModel.Score = scoreModel.Score / 3;
+            }
             return scoreModel;
         }
     }
