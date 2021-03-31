@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace QuizApp
 {
-    public class APIRequest
+    public class Get_Question_Data
     {
         public static string Get_JSON_From_API(APIRequestModel apiRequestModel)
         {
@@ -32,12 +32,19 @@ namespace QuizApp
         }
 
 
-        public static QuestionModel JSON_To_Model(APIRequestModel apiRequestModel)
+        public static QuestionModel Fill_QuestionModel(APIRequestModel apiRequestModel)
         {
-            QuestionModel questionModel = new QuestionModel { };
             string rawJSON = Get_JSON_From_API(apiRequestModel);
-            questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
-            return questionModel;
+            QuestionModel questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
+            if (questionModel.Question!=null)
+            {
+                return questionModel;
+            }
+            else
+            {
+                //create function to extract quesitons from database.
+                return questionModel;
+            }
         }
     }
 }

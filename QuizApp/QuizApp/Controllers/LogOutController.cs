@@ -10,7 +10,7 @@ namespace QuizApp.Controllers
     {
         public ActionResult Index()
         {
-            _ = TempData["unique_id"];
+            _ = Session["Login"];
             return View("LogOutPage");
         }
     }

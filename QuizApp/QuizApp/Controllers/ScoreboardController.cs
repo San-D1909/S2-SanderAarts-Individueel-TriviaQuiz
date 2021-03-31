@@ -11,7 +11,7 @@ namespace QuizApp.Controllers
         // GET: Scoreboard
         public ActionResult Scoreboard()
         {
-            if (TempData.Peek("unique_id") != null)
+            if (Session["Login"] != null)
             {
                 return View();
             }
@@ -19,6 +19,10 @@ namespace QuizApp.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+        }
+        public ActionResult Submit_Score()
+        {
+            return RedirectToAction("Scoreboard");
         }
         public ActionResult FinalScore()
         {

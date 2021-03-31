@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using QuizApp.Models;
 
 namespace QuizApp.Controllers
 {
@@ -11,9 +12,11 @@ namespace QuizApp.Controllers
         // GET: Category
         public ActionResult SelectCategory()
         {
-            if (TempData.Peek("unique_id")!=null)
+            if (Session["Login"]!=null)
             {
-                TempData["score"] = 0;
+                ScoreModel scoreModel = new ScoreModel { };
+                scoreModel.Score = 0;
+                Session["scoreModel"] = scoreModel;
                 return View();
             }
             else

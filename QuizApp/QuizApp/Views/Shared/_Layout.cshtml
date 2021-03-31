@@ -33,7 +33,7 @@
                 </ul>
                 <div class="topnav-right">
                     <ul class="">
-                        @if (TempData.Peek("unique_id") == null)
+                        @if (Session["Login"] == null)
                         {
                             <li>@Html.ActionLink("Register", "Index", "Register"); @Html.ActionLink("Login", "Index", "Login")</li>
                         }

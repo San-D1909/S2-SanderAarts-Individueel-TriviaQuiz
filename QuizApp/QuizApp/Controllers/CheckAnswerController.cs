@@ -12,35 +12,38 @@ namespace QuizApp.Controllers
     {
         public ActionResult CheckAnswer(string chosen)
         {
-            ScoreModel scoreModel = new ScoreModel { };
+            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
+            QuestionModel questionModel = Session["questionModel"] as QuestionModel;
 
             //Calculates the time that is used.
-            TimeSpan timeUsed = DateTime.Now - (DateTime)TempData["currentTime"];
-
+            TimeSpan timeUsed = DateTime.Now - questionModel.Time_Taken;
             //Calculates the score based on how much time is used.
-            scoreModel = CompareAnswers.Checker(chosen, (string)TempData.Peek("correct"), scoreModel, timeUsed.TotalSeconds);
-            
-            //Adds 1 to the question count.
-            TempData["Current_Question"] = 1 + (int)TempData.Peek("Current_Question");
+            scoreModel = CompareAnswers.Checker(chosen, questionModel.Correct_Answer, scoreModel, timeUsed.TotalSeconds);
 
             //Adds score to previous score.
-            int lastScore = (int)TempData["score"];
-            TempData["score"] = lastScore + (int)scoreModel.Score;
+            scoreModel.Last_Score = questionModel.Score;
+            questionModel.Score = scoreModel.Last_Score + (int)scoreModel.Score;
 
-            if ((int)TempData.Peek("Current_Question") > scoreModel.Question_Amount)//Check if the current questionnumber is bigger than the amount of questions.
-            {
-                //SCOREPAGE SAVE FUNCTIE TOEVOEGEN.
-                PrepareNextQuiz();
+            //Adds 1 to the question count.
+            questionModel.Current_Question = 1 + questionModel.Current_Question;
+
+            
+            if (questionModel.Current_Question > scoreModel.Question_Amount)
+            {//Check if the current questionnumber is bigger than the amount of questions.
+                PrepareNextQuiz(questionModel);
                 return RedirectToAction("FinalScore", "Scoreboard");
             }
 
-            return RedirectToAction("Category", "Quiz", new { category = (string)TempData.Peek("Category") });
+            Session["scoreModel"] = scoreModel;
+            Session["questionModel"] = questionModel;
+            return RedirectToAction("Category", "Quiz"/*, new { category = (string)TempData.Peek("Category") }*/);
         }
-        public void PrepareNextQuiz()
+        public void PrepareNextQuiz(QuestionModel questionModel)
         {
-            TempData["finalScore"] = TempData["score"];
-            TempData["Current_Question"] = 0;
-            TempData["Category"] = null;
+            TempData["finalScore"] = questionModel.Score;
+            questionModel.Score = 0;
+            questionModel.Current_Question = 1;
+            Session["questionModel"] = questionModel;
         }
     }
 }

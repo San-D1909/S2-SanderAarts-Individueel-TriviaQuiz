@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
+using QuizApp.Models;
 
 namespace QuizApp
 {
@@ -10,7 +11,7 @@ namespace QuizApp
     {
         public static bool StoreData(string storeData)
         {
-            MySqlConnection databaseConnection = new MySqlConnection(QuizApp.Models.DB_Credentials.DbConnectionString);
+            MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
             MySqlCommand StoreRegisterData = new MySqlCommand(storeData, databaseConnection);
             try
             {

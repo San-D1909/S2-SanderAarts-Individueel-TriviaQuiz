@@ -8,6 +8,12 @@
 <div class="jumbotron">
     <h1>TriviaQuiz</h1>
     <p class="lead"></p>
+    @{
+        if (TempData.Peek("FirstName") != null)
+        {
+            <p>Goodday @TempData.Peek("FirstName") </p>
+        }
+    }
     <p><a href="https://localhost:44338/Category/SelectCategory" class="btn btn-primary btn-lg">Play! &raquo;</a></p>
     <p><a href="https://localhost:44338/Tutorial/Tutorial" class="btn btn-primary btn-lg">Help &raquo;</a></p>
     <p><a href="https://localhost:44338/Scoreboard/Scoreboard" class="btn btn-primary btn-lg">Highscores &raquo;</a></p>

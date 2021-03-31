@@ -7,10 +7,20 @@ namespace QuizApp.Models
 {
     public class ScoreModel
     {
-        public double MaxTime = 30;
+        private static double maxTime = 30;
+        private static int question_Amount = 10;
+        public double MaxTime
+        {
+            get { return maxTime; }
+            set { maxTime = value; }
+        }
+        public int Question_Amount
+        {
+            get { return question_Amount; }
+            set { question_Amount = value; }
+        }
         public double Score { get; set; }
-
-        public int Question_Amount = 10;
+        public int Last_Score { get; set; }
 
     }
 }

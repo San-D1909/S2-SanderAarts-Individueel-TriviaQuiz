@@ -4,49 +4,53 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuizApp.Models;
+using QuizApp.Classes;
 
 namespace QuizApp.Controllers
 {
     public class QuizController : Controller
     {
-        public List<T> Shuffle<T>(List<T> list)
-        {//Creates list with correct answer at random index
-            
-            Random random = new Random();
-            var newList = list.OrderBy(x => random.Next(0,3)).ToList();
-            return newList;
-        }
+
         public QuestionModel CreateQuestion(APIRequestModel apiRequestModel)
         {
-            QuestionModel questionmodel = APIRequest.JSON_To_Model(apiRequestModel);
+            QuestionModel questionModel = Get_Question_Data.Fill_QuestionModel(apiRequestModel);
+            ScoreModel scoreModel = new ScoreModel { };
 
-            //Saves the correct answer to a TempData.
-            TempData["correct"] = questionmodel.correct_answer;
-
-            questionmodel.answers = questionmodel.incorrect_answers;
-            questionmodel.answers.Add(questionmodel.correct_answer);
-            questionmodel.answers = Shuffle(questionmodel.answers);
-            
-
-            //Sets the category to a tempdata.
-            TempData["Category"] = apiRequestModel.Category;
+            questionModel.Answers = questionModel.Incorrect_Answers;
+            questionModel.Answers.Add(questionModel.Correct_Answer);
+            questionModel.Answers = Utility.Shuffle(questionModel.Answers);
 
             //Sets a maxtime to answer a question in a tempdata.
-            ScoreModel scoreModel = new ScoreModel { };
-            TempData["MaxTime"] = scoreModel.MaxTime;
+            ViewData["MaxTime"] = scoreModel.MaxTime;
 
             //Sets time to know how long it took to answer the question.
-            System.DateTime currentTime = DateTime.Now;
-            TempData["currentTime"] = currentTime;
+            questionModel.Time_Taken = DateTime.Now;
 
-            return questionmodel;
+            Session["questionModel"] = questionModel;
+            Session["apiRequestModel"] = apiRequestModel;
+            return questionModel;
         }
         public ActionResult Category(string category)
         {
-            APIRequestModel apiRequestModel = new APIRequestModel { };
-            apiRequestModel.Category = category;
-            QuestionModel questionmodel = CreateQuestion(apiRequestModel);
-            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
+            if (Session["Login"] != null)
+            {
+                APIRequestModel apiRequestModel = new APIRequestModel { };
+                if (Session["apiRequestModel"] != null)
+                {
+                    apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
+                }
+                else
+                {
+                    apiRequestModel.Category = category;
+                }
+                QuestionModel questionmodel = CreateQuestion(apiRequestModel);
+                return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
         }
     }
 }

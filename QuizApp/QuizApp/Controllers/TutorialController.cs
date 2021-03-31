@@ -10,7 +10,7 @@ namespace QuizApp.Controllers
     {
         public ActionResult Tutorial()
         {
-            if (TempData.Peek("unique_id") != null)
+            if (Session["Login"] != null)
             {
                 return View();
             }

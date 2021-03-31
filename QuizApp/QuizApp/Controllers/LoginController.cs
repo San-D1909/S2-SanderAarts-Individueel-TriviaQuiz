@@ -23,7 +23,8 @@ namespace QuizApp.Controllers
                 userModel = security.Authenticate(userModel);
                 if (userModel.Unique_id != "0" && userModel.Unique_id != null)
                 {
-                    TempData["unique_id"] = userModel.Unique_id;
+                    Session["Login"] = userModel;
+                    TempData["FirstName"] = userModel.First_Name;
                     return RedirectToAction("", "Home");
                 }
                 else
