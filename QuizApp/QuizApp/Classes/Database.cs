@@ -3,22 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
-using System.Web.Mvc;
 using QuizApp.Models;
 
 namespace QuizApp
 {
-    public class Login
+    public class Database
     {
-        public static UserModel SelectUserData(string Uname, string Password, UserModel userModel)
+        public static bool StoreData(MySqlCommand storeData, MySqlConnection databaseConnection)
         {
-            //string getUserData = "SELECT * FROM `user` WHERE `email` = '" + Uname + "' AND `password` = '" + Password + "'";
+            try
+            {
+                databaseConnection.Open();
+                storeData.Prepare();
+                MySqlDataReader executeString = storeData.ExecuteReader();
+                databaseConnection.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("error: " + e.Message);
+                return false;
+            }
+
+        }
+        public static UserModel Login(string Uname, string Password, UserModel userModel)
+        {
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
             MySqlCommand getUserData = new MySqlCommand("SELECT * FROM user WHERE email=@val1 AND password=@val2", databaseConnection);
-            getUserData.Parameters.AddWithValue("@val1",Uname);
-            getUserData.Parameters. AddWithValue("@val2", Password);
-            
-
+            getUserData.Parameters.AddWithValue("@val1", Uname);
+            getUserData.Parameters.AddWithValue("@val2", Password);
             try
             {
                 databaseConnection.Open();
