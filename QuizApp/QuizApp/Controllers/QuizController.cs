@@ -10,7 +10,6 @@ namespace QuizApp.Controllers
 {
     public class QuizController : Controller
     {
-
         public QuestionModel CreateQuestion(APIRequestModel apiRequestModel)
         {
             QuestionModel questionModel = Get_Question_Data.Fill_QuestionModel(apiRequestModel);
@@ -30,7 +29,7 @@ namespace QuizApp.Controllers
             Session["apiRequestModel"] = apiRequestModel;
             return questionModel;
         }
-        public ActionResult Category(string category)
+        public ActionResult Prepare_Question(string category)
         {
             if (Session["Login"] != null)
             {

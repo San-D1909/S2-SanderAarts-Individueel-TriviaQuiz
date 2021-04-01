@@ -36,7 +36,7 @@ namespace QuizApp.Controllers
 
             Session["scoreModel"] = scoreModel;
             Session["questionModel"] = questionModel;
-            return RedirectToAction("Category", "Quiz"/*, new { category = (string)TempData.Peek("Category") }*/);
+            return RedirectToAction("Prepare_Question", "Quiz"/*, new { category = (string)TempData.Peek("Category") }*/);
         }
         public void PrepareNextQuiz(QuestionModel questionModel)
         {

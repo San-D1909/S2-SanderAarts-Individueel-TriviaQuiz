@@ -9,14 +9,15 @@ namespace QuizApp
 {
     public class StroreToDatabase
     {
-        public static bool StoreData(string storeData)
+        public static bool StoreData(MySqlCommand storeData, MySqlConnection databaseConnection)
         {
-            MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
-            MySqlCommand StoreRegisterData = new MySqlCommand(storeData, databaseConnection);
+            
+            //MySqlCommand StoreRegisterData = new MySqlCommand(storeData, databaseConnection);
             try
             {
                 databaseConnection.Open();
-                MySqlDataReader executeString = StoreRegisterData.ExecuteReader();
+                storeData.Prepare();
+                MySqlDataReader executeString = storeData.ExecuteReader();
                 databaseConnection.Close();
                 return true;
             }

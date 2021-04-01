@@ -12,13 +12,18 @@ namespace QuizApp
     {
         public static UserModel SelectUserData(string Uname, string Password, UserModel userModel)
         {
-            string getUserData = "SELECT * FROM `user` WHERE `email` = '" + Uname + "' AND `password` = '" + Password + "'";
+            //string getUserData = "SELECT * FROM `user` WHERE `email` = '" + Uname + "' AND `password` = '" + Password + "'";
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
-            MySqlCommand getUserDataCommand = new MySqlCommand(getUserData, databaseConnection);
+            MySqlCommand getUserData = new MySqlCommand("SELECT * FROM user WHERE email=@val1 AND password=@val2", databaseConnection);
+            getUserData.Parameters.AddWithValue("@val1",Uname);
+            getUserData.Parameters. AddWithValue("@val2", Password);
+            
+
             try
             {
                 databaseConnection.Open();
-                var executeString = getUserDataCommand.ExecuteReader();
+                getUserData.Prepare();
+                var executeString = getUserData.ExecuteReader();
                 while (executeString.Read())
                 {
                     userModel.Unique_id = executeString.GetString(0);
