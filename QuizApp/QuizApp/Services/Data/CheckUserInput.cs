@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using QuizApp.Models;
 
 namespace QuizApp.Services.Data
@@ -32,7 +28,7 @@ namespace QuizApp.Services.Data
             storeData.Parameters.AddWithValue("@val4", registration.Password);
             storeData.Parameters.AddWithValue("@val5", registration.Adress);
             storeData.Parameters.AddWithValue("@val6", registration.Birth_Day);
-            if (Database.StoreData(storeData, databaseConnection))
+            if (Database.StoreData(storeData, databaseConnection, true))
             {
                 return true;
             }

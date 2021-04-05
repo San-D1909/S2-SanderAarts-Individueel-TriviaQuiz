@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using QuizApp.Classes;
 using QuizApp.Models;
-using QuizApp;
+using System;
+using System.Web.Mvc;
 
 namespace QuizApp.Controllers
 {
@@ -27,16 +24,20 @@ namespace QuizApp.Controllers
             //Adds 1 to the question count.
             questionModel.Current_Question = 1 + questionModel.Current_Question;
 
-            
+            scoreModel = Submit_Score.Get_Unique_Question_ID(questionModel, scoreModel);
+
+            Session["questionModel"] = questionModel;
+            Session["scoreModel"] = scoreModel;
+
             if (questionModel.Current_Question > scoreModel.Question_Amount)
             {//Check if the current questionnumber is bigger than the amount of questions.
                 PrepareNextQuiz(questionModel);
                 return RedirectToAction("FinalScore", "Scoreboard");
             }
-
-            Session["scoreModel"] = scoreModel;
-            Session["questionModel"] = questionModel;
-            return RedirectToAction("Prepare_Question", "Quiz"/*, new { category = (string)TempData.Peek("Category") }*/);
+            else
+            {
+                return RedirectToAction("Prepare_Question", "Quiz"/*, new { category = (string)TempData.Peek("Category") }*/);
+            }
         }
         public void PrepareNextQuiz(QuestionModel questionModel)
         {

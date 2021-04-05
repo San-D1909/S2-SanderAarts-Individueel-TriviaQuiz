@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using QuizApp.Models;
-using System.Web.Mvc;
+﻿using QuizApp.Models;
 
 namespace QuizApp
 {
     public class CompareAnswers
     {
-        public static ScoreModel Checker(string chosen,string correct,ScoreModel scoreModel,double timeUsed)
+        public static ScoreModel Checker(string chosen, string correct, ScoreModel scoreModel, double timeUsed)
         {
-            if(chosen == correct)
+            if (chosen == correct)
             {
-            scoreModel = CalculateScore.Calculation(timeUsed);
+                scoreModel = CalculateScore.Calculation(timeUsed, scoreModel);
             }
             else
             {

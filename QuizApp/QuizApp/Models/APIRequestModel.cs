@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace QuizApp.Models
+﻿namespace QuizApp.Models
 {
     public class APIRequestModel
     {
         private static string baseURL = "https://opentdb.com/api.php?";
         private static string amount = "1";
         private string category = "15";
+        private string difficulty = "medium";
         private static string type = "multiple";
 
         public string BaseURL
@@ -21,6 +17,11 @@ namespace QuizApp.Models
         {
             get { return category; }
             set { category = value; }
+        }
+        public string Difficulty
+        {
+            get { return difficulty; }
+            set { difficulty = value; }
         }
         public string Amount
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace QuizApp.Controllers
 {
@@ -12,7 +8,7 @@ namespace QuizApp.Controllers
         {
             if (Session["Login"] != null)
             {
-                return View("~/Views/Home/Index.cshtml" );
+                return View("~/Views/Home/Index.cshtml");
             }
             else
             {

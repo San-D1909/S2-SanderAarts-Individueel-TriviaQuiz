@@ -1,8 +1,4 @@
 ﻿using QuizApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using QuizApp.Services.Data;
 
 namespace QuizApp.Services.Business

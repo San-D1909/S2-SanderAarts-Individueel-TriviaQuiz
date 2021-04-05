@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using Newtonsoft.Json;
 using QuizApp.Models;
 using System.IO;
-using Newtonsoft.Json;
+using System.Net;
 
 namespace QuizApp
 {
@@ -14,12 +10,12 @@ namespace QuizApp
         public static string Get_JSON_From_API(APIRequestModel apiRequestModel)
         {
             //Creates a variable URL based on user input.
-            string requestString = "" + apiRequestModel.BaseURL + "amount=" + apiRequestModel.Amount + "&category=" + apiRequestModel.Category + "&type=" + apiRequestModel.Type + "";
+            string requestString = "" + apiRequestModel.BaseURL + "amount=" + apiRequestModel.Amount + "&category=" + apiRequestModel.Category + "&difficulty = medium" + "&type=" + apiRequestModel.Type + "";
             WebRequest requestObject = WebRequest.Create(requestString);
             requestObject.Method = "GET";
             HttpWebResponse responseObject = (HttpWebResponse)requestObject.GetResponse();
-            string resultJSON = null; 
-            using(Stream stream  = responseObject.GetResponseStream())
+            string resultJSON = null;
+            using (Stream stream = responseObject.GetResponseStream())
             {
                 StreamReader sr = new StreamReader(stream);
                 resultJSON = sr.ReadToEnd();
@@ -27,22 +23,24 @@ namespace QuizApp
             }
             //Manipulate string to useable JSON
             resultJSON = resultJSON.Replace("{\"response_code\":0,\"results\":[", "");
-            resultJSON = resultJSON.Remove(resultJSON.Length-2, 2);
+            resultJSON = resultJSON.Remove(resultJSON.Length - 2, 2);
             return resultJSON;
         }
 
 
         public static QuestionModel Fill_QuestionModel(APIRequestModel apiRequestModel)
         {
+            QuestionModel questionModel = new QuestionModel { };
             string rawJSON = Get_JSON_From_API(apiRequestModel);
-            QuestionModel questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
-            if (questionModel.Question!=null)
+            questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
+            if (questionModel.Question != null)
             {
+                QuizApp.Classes.QuestionBackup.Store_question(questionModel, apiRequestModel);
                 return questionModel;
             }
             else
             {
-                //create function to extract quesitons from database.
+                questionModel = QuizApp.Classes.QuestionBackup.Get_Question_Database(apiRequestModel.Difficulty, apiRequestModel.Category, questionModel);
                 return questionModel;
             }
         }

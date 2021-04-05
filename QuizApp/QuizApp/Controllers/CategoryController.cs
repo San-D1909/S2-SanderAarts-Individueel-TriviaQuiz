@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using QuizApp.Models;
 using System.Web.Mvc;
-using QuizApp.Models;
 
 namespace QuizApp.Controllers
 {
@@ -12,7 +8,7 @@ namespace QuizApp.Controllers
         // GET: Category
         public ActionResult SelectCategory()
         {
-            if (Session["Login"]!=null)
+            if (Session["Login"] != null)
             {
                 ScoreModel scoreModel = new ScoreModel { };
                 scoreModel.Score = 0;
@@ -21,7 +17,7 @@ namespace QuizApp.Controllers
             }
             else
             {
-                return RedirectToAction("Index","Login");
+                return RedirectToAction("Index", "Login");
             }
         }
     }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using QuizApp.Classes;
+using QuizApp.Models;
 using System.Web.Mvc;
 
 namespace QuizApp.Controllers
@@ -20,8 +18,13 @@ namespace QuizApp.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
-        public ActionResult Submit_Score()
+        public ActionResult Submit_Score_Action()
         {
+            APIRequestModel apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
+            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
+            UserModel userModel = Session["Login"] as UserModel;
+            bool succes = Submit_Score.Submit_To_Scoreboard(scoreModel, apiRequestModel, userModel, (int)TempData["finalScore"]);
+            Session["Login"] = userModel;
             return RedirectToAction("Scoreboard");
         }
         public ActionResult FinalScore()

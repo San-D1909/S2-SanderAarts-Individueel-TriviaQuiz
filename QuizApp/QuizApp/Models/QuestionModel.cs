@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace QuizApp.Models
 {
@@ -14,7 +12,7 @@ namespace QuizApp.Models
         public string Question { get; set; }
         public List<string> Incorrect_Answers { get; set; }
         public string Correct_Answer { get; set; }
-        public int Current_Question 
+        public int Current_Question
         {
             get { return current_Question; }
             set { current_Question = value; }

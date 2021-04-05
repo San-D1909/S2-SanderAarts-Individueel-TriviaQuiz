@@ -6,9 +6,9 @@
 
 <h2>FinalScorePage</h2>
 
-<h5>Current Score: @TempData["finalScore"]</h5>
+<h5>Current Score: @TempData.Peek("finalScore")</h5>
 <div>
     <p>
-        <a href="@Url.Action("Submit_Score", "Scoreboard"@*, new { category = 15 }*@)" class="btn btn-success">Submit Score</a>
+        <a href="@Url.Action("Submit_Score_Action", "Scoreboard")" class="btn btn-success">Submit Score</a>
     </p>
 </div>

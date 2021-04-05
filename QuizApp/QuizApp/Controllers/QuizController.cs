@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using QuizApp.Classes;
 using QuizApp.Models;
-using QuizApp.Classes;
+using System;
+using System.Web.Mvc;
 
 namespace QuizApp.Controllers
 {
@@ -13,7 +10,7 @@ namespace QuizApp.Controllers
         public QuestionModel CreateQuestion(APIRequestModel apiRequestModel)
         {
             QuestionModel questionModel = Get_Question_Data.Fill_QuestionModel(apiRequestModel);
-            ScoreModel scoreModel = new ScoreModel { };
+            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
 
             questionModel.Answers = questionModel.Incorrect_Answers;
             questionModel.Answers.Add(questionModel.Correct_Answer);
@@ -25,6 +22,7 @@ namespace QuizApp.Controllers
             //Sets time to know how long it took to answer the question.
             questionModel.Time_Taken = DateTime.Now;
 
+            Session["scoreModel"] = scoreModel;
             Session["questionModel"] = questionModel;
             Session["apiRequestModel"] = apiRequestModel;
             return questionModel;

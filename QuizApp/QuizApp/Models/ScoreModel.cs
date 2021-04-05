@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace QuizApp.Models
 {
@@ -22,5 +19,6 @@ namespace QuizApp.Models
         public double Score { get; set; }
         public int Last_Score { get; set; }
 
+        public List<string> Question_List { get; set; }
     }
 }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using QuizApp.Models;
+﻿using QuizApp.Models;
 using QuizApp.Services.Business;
+using System.Web.Mvc;
 
 namespace QuizApp.Controllers
 {
@@ -17,7 +13,7 @@ namespace QuizApp.Controllers
 
         public ActionResult Login(UserModel userModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 SecurityService security = new SecurityService();
                 userModel = security.Authenticate(userModel);
@@ -35,7 +31,7 @@ namespace QuizApp.Controllers
             else
             {
                 return View("Login");
-            }    
+            }
 
         }
 
