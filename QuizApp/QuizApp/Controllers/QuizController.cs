@@ -32,13 +32,13 @@ namespace QuizApp.Controllers
             if (Session["Login"] != null)
             {
                 APIRequestModel apiRequestModel = new APIRequestModel { };
-                if (Session["apiRequestModel"] != null)
-                {
-                    apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
-                }
-                else
+                if(category!= null)
                 {
                     apiRequestModel.Category = category;
+                }
+                else if (Session["apiRequestModel"] != null)
+                {
+                    apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
                 }
                 QuestionModel questionmodel = CreateQuestion(apiRequestModel);
                 return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);

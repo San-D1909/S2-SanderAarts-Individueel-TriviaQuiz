@@ -176,6 +176,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\CalculateScore.cs" />
     <Compile Include="Classes\CompareAnswers.cs" />
+    <Compile Include="Classes\Load_Scoreboard.cs" />
     <Compile Include="Classes\QuestionBackup.cs" />
     <Compile Include="Classes\Submit_Score.cs" />
     <Compile Include="Classes\Utility.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Models\APIRequestModel.cs" />
     <Compile Include="Models\QuestionModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\ScoreBoardModel.cs" />
     <Compile Include="Models\ScoreModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

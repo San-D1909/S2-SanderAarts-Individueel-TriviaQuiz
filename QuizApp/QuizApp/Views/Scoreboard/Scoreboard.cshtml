@@ -1,11 +1,37 @@
-﻿
+﻿@using QuizApp.Models
+@model ScoreBoardModel
+
 @{
     ViewBag.Title = "Scoreboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-
-
 </style>
 <h2> Scoreboard</h2>
 
+@Html.DropDownList("Category",
+                new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Category))),
+                "Select Category",
+                new { @class = "form-control" })
+
+@Html.DropDownList("Difficulty",
+                new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Difficulty))),
+                "Select Difficulty",
+                new { @class = "form-control" })
+
+@Html.DropDownList("TimeSpan",
+                new SelectList(Enum.GetValues(typeof(ScoreBoardModel.TimeSpan))),
+                "Select TimeSpan",
+                new { @class = "form-control" })
+<h2>
+    @{ 
+        var text = ViewData["scoreboard"];
+        int rows = (int)ViewData["count"] / 8;
+
+        for (int i = 0; i<= (int)ViewData["count"]; i++)
+        {
+            string[] lines =  text.Split(',')
+
+        }
+    }
+</h2>

@@ -36,7 +36,7 @@ namespace QuizApp.Controllers
             }
             else
             {
-                return RedirectToAction("Prepare_Question", "Quiz"/*, new { category = (string)TempData.Peek("Category") }*/);
+                return RedirectToAction("Prepare_Question", "Quiz");
             }
         }
         public void PrepareNextQuiz(QuestionModel questionModel)
