@@ -5,33 +5,156 @@
     ViewBag.Title = "Scoreboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
 <style>
 </style>
 <h2> Scoreboard</h2>
+<form>
+    <div class="row">
+        <div class="col-3">
+            @Html.DropDownList("Category",
+new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Category))),
+"Select Category",
+new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            @Html.DropDownList("Difficulty",
+new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Difficulty))),
+"Select Difficulty",
+new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            @Html.DropDownList("TimeSpan",
+new SelectList(Enum.GetValues(typeof(ScoreBoardModel.TimeSpan))),
+"Select TimeSpan",
+new { @class = "form-control" })
+        </div>
+        <div class="col-3">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</form>
 
-@Html.DropDownList("Category",
-                new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Category))),
-                "Select Category",
-                new { @class = "form-control" })
-
-@Html.DropDownList("Difficulty",
-                new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Difficulty))),
-                "Select Difficulty",
-                new { @class = "form-control" })
-
-@Html.DropDownList("TimeSpan",
-                new SelectList(Enum.GetValues(typeof(ScoreBoardModel.TimeSpan))),
-                "Select TimeSpan",
-                new { @class = "form-control" })
-<h2>
-    @{ 
-        var text = ViewData["scoreboard"];
-        int rows = (int)ViewData["count"] / 8;
-
-        for (int i = 0; i<= (int)ViewData["count"]; i++)
+<table>
+    @{
+        string text = (string)ViewData["scoreboard"];
+        if (text != "")
         {
-            string[] lines =  text.Split(',')
+            int rows = ((int)ViewData["count"] / 8) + 1;
+            string[] lines = text.Split(',');
+            int count = 7;
+            int oldcount = 0;
+            List<string> Row1 = new List<string> { };
+            List<string> Row2 = new List<string> { };
+            List<string> Row3 = new List<string> { };
+            List<string> Row4 = new List<string> { };
+            List<string> Row5 = new List<string> { };
+            for (int y = 1; y <= rows; y++)
+            {
+                for (int x = oldcount; x <= count; x++)
+                {
+
+                    if (y == 1)
+                    {
+                        Row1.Add(lines[x]);
+                    }
+                    if (y == 2)
+                    {
+                        Row2.Add(lines[x]);
+                    }
+                    if (y == 3)
+                    {
+                        Row3.Add(lines[x]);
+                    }
+                    if (y == 4)
+                    {
+                        Row4.Add(lines[x]);
+                    }
+                    if (y == 5)
+                    {
+                        Row5.Add(lines[x]);
+                    }
+                }
+                oldcount = count + 1;
+                count = count + 8;
+            }
+
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+
+            if (Row1.Count() >= 1)
+            {
+                <tr>
+                    <td>@Row1[1]</td>
+                    <td>@Row1[6]</td>
+                    <td>@Row1[7]</td>
+                </tr>
+            }
+
+            if (Row2.Count() >= 1)
+            {
+                <tr>
+                    <td>@Row2[1]</td>
+                    <td>@Row2[6]</td>
+                    <td>@Row2[7]</td>
+                </tr>
+            }
+
+            if (Row3.Count() >= 1)
+            {
+                <tr>
+                    <td>@Row3[1]</td>
+                    <td>@Row3[6]</td>
+                    <td>@Row3[7]</td>
+                </tr>
+            }
+
+            if (Row4.Count() >= 1)
+            {
+                <tr>
+                    <td>@Row4[1]</td>
+                    <td>@Row4[6]</td>
+                    <td>@Row4[7]</td>
+                </tr>
+            }
+
+            if (Row5.Count() >= 1)
+            {
+                <tr>
+                    <td>@Row5[1]</td>
+                    <td>@Row5[6]</td>
+                    <td>@Row5[7]</td>
+                </tr>
+            }
 
         }
+
     }
-</h2>
+
+
+
+
+
+
+</table>
