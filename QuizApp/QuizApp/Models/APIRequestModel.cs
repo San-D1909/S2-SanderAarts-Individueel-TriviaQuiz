@@ -4,7 +4,7 @@
     {
         private static string baseURL = "https://opentdb.com/api.php?";
         private static string amount = "1";
-        private string category = "15";
+        private string category;
         private string difficulty = "medium";
         private static string type = "multiple";
 
@@ -33,7 +33,5 @@
             get { return type; }
             set { type = value; }
         }
-
-        //public string urlString =""+ baseURL + "amount=" + amount+ "&category="+ category+"&type="+type+"";
     }
 }

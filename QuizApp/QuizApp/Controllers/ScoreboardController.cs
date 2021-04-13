@@ -11,11 +11,6 @@ namespace QuizApp.Controllers
         // GET: Scoreboard
         public ActionResult Scoreboard(ScoreBoardModel scoreBoardModel)
         {
-            if (Session["Login"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            int count = 0;
             List<string> results = Load_Scoreboard.Get_ScoreBoard_Data(Convert.ToString(scoreBoardModel.difficulty), (int)scoreBoardModel.category, Convert.ToString(scoreBoardModel.timeSpan));
             string scoreboard = (string)results[1];
             for (int i = 1; i < results.Count; i++)

@@ -31,17 +31,19 @@ namespace QuizApp.Classes
             List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
             return Convert.ToInt32(results[0]);
         }
+
         public static bool Save_Question_List(ScoreModel scoreModel)
         {
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
             if (scoreModel.Question_List.Count() == 10)
             {
                 MySqlCommand Store_QuestionList = new MySqlCommand("INSERT INTO `question_list`(`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`) VALUES (" + scoreModel.Question_List[0] + "," + scoreModel.Question_List[1] + "," + scoreModel.Question_List[2] + "," + scoreModel.Question_List[3] + "," + scoreModel.Question_List[4] + "," + scoreModel.Question_List[5] + "," + scoreModel.Question_List[6] + "," + scoreModel.Question_List[7] + "," + scoreModel.Question_List[8] + "," + scoreModel.Question_List[9] + ")", databaseConnection);
-                bool succes = Database.StoreData(Store_QuestionList, databaseConnection, false);
+                Database.StoreData(Store_QuestionList, databaseConnection, false);
                 return true;
             }
             return false;
         }
+
         public static bool Submit_To_Scoreboard(ScoreModel scoreModel, APIRequestModel apiRequestModel, UserModel userModel, int finalScore)
         {
             Save_Question_List(scoreModel);
@@ -52,10 +54,7 @@ namespace QuizApp.Classes
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }
