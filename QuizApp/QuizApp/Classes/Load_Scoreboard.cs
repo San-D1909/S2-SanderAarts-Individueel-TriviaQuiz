@@ -19,27 +19,23 @@ namespace QuizApp.Classes
                 return (results);
             }
             else
-            {
-                
+            { 
                 DateTime now = DateTime.Now;
-                string nowString = now.ToString("yyyy-MM-dd HH:mm:ss");
-                DateTime startDate = DateTime.Now;
-                string startString = "";
+                DateTime startDate = now;
                 if (timeSpan == "PastWeek")
                 {
                     startDate = now.AddDays(-7);
-                    startString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
                 }
                 else if (timeSpan == "PastMonth")
                 {
                     startDate = now.AddDays(-30);
-                    startString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
                 }
-                MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `category` = " + category + " AND `difficulty` LIKE '" + difficulty + "' AND `date` BETWEEN '" + startString + "' AND '" + nowString + "' ORDER BY score DESC LIMIT 5", databaseConnection);
-                if (timeSpan == "AllTime")
+                else if (timeSpan == "AllTime")
                 {
-                    Get_Question_ID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `category` = " + category + " AND `difficulty` = '" + difficulty + "' ORDER BY score DESC LIMIT 5", databaseConnection);
+                    startDate = now.AddYears(-40);
                 }
+                string startString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+                MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `category` = " + category + " AND `difficulty` LIKE '" + difficulty + "' AND `date` BETWEEN '" + startString + "' AND '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY score DESC LIMIT 5", databaseConnection);
                 List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
                 return (results);
             }

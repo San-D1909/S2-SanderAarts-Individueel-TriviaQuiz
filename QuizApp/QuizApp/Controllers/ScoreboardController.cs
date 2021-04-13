@@ -11,31 +11,20 @@ namespace QuizApp.Controllers
         // GET: Scoreboard
         public ActionResult Scoreboard(ScoreBoardModel scoreBoardModel)
         {
-            if (Session["Login"] != null)
-            {
-                int count = 0;
-                string scoreboard = "";
-                List<string> results = Load_Scoreboard.Get_ScoreBoard_Data(Convert.ToString(scoreBoardModel.difficulty), (int)scoreBoardModel.category, Convert.ToString(scoreBoardModel.timeSpan));
-                for (int i = 0; i < results.Count; i++)
-                {
-                    if (i < 1)
-                    {
-                        scoreboard = (string)results[i];
-                    }
-                    else
-                    {
-                        scoreboard = scoreboard + "," + (string)results[i];
-                    }
-                    count = i;
-                }
-                ViewData["scoreboard"] = scoreboard;
-                ViewData["count"] = count;
-                return View();
-            }
-            else
+            if (Session["Login"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
+            int count = 0;
+            List<string> results = Load_Scoreboard.Get_ScoreBoard_Data(Convert.ToString(scoreBoardModel.difficulty), (int)scoreBoardModel.category, Convert.ToString(scoreBoardModel.timeSpan));
+            string scoreboard = (string)results[1];
+            for (int i = 1; i < results.Count; i++)
+            {
+                scoreboard = scoreboard + "," + (string)results[i];
+                ViewData["count"] = i;
+            }
+            ViewData["scoreboard"] = scoreboard;
+            return View();
         }
         public ActionResult Submit_Score_Action()
         {

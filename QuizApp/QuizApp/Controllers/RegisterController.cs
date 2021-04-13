@@ -18,18 +18,16 @@ namespace QuizApp.Controllers
             {
                 return View("Register");
             }
+
+            SecurityService security = new SecurityService();
+            Boolean Registration = security.Registrate(RegistrationModel);
+            if (Registration)
+            {
+                return RedirectToAction("", "Home");
+            }
             else
             {
-                SecurityService security = new SecurityService();
-                Boolean Registration = security.Registrate(RegistrationModel);
-                if (Registration)
-                {
-                    return RedirectToAction("", "Home");
-                }
-                else
-                {
-                    return View("RegisterError");
-                }
+                return View("RegisterError");
             }
         }
     }

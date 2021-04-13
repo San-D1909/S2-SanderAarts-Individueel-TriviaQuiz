@@ -28,11 +28,7 @@ namespace QuizApp.Controllers
                     return View("LoginError");
                 }
             }
-            else
-            {
-                return View("Login");
-            }
-
+            return View("Login");
         }
 
         public ActionResult NoAccount()

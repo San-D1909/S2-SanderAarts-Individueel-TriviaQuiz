@@ -30,9 +30,8 @@ namespace QuizApp
 
         public static QuestionModel Fill_QuestionModel(APIRequestModel apiRequestModel)
         {
-            QuestionModel questionModel = new QuestionModel { };
             string rawJSON = Get_JSON_From_API(apiRequestModel);
-            questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
+            QuestionModel questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
             if (questionModel.Question != null)
             {
                 QuizApp.Classes.QuestionBackup.Store_question(questionModel, apiRequestModel);

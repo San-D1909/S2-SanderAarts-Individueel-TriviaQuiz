@@ -6,14 +6,11 @@ namespace QuizApp.Controllers
     {
         public ActionResult Index()
         {
-            if (Session["Login"] != null)
-            {
-                return View("~/Views/Home/Index.cshtml");
-            }
-            else
+            if (Session["Login"] == null)
             {
                 return View();
             }
+            return View("~/Views/Home/Index.cshtml");
         }
     }
 }

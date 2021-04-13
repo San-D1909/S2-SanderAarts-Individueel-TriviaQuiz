@@ -6,14 +6,11 @@ namespace QuizApp.Controllers
     {
         public ActionResult Tutorial()
         {
-            if (Session["Login"] != null)
-            {
-                return View();
-            }
-            else
+            if (Session["Login"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
+            return View();
         }
     }
 }

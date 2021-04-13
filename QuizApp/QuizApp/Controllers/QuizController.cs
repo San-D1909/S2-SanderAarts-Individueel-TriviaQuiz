@@ -29,25 +29,21 @@ namespace QuizApp.Controllers
         }
         public ActionResult Prepare_Question(string category)
         {
-            if (Session["Login"] != null)
-            {
-                APIRequestModel apiRequestModel = new APIRequestModel { };
-                if(category!= null)
-                {
-                    apiRequestModel.Category = category;
-                }
-                else if (Session["apiRequestModel"] != null)
-                {
-                    apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
-                }
-                QuestionModel questionmodel = CreateQuestion(apiRequestModel);
-                return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
-            }
-            else
+            if (Session["Login"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
-
+            APIRequestModel apiRequestModel = new APIRequestModel { };
+            if (category != null)
+            {
+                apiRequestModel.Category = category;
+            }
+            else if (Session["apiRequestModel"] != null)
+            {
+                apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
+            }
+            QuestionModel questionmodel = CreateQuestion(apiRequestModel);
+            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
         }
     }
 }
