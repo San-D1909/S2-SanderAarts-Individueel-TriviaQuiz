@@ -28,27 +28,27 @@
 </style>
 <h2> Scoreboard</h2>
 <form>
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-3">
             @Html.DropDownList("Category",
-new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Category))),
-"Select Category",
-new { @class = "form-control" })
+            new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Category))),
+            "Select Category",
+            new { @class = "form-control" })
         </div>
         <div class="col-3">
             @Html.DropDownList("Difficulty",
-new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Difficulty))),
-"Select Difficulty",
-new { @class = "form-control" })
+            new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Difficulty))),
+            "Select Difficulty",
+            new { @class = "form-control" })
         </div>
         <div class="col-3">
             @Html.DropDownList("TimeSpan",
-new SelectList(Enum.GetValues(typeof(ScoreBoardModel.TimeSpan))),
-"Select TimeSpan",
-new { @class = "form-control" })
+            new SelectList(Enum.GetValues(typeof(ScoreBoardModel.TimeSpan))),
+            "Select TimeSpan",
+            new { @class = "form-control" })
         </div>
         <div class="col-3">
-            <button type="submit">Submit</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </div>
     </div>
 </form>
@@ -151,10 +151,5 @@ new { @class = "form-control" })
         }
 
     }
-
-
-
-
-
 
 </table>

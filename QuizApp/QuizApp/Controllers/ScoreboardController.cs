@@ -15,7 +15,7 @@ namespace QuizApp.Controllers
             {
                 int count = 0;
                 string scoreboard = "";
-                List<string> results = Load_Scoreboard.Get_ScoreBoard_Data(Convert.ToString(scoreBoardModel.difficulty), (int)scoreBoardModel.category);
+                List<string> results = Load_Scoreboard.Get_ScoreBoard_Data(Convert.ToString(scoreBoardModel.difficulty), (int)scoreBoardModel.category, Convert.ToString(scoreBoardModel.timeSpan));
                 for (int i = 0; i < results.Count; i++)
                 {
                     if (i < 1)
