@@ -9,14 +9,33 @@ namespace QuizApp.Classes
 {
     public class Load_Scoreboard
     {
-        public static List<string> Get_ScoreBoard_Data(string difficulty, int category, string timeSpan)
+        public static List<string> Get_Empty_Selection(string difficulty, int category, string timeSpan, MySqlConnection databaseConnection)
+        {
+            string command= "";
+            if (difficulty == "0" && category == 0)
+            {
+                command = "SELECT * FROM `scoreboard` ORDER BY score DESC LIMIT 5";
+            }
+            else if (category == 0)
+            {
+                command = "SELECT * FROM `scoreboard` WHERE `difficulty` = '" + difficulty + "' ORDER BY score DESC LIMIT 5";
+            }
+            else if (difficulty == "0")
+            {
+                command = "SELECT * FROM `scoreboard` WHERE `category` = " + category + " ORDER BY score DESC LIMIT 5";
+            }
+            MySqlCommand Get_Question_ID = new MySqlCommand(command, databaseConnection);
+            List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
+            return results;
+        }
+
+            public static List<string> Get_ScoreBoard_Data(string difficulty, int category, string timeSpan)
         {
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
-            if (difficulty=="0"&&category==0)
+            if (difficulty=="0"||category==0)
             {
-                MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `category` = " + 15 + " AND `difficulty` = '" + "medium" + "' ORDER BY score DESC LIMIT 5", databaseConnection);
-                List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
-                return (results);
+                List<string> results = Get_Empty_Selection(difficulty, category, timeSpan, databaseConnection);
+                return results;
             }
             else
             { 
