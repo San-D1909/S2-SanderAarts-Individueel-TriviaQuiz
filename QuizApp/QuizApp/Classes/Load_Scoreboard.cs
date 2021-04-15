@@ -9,7 +9,7 @@ namespace QuizApp.Classes
 {
     public class Load_Scoreboard
     {
-        public static List<string> Get_Empty_Selection(string difficulty, int category, string timeSpan, MySqlConnection databaseConnection)
+        public static List<string> Leave_Selection_Empty(string difficulty, int category, string timeSpan, MySqlConnection databaseConnection)
         {
             string command= "";
             if (difficulty == "0" && category == 0)
@@ -34,7 +34,7 @@ namespace QuizApp.Classes
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
             if (difficulty=="0"||category==0)
             {
-                List<string> results = Get_Empty_Selection(difficulty, category, timeSpan, databaseConnection);
+                List<string> results = Leave_Selection_Empty(difficulty, category, timeSpan, databaseConnection);
                 return results;
             }
             else
