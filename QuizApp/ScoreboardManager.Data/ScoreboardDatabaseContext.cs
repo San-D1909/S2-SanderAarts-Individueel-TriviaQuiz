@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QuizApp;
 
 namespace ScoreboardManager.Data
 {
@@ -13,7 +12,7 @@ namespace ScoreboardManager.Data
         public IEnumerable<ScoreboardDTO> Get_Scoreboard_Data(string difficulty, int category, string timeSpan)
         {
             List<ScoreboardDTO> Scoreboard_Data = new List<ScoreboardDTO>();
-            MySqlConnection databaseConnection = new MySqlConnection(QuizApp.Models.DB_Credentials.DbConnectionString);
+            MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
             if (difficulty == "0" || category == 0)
             {
                 Scoreboard_Data = Get_Empty_Input(difficulty, category, databaseConnection, Scoreboard_Data);
@@ -37,7 +36,7 @@ namespace ScoreboardManager.Data
                 }
                 string startString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
                 MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `category` = " + category + " AND `difficulty` LIKE '" + difficulty + "' AND `date` BETWEEN '" + startString + "' AND '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY score DESC LIMIT 5", databaseConnection);
-                List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
+                List<string> results = GetData(Get_Question_ID, databaseConnection);
                 Scoreboard_Data = Fill_List(results, Scoreboard_Data);
                 return (Scoreboard_Data);
             }
@@ -58,7 +57,7 @@ namespace ScoreboardManager.Data
                 command = "SELECT * FROM `scoreboard` WHERE `category` = " + category + " ORDER BY score DESC LIMIT 5";
             }
             MySqlCommand Get_Question_ID = new MySqlCommand(command, databaseConnection);
-            List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
+            List<string> results = GetData(Get_Question_ID, databaseConnection);
             Scoreboard_Data = Fill_List(results, Scoreboard_Data);
             return Scoreboard_Data;
         }
@@ -93,9 +92,47 @@ namespace ScoreboardManager.Data
             }
             foreach(ScoreboardDTO user in Scoreboard_Data)
             {
-                user.First_Name = QuizApp.Classes.Utility.Get_UserName(Convert.ToString(user.User_ID));
+                user.First_Name = Get_UserName(Convert.ToString(user.User_ID));
             }
             return Scoreboard_Data;
+        }
+        public static List<string> GetData(MySqlCommand GetData, MySqlConnection databaseConnection)
+        {
+            Check_databaseConnectionState(databaseConnection);
+            List<string> results = new List<string> { };
+            try
+            {
+                databaseConnection.Open();
+                MySqlDataReader executeString = GetData.ExecuteReader();
+                while (executeString.Read())
+                {
+                    for (int i = 0; i < executeString.FieldCount; i++)
+                    {
+                        results.Add(executeString.GetString(i));
+                    }
+                }
+                databaseConnection.Close();
+                return results;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("error: " + e.Message);
+                return null;
+            }
+        }
+        public static void Check_databaseConnectionState(MySqlConnection databaseConnection)
+        {
+            if (databaseConnection.State == System.Data.ConnectionState.Open)
+            {
+                databaseConnection.Close();
+            }
+        }
+        public static string Get_UserName(string user_ID)
+        {
+            MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
+            MySqlCommand Get_Question_ID = new MySqlCommand("SELECT `firstname` FROM `user` WHERE `unique_id` ='" + user_ID + "'", databaseConnection);
+            List<string> results = GetData(Get_Question_ID, databaseConnection);
+            return results[0];
         }
     }
 }

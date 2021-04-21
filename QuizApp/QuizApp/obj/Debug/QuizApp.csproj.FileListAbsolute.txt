@@ -186,3 +186,8 @@ C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizAp
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\System.Memory.xml
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\System.Numerics.Vectors.xml
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\ScoreboardManager.Business.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\ScoreboardManager.Data.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\ScoreboardManager.Business.pdb
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\ScoreboardManager.Data.pdb
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\ScoreboardManager.Data.dll.config

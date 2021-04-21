@@ -58,7 +58,6 @@ namespace QuizApp
                 Console.WriteLine("error: " + e.Message);
                 return null;
             }
-
         }
         public static UserModel Login(string Uname, string Password, UserModel userModel)
         {

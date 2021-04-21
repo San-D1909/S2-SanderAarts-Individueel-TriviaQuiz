@@ -13,6 +13,10 @@ namespace ScoreboardManager.Data
         {
             this.context = context;
         }
+        public ScoreboardRepository()
+        {
+            this.context = new ScoreboardDatabaseContext();
+        }
         public List<ScoreboardDTO> Get_Scoreboard(string difficulty, int category, string timeSpan)
         {
             return context.Get_Scoreboard_Data(difficulty, category, timeSpan).ToList();

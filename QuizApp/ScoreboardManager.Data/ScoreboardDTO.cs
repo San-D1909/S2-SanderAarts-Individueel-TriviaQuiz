@@ -18,6 +18,7 @@ namespace ScoreboardManager.Data
             Question_List = Convert.ToInt32(question_List);
             Score = Convert.ToInt32(score);
             Date = date;
+
         }
         public int ID { get; set; }
         public int User_ID { get; set; }   

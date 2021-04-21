@@ -8,7 +8,7 @@
         private static string dbPassword = "";
         private static string dbName = "quizapp";
         private static string dbConnectionString = "Datasource=" + dbIp + ";port=" + dbPort + ";username=" + dbUname + ";password=;database=" + dbName + ";";
-
+        
         public static string DbIp { get { return dbIp; } }
         public static string DbPort { get { return dbPort; } }
         public static string DbUname { get { return dbUname; } }
