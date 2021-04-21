@@ -11,7 +11,7 @@ namespace QuizApp.Classes
     {
         public static List<string> Leave_Selection_Empty(string difficulty, int category, string timeSpan, MySqlConnection databaseConnection)
         {
-            string command= "";
+            string command = "";
             if (difficulty == "0" && category == 0)
             {
                 command = "SELECT * FROM `scoreboard` ORDER BY score DESC LIMIT 5";
@@ -29,16 +29,16 @@ namespace QuizApp.Classes
             return results;
         }
 
-            public static List<string> Get_ScoreBoard_Data(string difficulty, int category, string timeSpan)
+        public static List<string> Get_ScoreBoard_Data(string difficulty, int category, string timeSpan)
         {
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
-            if (difficulty=="0"||category==0)
+            if (difficulty == "0" || category == 0)
             {
                 List<string> results = Leave_Selection_Empty(difficulty, category, timeSpan, databaseConnection);
                 return results;
             }
             else
-            { 
+            {
                 DateTime now = DateTime.Now;
                 DateTime startDate = now;
                 if (timeSpan == "PastWeek")
@@ -58,6 +58,13 @@ namespace QuizApp.Classes
                 List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
                 return (results);
             }
+        }
+        public static string Get_UserName(string user_ID)
+        {
+            MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
+            MySqlCommand Get_Question_ID = new MySqlCommand("SELECT `firstname` FROM `user` WHERE `unique_id` ='" + user_ID + "'", databaseConnection);
+            List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
+            return results[0];
         }
     }
 }
