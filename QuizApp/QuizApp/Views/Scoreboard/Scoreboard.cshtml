@@ -31,13 +31,13 @@
     <div class="row mb-3">
         <div class="col-3">
             @Html.DropDownList("Category",
-            new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Category))),
+            new SelectList(Enum.GetValues(typeof(ScoreBoardModel.SelectedCategory))),
             "Select Category",
             new { @class = "form-control" })
         </div>
         <div class="col-3">
             @Html.DropDownList("Difficulty",
-            new SelectList(Enum.GetValues(typeof(ScoreBoardModel.Difficulty))),
+            new SelectList(Enum.GetValues(typeof(ScoreBoardModel.SelectedDifficulty))),
             "Select Difficulty",
             new { @class = "form-control" })
         </div>

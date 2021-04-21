@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ScoreboardManager.Data
 {
-    class ScoreboardRepository
+    public class ScoreboardRepository
     {
+        private IScoreboardContext context;
+        public ScoreboardRepository(IScoreboardContext context)
+        {
+            this.context = context;
+        }
+        public List<ScoreboardDTO> Get_Scoreboard(string difficulty, int category, string timeSpan)
+        {
+            return context.Get_Scoreboard_Data(difficulty, category, timeSpan).ToList();
+        }
     }
 }

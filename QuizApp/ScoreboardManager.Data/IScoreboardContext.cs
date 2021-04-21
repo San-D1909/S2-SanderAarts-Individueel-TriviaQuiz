@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ScoreboardManager.Data
 {
-    interface IScoreboardContext
+    public interface IScoreboardContext
     {
-        IEnumerable<ScoreboardDTO> Get_Scoreboard_Data();
-        IEnumerable<ScoreboardDTO> Get_Empty_Input();
+        IEnumerable<ScoreboardDTO> Get_Scoreboard_Data(string difficulty, int category, string timeSpan);
     }
 }

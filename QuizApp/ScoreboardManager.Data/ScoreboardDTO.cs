@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScoreboardManager.Data
 {
-    class ScoreboardDTO
+    public class ScoreboardDTO
     {
         public ScoreboardDTO(string iD, string user_ID, string category, string difficulty, string question_Amount, string question_List, string score, DateTime date)
         {

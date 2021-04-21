@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScoreboardManager.Data
 {
-    class ScoreboardDataManager
+    public class ScoreboardDataManager
     {
     }
 }
