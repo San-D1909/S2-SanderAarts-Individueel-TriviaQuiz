@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TULhqWCclpgRvTBZiKRYfIx72P4L29B5ThsHQhBQu1wVhpyecMagm7l0qRUFjxfpDC9wChStHMLv0MDyfPv5Lw==",
+  "success": true,
+  "projectFilePath": "C:\\School\\Leerjaar 1\\Software\\Semester 2\\Eigen project\\TriviaQuiz\\QuizApp\\Scoreboard\\Scoreboard.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sande\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\sande\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
