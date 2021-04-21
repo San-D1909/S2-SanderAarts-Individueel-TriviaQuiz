@@ -33,7 +33,6 @@ namespace QuizApp
                 Console.WriteLine("error: " + e.Message);
                 return false;
             }
-
         }
         public static List<string> GetData(MySqlCommand GetData, MySqlConnection databaseConnection)
         {

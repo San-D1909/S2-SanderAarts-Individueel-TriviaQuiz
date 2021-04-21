@@ -1,5 +1,5 @@
 ﻿@using QuizApp.Models
-@model ScoreBoardModel
+@model ScoreboardInputModel
 
 @{
     ViewBag.Title = "Scoreboard";
@@ -25,25 +25,23 @@
         }
     </style>
 </head>
-<style>
-</style>
 <h2> Scoreboard</h2>
 <form>
     <div class="row mb-3">
         <div class="col-3">
-            @Html.DropDownList("Category",
+            @Html.DropDownList("SelectedCategory",
      new SelectList(Enum.GetValues(typeof(ScoreboardInputModel.SelectedCategory))),
      "Select Category",
      new { @class = "form-control" })
         </div>
         <div class="col-3">
-            @Html.DropDownList("Difficulty",
+            @Html.DropDownList("SelectedDifficulty",
      new SelectList(Enum.GetValues(typeof(ScoreboardInputModel.SelectedDifficulty))),
      "Select Difficulty",
      new { @class = "form-control" })
         </div>
         <div class="col-3">
-            @Html.DropDownList("TimeSpan",
+            @Html.DropDownList("SelectedTimeSpan",
      new SelectList(Enum.GetValues(typeof(ScoreboardInputModel.SelectedTimeSpan))),
      "Select TimeSpan",
      new { @class = "form-control" })

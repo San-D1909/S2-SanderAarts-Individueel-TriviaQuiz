@@ -60,6 +60,10 @@
       <Project>{af5e7f2a-5a87-4b9f-aa91-2bc8aff28e63}</Project>
       <Name>QuizApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ScoreboardManager.Business\ScoreboardManager.Business.csproj">
+      <Project>{425154cd-1649-4371-bf5f-79ad110aa33f}</Project>
+      <Name>ScoreboardManager.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

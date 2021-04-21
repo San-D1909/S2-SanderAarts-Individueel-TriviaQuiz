@@ -178,7 +178,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\CalculateScore.cs" />
     <Compile Include="Classes\CompareAnswers.cs" />
-    <Compile Include="Classes\Load_Scoreboard.cs" />
     <Compile Include="Classes\QuestionBackup.cs" />
     <Compile Include="Classes\Submit_Score.cs" />
     <Compile Include="Classes\Utility.cs" />

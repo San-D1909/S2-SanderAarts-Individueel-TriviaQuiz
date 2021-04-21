@@ -2,6 +2,7 @@
 using System;
 using QuizApp;
 using System.Collections.Generic;
+using ScoreboardManager.Business;
 
 namespace UnitTest__QuizApp
 {
@@ -11,7 +12,8 @@ namespace UnitTest__QuizApp
         [TestMethod]
         public void Leave_Input_Empty_Scoreboard()
         {
-            List<string> results = QuizApp.Classes.Load_Scoreboard.Get_ScoreBoard_Data("0", 0, "AllTime");
+            ScoreboardContainer container = new ScoreboardContainer();
+            var results = container.Get_Scoreboard_Data("0", 0, "AllTime");
             Assert.IsTrue(results.Count > 0);
         }
         [TestMethod]
