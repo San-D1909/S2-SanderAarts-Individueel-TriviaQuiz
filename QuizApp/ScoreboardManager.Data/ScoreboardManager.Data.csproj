@@ -87,16 +87,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IScoreboardContext.cs" />
-    <Compile Include="ISubmitContext.cs" />
+    <Compile Include="IContext\IScoreboardContext.cs" />
+    <Compile Include="IContext\ISubmitContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreboardDatabaseContext.cs" />
     <Compile Include="ScoreboardDataManager.cs" />
     <Compile Include="ScoreboardDTO.cs" />
-    <Compile Include="ScoreboardRepository.cs" />
+    <Compile Include="Repository\ScoreboardRepository.cs" />
     <Compile Include="SubmitDatabaseContext.cs" />
     <Compile Include="SubmitDTO.cs" />
-    <Compile Include="SubmitRepository.cs" />
+    <Compile Include="Repository\SubmitRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
