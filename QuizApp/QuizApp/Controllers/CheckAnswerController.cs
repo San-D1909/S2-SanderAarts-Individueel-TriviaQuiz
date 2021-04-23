@@ -24,7 +24,7 @@ namespace QuizApp.Controllers
             //Adds 1 to the question count.
             questionModel.Current_Question = 1 + questionModel.Current_Question;
 
-            scoreModel = Submit_Score.Get_Unique_Question_ID(questionModel, scoreModel);
+            scoreModel = Utility.Get_Unique_Question_ID_And_Add_To_QuestionList(questionModel, scoreModel);
 
             Session["questionModel"] = questionModel;
             Session["scoreModel"] = scoreModel;

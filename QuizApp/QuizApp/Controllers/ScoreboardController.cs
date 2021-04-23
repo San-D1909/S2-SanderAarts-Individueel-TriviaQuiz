@@ -29,11 +29,11 @@ namespace QuizApp.Controllers
             UserModel userModel = Session["Login"] as UserModel;
             ScoreboardContainer container = new ScoreboardContainer();
             container.Submit_To_Scoreboard(Convert.ToInt32(apiRequestModel.Category), apiRequestModel.Difficulty, scoreModel.Question_Amount, scoreModel.Question_List, Convert.ToInt32(userModel.Unique_id), (int)TempData["finalScore"]);
-            Session["Login"] = userModel;
             return RedirectToAction("Scoreboard");
         }
         public ActionResult FinalScore()
         {
+            if (Session["Login"] == null) { return RedirectToAction("Index", "Login"); }
             return View("FinalScorePage");
         }
     }

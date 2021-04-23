@@ -20,7 +20,6 @@ namespace ScoreboardManager.Data
         public void Submit_To_Scoreboard(SubmitDTO submitDTO)
         {
             context.Submit_To_Scoreboard(submitDTO);
-            return;
         }
     }
 }

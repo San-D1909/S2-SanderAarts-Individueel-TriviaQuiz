@@ -16,7 +16,6 @@ namespace ScoreboardManager.Data
             if (difficulty == "0" || category == 0)
             {
                 Scoreboard_Data = Get_Empty_Input(difficulty, category, databaseConnection, Scoreboard_Data);
-                int count = 4;
             }
             else
             {
@@ -61,8 +60,6 @@ namespace ScoreboardManager.Data
             Scoreboard_Data = Fill_List(scoreboardID, Scoreboard_Data, databaseConnection);
             return Scoreboard_Data;
         }
-
-
         public List<ScoreboardDTO> Fill_List(List<string> scoreboardID, List<ScoreboardDTO> Scoreboard_Data, MySqlConnection databaseConnection)
         {
             foreach (string ID in scoreboardID)

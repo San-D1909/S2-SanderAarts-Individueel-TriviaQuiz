@@ -11,8 +11,8 @@ namespace QuizApp.Models
         public enum SelectedTimeSpan
         {
             AllTime,
-            PastWeek,
-            PastMonth
+            PastMonth,
+            PastWeek
         }
         public SelectedCategory selectedCategory { get; set; }
         public enum SelectedCategory

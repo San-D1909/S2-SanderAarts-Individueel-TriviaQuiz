@@ -19,18 +19,6 @@ namespace ScoreboardManager.Data
             Score = Convert.ToInt32(score);
             Date = Convert.ToDateTime(date);
         }
-        public ScoreboardDTO(Data.ScoreboardDTO dto)
-        {
-            ID = dto.ID;
-            User_ID = dto.User_ID;
-            Category = dto.Category;
-            Difficulty = dto.Difficulty;
-            Question_Amount = dto.Question_Amount;
-            Question_List = dto.Question_List;
-            Score = dto.Score;
-            Date = dto.Date;
-            First_Name = dto.First_Name;
-        }
         public int ID { get; set; }
         public int User_ID { get; set; }   
         public int Category { get; set; }

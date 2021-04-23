@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using QuizApp.Models;
+using System.Web.Mvc;
 
 namespace QuizApp.Controllers
 {
@@ -6,8 +7,11 @@ namespace QuizApp.Controllers
     {
         public ActionResult Index()
         {
-            _ = TempData["FirstName"];
-            Session["Login"] = null;
+            TempData.Clear();
+            ViewData.Clear();
+            Session.Clear();
+            Session.Abandon();
+            Response.Cookies.Clear();
             return View("LogOutPage");
         }
     }

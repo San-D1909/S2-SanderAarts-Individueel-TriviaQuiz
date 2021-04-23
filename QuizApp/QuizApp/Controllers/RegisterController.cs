@@ -14,21 +14,14 @@ namespace QuizApp.Controllers
         }
         public ActionResult Register(RegisterModel RegistrationModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("Register");
-            }
-
+            if (!ModelState.IsValid) { return View("Register"); }
             SecurityService security = new SecurityService();
             Boolean Registration = security.Registrate(RegistrationModel);
             if (Registration)
             {
                 return RedirectToAction("", "Home");
             }
-            else
-            {
-                return View("RegisterError");
-            }
+            return View("RegisterError");
         }
     }
 }
