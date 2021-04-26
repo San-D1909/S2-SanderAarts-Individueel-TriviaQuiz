@@ -56,13 +56,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessManager.Business\BusinessManager.Business.csproj">
+      <Project>{a7f90da7-b3df-4e72-8586-c4fa42b1a37d}</Project>
+      <Name>BusinessManager.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuizApp\QuizApp.csproj">
       <Project>{af5e7f2a-5a87-4b9f-aa91-2bc8aff28e63}</Project>
       <Name>QuizApp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ScoreboardManager.Business\ScoreboardManager.Business.csproj">
-      <Project>{425154cd-1649-4371-bf5f-79ad110aa33f}</Project>
-      <Name>ScoreboardManager.Business</Name>
+    <ProjectReference Include="..\ScoreboardManager.Data\DataManager.Data.csproj">
+      <Project>{DA7AD8FA-72FF-40DF-B5CD-5E7C25C2C17F}</Project>
+      <Name>DataManager.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

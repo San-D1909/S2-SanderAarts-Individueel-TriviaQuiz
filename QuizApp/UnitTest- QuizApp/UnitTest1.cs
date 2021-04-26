@@ -2,7 +2,7 @@
 using System;
 using QuizApp;
 using System.Collections.Generic;
-using ScoreboardManager.Business;
+using BusinessManager.Business;
 
 namespace UnitTest__QuizApp
 {

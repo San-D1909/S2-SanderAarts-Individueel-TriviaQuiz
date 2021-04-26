@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScoreboardManager.Data
+namespace DataManager.Data
 {
     public interface IScoreboardContext
     {

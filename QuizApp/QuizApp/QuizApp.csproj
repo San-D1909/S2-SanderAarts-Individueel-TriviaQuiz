@@ -371,9 +371,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScoreboardManager.Business\ScoreboardManager.Business.csproj">
-      <Project>{425154cd-1649-4371-bf5f-79ad110aa33f}</Project>
-      <Name>ScoreboardManager.Business</Name>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessManager.Business\BusinessManager.Business.csproj">
+      <Project>{a7f90da7-b3df-4e72-8586-c4fa42b1a37d}</Project>
+      <Name>BusinessManager.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

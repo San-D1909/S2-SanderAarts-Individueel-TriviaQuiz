@@ -1,6 +1,6 @@
-﻿using QuizApp.Classes;
+﻿using BusinessManager.Business;
+using QuizApp.Classes;
 using QuizApp.Models;
-using ScoreboardManager.Business;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
