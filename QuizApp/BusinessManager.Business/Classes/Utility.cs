@@ -1,10 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
-using QuizApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace QuizApp.Classes
+namespace BusinessManager.Business
 {
     public class Utility
     {

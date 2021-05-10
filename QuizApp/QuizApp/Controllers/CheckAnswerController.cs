@@ -2,6 +2,7 @@
 using QuizApp.Models;
 using System;
 using System.Web.Mvc;
+using BusinessManager.Business;
 
 namespace QuizApp.Controllers
 {
@@ -28,7 +29,7 @@ namespace QuizApp.Controllers
 
             Session["questionModel"] = questionModel;
             Session["scoreModel"] = scoreModel;
-
+            
             if (questionModel.Current_Question > scoreModel.Question_Amount)
             {//Check if the current questionnumber is bigger than the amount of questions.
                 PrepareNextQuiz(questionModel);

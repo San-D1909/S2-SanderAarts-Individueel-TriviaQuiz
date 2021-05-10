@@ -12,7 +12,7 @@ namespace QuizApp.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-            ScoreModel scoreModel = new ScoreModel { };
+            BusinessManager.Business.ScoreModel scoreModel = new BusinessManager.Business.ScoreModel { };
             scoreModel.Score = 0;
             Session["scoreModel"] = scoreModel;
             return View();

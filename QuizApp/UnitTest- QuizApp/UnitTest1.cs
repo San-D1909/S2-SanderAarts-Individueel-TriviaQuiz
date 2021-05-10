@@ -19,7 +19,7 @@ namespace UnitTest__QuizApp
         [TestMethod]
         public void API_Is_Down()
         {
-            QuizApp.Models.QuestionModel questionModel = new QuizApp.Models.QuestionModel { };
+            QuestionModel questionModel = new QuestionModel { };
             questionModel = QuizApp.Classes.QuestionBackup.Get_Question_Database("medium", "15", questionModel);
             Assert.IsTrue(questionModel.Question.Length>0);
         }

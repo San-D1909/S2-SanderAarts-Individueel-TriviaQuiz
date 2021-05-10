@@ -9,10 +9,6 @@ namespace DataManager.Data
     public class ScoreboardRepository
     {
         private IScoreboardContext context;
-        public ScoreboardRepository(IScoreboardContext context)
-        {
-            this.context = context;
-        }
         public ScoreboardRepository()
         {
             this.context = new ScoreboardDatabaseContext();

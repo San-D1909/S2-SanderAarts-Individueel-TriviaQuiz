@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using QuizApp.Models;
+using BusinessManager.Business;
 using System.IO;
 using System.Net;
 
-namespace QuizApp
+namespace BusinessManager.Business
 {
     public class Get_Question_Data
     {

@@ -1,6 +1,4 @@
-﻿using QuizApp.Models;
-
-namespace QuizApp
+﻿namespace BusinessManager.Business
 {
     public class CalculateScore
     {

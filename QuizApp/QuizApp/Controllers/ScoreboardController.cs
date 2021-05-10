@@ -14,12 +14,12 @@ namespace QuizApp.Controllers
         {
             List<ScoreBoardModel> scoreboard = new List<ScoreBoardModel>();
             ScoreboardContainer container = new ScoreboardContainer();
-            var scoreboardDTO = container.Get_Scoreboard_Data(Convert.ToString(scoreboardInputModel.selectedDifficulty), Convert.ToInt32(scoreboardInputModel.selectedCategory), Convert.ToString(scoreboardInputModel.selectedTimeSpan));
+            List<ScoreboardDTO> scoreboardDTO = container.Get_Scoreboard_Data(Convert.ToString(scoreboardInputModel.selectedDifficulty), Convert.ToInt32(scoreboardInputModel.selectedCategory), Convert.ToString(scoreboardInputModel.selectedTimeSpan));
             foreach (var DTO in scoreboardDTO)
             {
                 scoreboard.Add(new ScoreBoardModel(DTO));
             }
-            Session["scoreboardList"] = scoreboard;
+            Session["scoreboardList"] = scoreboardDTO;
             return View();
         }
         public ActionResult Submit_Score_Action()

@@ -191,3 +191,4 @@ C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizAp
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\ScoreboardManager.Data.dll.config
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\BusinessManager.Business.dll
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\BusinessManager.Business.pdb
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\QuizApp\bin\BusinessManager.Business.dll.config

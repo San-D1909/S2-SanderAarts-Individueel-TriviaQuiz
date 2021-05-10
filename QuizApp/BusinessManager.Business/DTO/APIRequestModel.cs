@@ -1,5 +1,5 @@
-﻿namespace QuizApp.Models
-{
+﻿namespace BusinessManager.Business
+{ 
     public class APIRequestModel
     {
         private static string baseURL = "https://opentdb.com/api.php?";

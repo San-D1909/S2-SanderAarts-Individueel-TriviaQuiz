@@ -1,9 +1,7 @@
-﻿using QuizApp.Models;
-
-namespace QuizApp
+﻿namespace BusinessManager.Business
 {
     public class CompareAnswers
-    {
+    { 
         public static ScoreModel Checker(string chosen, string correct, ScoreModel scoreModel, double timeUsed)
         {
             if (chosen == correct)

@@ -8,7 +8,6 @@ namespace BusinessManager.Business
 {
     public class ScoreboardDTO
     {
-
         public ScoreboardDTO(DataManager.Data.ScoreboardDTO dto)
         {
             ID = dto.ID;

@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using QuizApp.Models;
+using BusinessManager.Business;
 
 namespace QuizApp.Services.Data
 {
@@ -7,7 +8,7 @@ namespace QuizApp.Services.Data
     {
         internal UserModel FindByUser(UserModel user)
         {
-            UserModel userModel = QuizApp.Database.Login(user.Email, user.Password, user);
+            UserModel userModel = Database.Login(user.Email, user.Password, user);
             if (userModel != null)
             {
                 return userModel;

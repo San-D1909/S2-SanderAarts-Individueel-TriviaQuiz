@@ -32,3 +32,4 @@ C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\Busine
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\BusinessManager.Business\obj\Debug\BusinessManager.Business.csproj.CopyComplete
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\BusinessManager.Business\obj\Debug\BusinessManager.Business.dll
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\BusinessManager.Business\obj\Debug\BusinessManager.Business.pdb
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\BusinessManager.Business\bin\Debug\BusinessManager.Business.dll.config

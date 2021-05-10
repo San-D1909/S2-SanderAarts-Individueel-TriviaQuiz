@@ -59,8 +59,8 @@
             <th>Score</th>
             <th>Date</th>
         </tr>
-        List<ScoreBoardModel> scoreboard = Session["scoreboardList"] as List<ScoreBoardModel>;
-        foreach (ScoreBoardModel score in scoreboard)
+        List<BusinessManager.Business.ScoreboardDTO> scoreboard = Session["scoreboardList"] as List<BusinessManager.Business.ScoreboardDTO>;
+        foreach (BusinessManager.Business.ScoreboardDTO score in scoreboard)
         {
             <tr>
                 <td>@score.First_Name</td>

@@ -1,4 +1,5 @@
-﻿using QuizApp.Models;
+﻿using BusinessManager.Business;
+using QuizApp.Models;
 using QuizApp.Services.Data;
 
 namespace QuizApp.Services.Business

@@ -1,4 +1,4 @@
-﻿namespace QuizApp.Models
+﻿namespace BusinessManager.Business
 {
     public class DB_Credentials
     {

@@ -2,6 +2,7 @@
 using QuizApp.Models;
 using System;
 using System.Collections.Generic;
+using BusinessManager.Business;
 
 namespace QuizApp.Classes
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace QuizApp.Models
+namespace BusinessManager.Business
 {
     public class ScoreModel
     {
