@@ -172,11 +172,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Get_Question_Data.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Classes\QuestionBackup.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckAnswerController.cs" />
     <Compile Include="Controllers\EndScoreController.cs" />

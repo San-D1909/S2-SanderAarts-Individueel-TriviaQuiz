@@ -94,6 +94,7 @@
     <Compile Include="Classes\CompareAnswers.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\Get_Question_Data.cs" />
+    <Compile Include="Classes\QuestionBackup.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="DTO\APIRequestModel.cs" />
     <Compile Include="DTO\DB_Credentials.cs" />

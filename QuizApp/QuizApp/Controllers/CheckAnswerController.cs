@@ -1,5 +1,4 @@
-﻿using QuizApp.Classes;
-using QuizApp.Models;
+﻿using QuizApp.Models;
 using System;
 using System.Web.Mvc;
 using BusinessManager.Business;
