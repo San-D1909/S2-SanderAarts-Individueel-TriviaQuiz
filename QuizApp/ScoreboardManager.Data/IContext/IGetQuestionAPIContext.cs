@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScoreboardManager.Data.IContext
+namespace DataManager.Data
 {
-    class IGetQuestionDataContext
+    public interface IGetQuestionAPIContext
     {
+        string Get_JSON_From_API(string requestString);
     }
 }

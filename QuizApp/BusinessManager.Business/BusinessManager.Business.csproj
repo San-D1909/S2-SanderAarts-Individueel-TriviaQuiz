@@ -93,9 +93,9 @@
     <Compile Include="Classes\CalculateScore.cs" />
     <Compile Include="Classes\CompareAnswers.cs" />
     <Compile Include="Classes\Database.cs" />
-    <Compile Include="Classes\Get_Question_Data.cs" />
     <Compile Include="Classes\QuestionBackup.cs" />
     <Compile Include="Classes\Utility.cs" />
+    <Compile Include="Container\QuestionContainer.cs" />
     <Compile Include="DTO\APIRequestModel.cs" />
     <Compile Include="DTO\DB_Credentials.cs" />
     <Compile Include="DTO\QuestionModel.cs" />
@@ -106,14 +106,14 @@
     <Compile Include="Container\ScoreboardContainer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ScoreboardManager.Data\DataManager.Data.csproj">
       <Project>{da7ad8fa-72ff-40df-b5cd-5e7c25c2c17f}</Project>
       <Name>DataManager.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

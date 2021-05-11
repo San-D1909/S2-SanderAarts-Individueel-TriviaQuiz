@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataManager.Data
 {
-    public interface ISubmitContext
+    public interface IGetQuestionDatabaseContext
     {
-        void Submit_To_Scoreboard(SubmitDTO submitDTO);
+        QuestionDTO Get_Question_From_Database(string difficulty, string category, string DbConnectionString);
     }
 }

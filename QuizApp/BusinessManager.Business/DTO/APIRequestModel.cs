@@ -5,7 +5,7 @@
         private static string baseURL = "https://opentdb.com/api.php?";
         private static string amount = "1";
         private string category;
-        private string difficulty = "medium";
+        private string difficulty = "easy";
         private static string type = "multiple";
 
         public string BaseURL

@@ -26,7 +26,6 @@ namespace BusinessManager.Business
             DataManager.Data.SubmitDTO submitDTO = new DataManager.Data.SubmitDTO { Category = category, Difficulty = difficulty, Question_Amount = question_Amount, Question_List = question_List, Unique_ID = unique_ID, Score = finalScore };
             SubmitRepository repo = new SubmitRepository();
             repo.Submit_To_Scoreboard(submitDTO);
-
         }
     }
 }

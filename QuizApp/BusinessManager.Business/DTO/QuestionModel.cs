@@ -5,6 +5,18 @@ namespace BusinessManager.Business
 {
     public class QuestionModel
     {
+        public QuestionModel(DataManager.Data.QuestionDTO dto)
+        {
+            Correct_Answer = dto.Correct_Answer;
+            Incorrect_Answers = dto.Incorrect_Answers;
+            Question = dto.Question;
+        }
+
+        public QuestionModel()
+        {
+
+        }
+
         private static int current_Question = 1;
         private static int score = 0;
 

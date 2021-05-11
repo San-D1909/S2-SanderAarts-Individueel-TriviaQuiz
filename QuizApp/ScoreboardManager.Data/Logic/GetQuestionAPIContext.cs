@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Net;
+
+namespace DataManager.Data
+{
+    class GetQuestionAPIContext : IGetQuestionAPIContext
+    {
+        public string Get_JSON_From_API(string requestString)
+        {
+            WebRequest requestObject = WebRequest.Create(requestString);
+            requestObject.Method = "GET";
+            HttpWebResponse responseObject = (HttpWebResponse)requestObject.GetResponse();
+            string resultJSON = null;
+            using (Stream stream = responseObject.GetResponseStream())
+            {
+                StreamReader sr = new StreamReader(stream);
+                resultJSON = sr.ReadToEnd();
+                sr.Close();
+            }
+            //Manipulate string to useable JSON
+            resultJSON = resultJSON.Replace("{\"response_code\":0,\"results\":[", "");
+            resultJSON = resultJSON.Remove(resultJSON.Length - 2, 2);
+            return resultJSON;
+        }
+/*        public static bool Store_question(QuestionModel questionModel, APIRequestModel aPIRequestModel)
+        {
+            MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
+            MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionModel.Question + "'", databaseConnection);
+            List<string> results = Database.GetData(checkQuestion, databaseConnection);
+            if (results == null || results.Count >= 1)
+            {
+                return false;
+            }
+            else
+            {
+                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionModel.Question + "','" + aPIRequestModel.Category + "','" + questionModel.Incorrect_Answers[0] + "','" + questionModel.Incorrect_Answers[1] + "','" + questionModel.Incorrect_Answers[2] + "','" + questionModel.Correct_Answer + "','" + aPIRequestModel.Difficulty + "')", databaseConnection);
+                Boolean succes = Database.StoreData(insertQuestion, databaseConnection, false);
+                if (succes == true)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }*/
+    }
+}

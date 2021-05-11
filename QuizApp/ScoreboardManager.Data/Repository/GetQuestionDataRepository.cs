@@ -8,14 +8,19 @@ namespace DataManager.Data
 {
     public class GetQuestionDataRepository
     {
-        private IGetQuestionDataContext context;
-        public GetQuestionDataRepository()
+        private IGetQuestionAPIContext apiContext;
+        private IGetQuestionDatabaseContext databaseContext;
+
+        public QuestionDTO Get_Question_From_Database(string difficulty, string category, string DbConnectionString)
         {
-            this.context = new GetQuestionDataAPIContext();
+            databaseContext = new GetQuestionDatabaseContext();
+            return databaseContext.Get_Question_From_Database(difficulty, category, DbConnectionString);
         }
+
         public string Get_JSON_From_API(string requestString)
         {
-            return context.Get_JSON_From_API(requestString);
+            apiContext = new GetQuestionAPIContext();
+            return apiContext.Get_JSON_From_API(requestString);
         }
     }
 }

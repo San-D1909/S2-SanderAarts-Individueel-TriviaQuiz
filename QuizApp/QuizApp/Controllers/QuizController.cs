@@ -9,7 +9,7 @@ namespace QuizApp.Controllers
     {
         public QuestionModel CreateQuestion(APIRequestModel apiRequestModel)
         {
-            QuestionModel questionModel = Get_Question_Data.Fill_QuestionModel(apiRequestModel);
+            QuestionModel questionModel = QuestionContainer.Fill_QuestionModel(apiRequestModel);
             ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
 
             questionModel.Answers = questionModel.Incorrect_Answers;

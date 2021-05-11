@@ -7,8 +7,8 @@
     <ProjectGuid>{DA7AD8FA-72FF-40DF-B5CD-5E7C25C2C17F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScoreboardManager.Data</RootNamespace>
-    <AssemblyName>ScoreboardManager.Data</AssemblyName>
+    <RootNamespace>DataManager.Data</RootNamespace>
+    <AssemblyName>DataManager.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -87,15 +87,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\QuestionDTO.cs" />
+    <Compile Include="IContext\IGetQuestionAPIContext.cs" />
+    <Compile Include="IContext\IGetQuestionDatabaseContext.cs" />
     <Compile Include="IContext\IScoreboardContext.cs" />
     <Compile Include="IContext\ISubmitContext.cs" />
+    <Compile Include="Logic\GetQuestionAPIContext.cs" />
+    <Compile Include="Logic\GetQuestionDatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LogicDatabase\ScoreboardDatabaseContext.cs" />
+    <Compile Include="Logic\ScoreboardDatabaseContext.cs" />
     <Compile Include="DTO\ScoreboardDTO.cs" />
+    <Compile Include="Repository\GetQuestionDataRepository.cs" />
     <Compile Include="Repository\ScoreboardRepository.cs" />
-    <Compile Include="LogicDatabase\SubmitDatabaseContext.cs" />
+    <Compile Include="Logic\SubmitDatabaseContext.cs" />
     <Compile Include="DTO\SubmitDTO.cs" />
     <Compile Include="Repository\SubmitRepository.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

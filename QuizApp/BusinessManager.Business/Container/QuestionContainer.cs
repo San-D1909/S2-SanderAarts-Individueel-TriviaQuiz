@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataManager.Data;
 
 namespace BusinessManager.Business
 {
-    class QuestionContainer
+    public class QuestionContainer
     {
         public static QuestionModel Fill_QuestionModel(APIRequestModel apiRequestModel)
         {
+            GetQuestionDataRepository repo = new GetQuestionDataRepository();
             //Creates a variable URL based on user input.
             string requestString = "" + apiRequestModel.BaseURL + "amount=" + apiRequestModel.Amount + "&category=" + apiRequestModel.Category + "&difficulty = medium" + "&type=" + apiRequestModel.Type + "";
-            string rawJSON = DataManager.Data.GetQuestionDataRepository.Get_JSON_From_API(requestString);
+            string rawJSON = repo.Get_JSON_From_API(requestString);
             QuestionModel questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
             if (questionModel.Question != null)
             {
@@ -22,7 +24,7 @@ namespace BusinessManager.Business
             }
             else
             {
-                questionModel = QuestionBackup.Get_Question_Database(apiRequestModel.Difficulty, apiRequestModel.Category, questionModel);
+                questionModel = new QuestionModel(repo.Get_Question_From_Database(apiRequestModel.Difficulty, apiRequestModel.Category, DB_Credentials.DbConnectionString));
                 return questionModel;
             }
         }
