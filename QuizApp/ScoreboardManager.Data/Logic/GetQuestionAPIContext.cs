@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using MySql.Data.MySqlClient;
 
 namespace DataManager.Data
 {
@@ -27,25 +28,25 @@ namespace DataManager.Data
             resultJSON = resultJSON.Remove(resultJSON.Length - 2, 2);
             return resultJSON;
         }
-/*        public static bool Store_question(QuestionModel questionModel, APIRequestModel aPIRequestModel)
+        public bool Store_question(QuestionDTO questionDTO, string difficulty, string category)
         {
-            MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
-            MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionModel.Question + "'", databaseConnection);
-            List<string> results = Database.GetData(checkQuestion, databaseConnection);
+            MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
+            MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionDTO.Question + "'", databaseConnection);
+            List<string> results = Utility.GetData(checkQuestion, databaseConnection);
             if (results == null || results.Count >= 1)
             {
                 return false;
             }
             else
             {
-                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionModel.Question + "','" + aPIRequestModel.Category + "','" + questionModel.Incorrect_Answers[0] + "','" + questionModel.Incorrect_Answers[1] + "','" + questionModel.Incorrect_Answers[2] + "','" + questionModel.Correct_Answer + "','" + aPIRequestModel.Difficulty + "')", databaseConnection);
-                Boolean succes = Database.StoreData(insertQuestion, databaseConnection, false);
+                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionDTO.Question + "','" + category + "','" + questionDTO.Incorrect_Answers[0] + "','" + questionDTO.Incorrect_Answers[1] + "','" + questionDTO.Incorrect_Answers[2] + "','" + questionDTO.Correct_Answer + "','" + difficulty + "')", databaseConnection);
+                Boolean succes = Utility.StoreData(insertQuestion, databaseConnection, false);
                 if (succes == true)
                 {
                     return true;
                 }
                 return false;
             }
-        }*/
+        }
     }
 }

@@ -54,8 +54,13 @@ C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTe
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\obj\Debug\UnitTest- QuizApp.csproj.CopyComplete
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\obj\Debug\UnitTest- QuizApp.dll
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\obj\Debug\UnitTest- QuizApp.pdb
-C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\ScoreboardManager.Business.dll
-C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\ScoreboardManager.Data.dll
-C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\ScoreboardManager.Business.pdb
-C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\ScoreboardManager.Data.pdb
-C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\ScoreboardManager.Data.dll.config
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\UnitTest- QuizApp.dll.config
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\BusinessManager.Business.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\DataManager.Data.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\WebGrease.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\Antlr3.Runtime.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\BusinessManager.Business.pdb
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\BusinessManager.Business.dll.config
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\DataManager.Data.pdb
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\DataManager.Data.dll.config
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\Antlr3.Runtime.pdb

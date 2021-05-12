@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataManager.Data
 {
-    class GetQuestionDatabaseContext : IGetQuestionDatabaseContext
+    public class GetQuestionDatabaseContext : IGetQuestionDatabaseContext
     {
         private Random random = new Random { };
         public int Get_Random_Question_ID(string difficulty, string category, MySqlConnection databaseConnection)

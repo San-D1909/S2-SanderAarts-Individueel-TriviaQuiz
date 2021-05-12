@@ -22,5 +22,11 @@ namespace DataManager.Data
             apiContext = new GetQuestionAPIContext();
             return apiContext.Get_JSON_From_API(requestString);
         }
+        public bool Store_question(string question, List<string> incorrect_Answers, string correct_Answer, string difficulty, string category)
+        {
+            QuestionDTO questionDTO = new QuestionDTO(question,incorrect_Answers,correct_Answer);
+            apiContext = new GetQuestionAPIContext();
+            return apiContext.Store_question(questionDTO, difficulty, category);
+        }
     }
 }

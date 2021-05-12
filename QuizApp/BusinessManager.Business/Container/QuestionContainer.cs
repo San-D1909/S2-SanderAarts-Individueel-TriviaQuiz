@@ -19,7 +19,7 @@ namespace BusinessManager.Business
             QuestionModel questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
             if (questionModel.Question != null)
             {
-                QuestionBackup.Store_question(questionModel, apiRequestModel);
+                repo.Store_question(questionModel.Question,questionModel.Incorrect_Answers,questionModel.Correct_Answer, apiRequestModel.Difficulty,apiRequestModel.Category);
                 return questionModel;
             }
             else
