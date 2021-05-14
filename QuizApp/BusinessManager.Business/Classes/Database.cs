@@ -57,8 +57,9 @@ namespace BusinessManager.Business
                 return null;
             }
         }
-        public static UserModel Login(string Uname, string Password, UserModel userModel)
+        public static UserDTO Login(string Uname, string Password)
         {
+            UserDTO userDTO = new UserDTO();
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
             MySqlCommand getUserData = new MySqlCommand("SELECT * FROM user WHERE email=@val1 AND password=@val2", databaseConnection);
             getUserData.Parameters.AddWithValue("@val1", Uname);
@@ -71,11 +72,11 @@ namespace BusinessManager.Business
                 var executeString = getUserData.ExecuteReader();
                 while (executeString.Read())
                 {
-                    userModel.Unique_id = executeString.GetString(0);
-                    userModel.First_Name = executeString.GetString(1);
-                    userModel.Last_Name = executeString.GetString(2);
-                    userModel.Adress = executeString.GetString(3);
-                    userModel.Gender = executeString.GetString(4);
+                    userDTO.Unique_id = executeString.GetString(0);
+                    userDTO.First_Name = executeString.GetString(1);
+                    userDTO.Last_Name = executeString.GetString(2);
+                    userDTO.Adress = executeString.GetString(3);
+                    userDTO.Gender = executeString.GetString(4);
                 }
             }
             catch (Exception e)
@@ -83,7 +84,7 @@ namespace BusinessManager.Business
                 Console.WriteLine("error: " + e.Message);
             }
             databaseConnection.Close();
-            return userModel;
+            return userDTO;
         }
     }
 }

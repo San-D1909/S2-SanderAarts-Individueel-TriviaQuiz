@@ -24,8 +24,7 @@ namespace UnitTest__QuizApp
         [TestMethod]
         public void API_Is_Down()
         {
-            QuestionDTO questionDTO = new QuestionDTO { };
-            questionDTO = question_Context.Get_Question_From_Database("medium", "15", DB_Credentials.DbConnectionString);
+            QuestionDTO questionDTO = question_Context.Get_Question_From_Database("medium", "15", DB_Credentials.DbConnectionString);
             Assert.IsTrue(questionDTO.Question.Length > 0);
         }
         [TestMethod]
@@ -52,7 +51,7 @@ namespace UnitTest__QuizApp
             }
         }
         [TestMethod]
-        public void insert_Question()
+        public void Insert_Question()
         {
             GetQuestionDataRepository repo = new GetQuestionDataRepository();
             List<string> incorrect = new List<string> { "fout1", "fout2", "fout3" };

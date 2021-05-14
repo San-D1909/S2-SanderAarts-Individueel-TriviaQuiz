@@ -93,7 +93,6 @@
     <Compile Include="Classes\CalculateScore.cs" />
     <Compile Include="Classes\CompareAnswers.cs" />
     <Compile Include="Classes\Database.cs" />
-    <Compile Include="Classes\QuestionBackup.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="Container\QuestionContainer.cs" />
     <Compile Include="DTO\APIRequestModel.cs" />
@@ -101,7 +100,7 @@
     <Compile Include="DTO\QuestionModel.cs" />
     <Compile Include="DTO\ScoreboardDTO.cs" />
     <Compile Include="DTO\ScoreModel.cs" />
-    <Compile Include="DTO\UserModel.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Container\ScoreboardContainer.cs" />
   </ItemGroup>

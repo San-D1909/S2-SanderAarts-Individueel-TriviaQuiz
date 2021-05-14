@@ -8,7 +8,8 @@ namespace QuizApp.Services.Data
     {
         internal UserModel FindByUser(UserModel user)
         {
-            UserModel userModel = Database.Login(user.Email, user.Password, user);
+            UserModel userModel = new UserModel(Database.Login(user.Email, user.Password));
+            userModel.Email = user.Email;
             if (userModel != null)
             {
                 return userModel;
