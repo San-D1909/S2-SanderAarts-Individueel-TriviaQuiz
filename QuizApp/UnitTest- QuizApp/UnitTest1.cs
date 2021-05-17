@@ -57,5 +57,12 @@ namespace UnitTest__QuizApp
             List<string> incorrect = new List<string> { "fout1", "fout2", "fout3" };
             Assert.IsTrue(repo.Store_question("Dit is een unit_test", incorrect, "Juist", "Hard", "15"));
         }
+        [TestMethod]
+        public void LoginTest()
+        {
+            LoginContainer container = new LoginContainer { };
+            var results = container.Login("t@t", "t");
+            Assert.IsTrue(results.Unique_id != "" || results.Unique_id != null);
+        }
     }
 }

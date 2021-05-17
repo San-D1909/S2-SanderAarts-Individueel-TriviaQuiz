@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataManager.Data
 {
-    class UserDTO
+    public class UserDTO
     {
         public UserDTO( string first, string last,string email,string password,string birth_day)
         {

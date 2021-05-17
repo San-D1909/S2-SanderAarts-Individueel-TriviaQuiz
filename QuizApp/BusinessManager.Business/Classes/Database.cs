@@ -57,33 +57,5 @@ namespace BusinessManager.Business
                 return null;
             }
         }
-        public static UserDTO Login(string Uname, string Password)
-        {
-            UserDTO userDTO = new UserDTO();
-            MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
-            MySqlCommand getUserData = new MySqlCommand("SELECT * FROM user WHERE email=@val1 AND password=@val2", databaseConnection);
-            getUserData.Parameters.AddWithValue("@val1", Uname);
-            getUserData.Parameters.AddWithValue("@val2", Password);
-            Check_databaseConnectionState(databaseConnection);
-            try
-            {
-                databaseConnection.Open();
-                getUserData.Prepare();
-                var executeString = getUserData.ExecuteReader();
-                while (executeString.Read())
-                {
-                    userDTO.Unique_id = executeString.GetString(0);
-                    userDTO.First_Name = executeString.GetString(1);
-                    userDTO.Last_Name = executeString.GetString(2);
-                    userDTO.Email = executeString.GetString(3);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("error: " + e.Message);
-            }
-            databaseConnection.Close();
-            return userDTO;
-        }
     }
 }

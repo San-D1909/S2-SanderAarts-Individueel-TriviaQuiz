@@ -1,6 +1,5 @@
 ﻿using QuizApp.Models;
 using BusinessManager.Business;
-using QuizApp.Services.Business;
 using System.Web.Mvc;
 
 namespace QuizApp.Controllers
@@ -16,8 +15,8 @@ namespace QuizApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                SecurityService security = new SecurityService();
-                userModel = security.Authenticate(userModel);
+                LoginContainer container = new LoginContainer { };
+                userModel = new UserModel(container.Login(userModel.Email, userModel.Password));
                 if (userModel.Unique_id != "0" && userModel.Unique_id != null)
                 {
                     Session["Login"] = userModel;

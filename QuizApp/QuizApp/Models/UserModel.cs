@@ -8,6 +8,9 @@ namespace QuizApp.Models
         {
             Unique_id = dto.Unique_id;
             First_Name = dto.First_Name;
+            Last_Name = dto.Last_Name;
+            Email = dto.Email;
+            Birth_Day = dto.Birth_Day;
         }
 
         public UserModel()

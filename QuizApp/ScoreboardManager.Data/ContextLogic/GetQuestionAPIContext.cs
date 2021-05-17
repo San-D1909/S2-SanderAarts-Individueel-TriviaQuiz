@@ -33,9 +33,9 @@ namespace DataManager.Data
             MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
             MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionDTO.Question + "'", databaseConnection);
             List<string> results = Utility.GetData(checkQuestion, databaseConnection);
-            if (results == null || results.Count >= 1)
+            if (results.Count >= 1)
             {
-                return false;
+                return true;
             }
             else
             {

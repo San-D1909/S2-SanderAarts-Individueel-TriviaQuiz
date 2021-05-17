@@ -87,11 +87,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextLogic\LoginDatabaseContext.cs" />
     <Compile Include="ContextLogic\RegisterDatabaseContext.cs" />
     <Compile Include="DTO\QuestionDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="IContext\IGetQuestionAPIContext.cs" />
     <Compile Include="IContext\IGetQuestionDatabaseContext.cs" />
+    <Compile Include="IContext\ILoginDatabaseContext.cs" />
     <Compile Include="IContext\IRegisterDatabaseContext.cs" />
     <Compile Include="IContext\IScoreboardContext.cs" />
     <Compile Include="IContext\ISubmitContext.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="ContextLogic\ScoreboardDatabaseContext.cs" />
     <Compile Include="DTO\ScoreboardDTO.cs" />
     <Compile Include="Repository\GetQuestionDataRepository.cs" />
+    <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\RegisterRepository.cs" />
     <Compile Include="Repository\ScoreboardRepository.cs" />
     <Compile Include="ContextLogic\SubmitDatabaseContext.cs" />
