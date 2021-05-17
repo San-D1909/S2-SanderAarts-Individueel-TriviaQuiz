@@ -19,7 +19,7 @@ namespace QuizApp.Services.Data
                 return null;
             }
         }
-        internal bool StoreUser(RegisterModel registration)
+/*        internal bool StoreUser(RegisterModel registration)
         {
             string StoreDataString = "INSERT INTO `user`(`firstname`, `lastname`, `email`, `password`,  `adres`, `birth_day`) VALUES (@val1,@val2,@val3,@val4,@val5,@val6);";
             MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
@@ -28,7 +28,6 @@ namespace QuizApp.Services.Data
             storeData.Parameters.AddWithValue("@val2", registration.Last_Name);
             storeData.Parameters.AddWithValue("@val3", registration.Email);
             storeData.Parameters.AddWithValue("@val4", registration.Password);
-            storeData.Parameters.AddWithValue("@val5", registration.Adress);
             storeData.Parameters.AddWithValue("@val6", registration.Birth_Day);
             if (Database.StoreData(storeData, databaseConnection, true))
             {
@@ -38,6 +37,6 @@ namespace QuizApp.Services.Data
             {
                 return false;
             }
-        }
+        }*/
     }
 }

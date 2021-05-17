@@ -75,8 +75,7 @@ namespace BusinessManager.Business
                     userDTO.Unique_id = executeString.GetString(0);
                     userDTO.First_Name = executeString.GetString(1);
                     userDTO.Last_Name = executeString.GetString(2);
-                    userDTO.Adress = executeString.GetString(3);
-                    userDTO.Gender = executeString.GetString(4);
+                    userDTO.Email = executeString.GetString(3);
                 }
             }
             catch (Exception e)

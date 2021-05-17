@@ -13,9 +13,9 @@ namespace QuizApp.Services.Business
             return daoService.FindByUser(userModel);
         }
 
-        public bool Registrate(RegisterModel Register)
+/*        public bool Registrate(RegisterModel Register)
         {
             return daoService.StoreUser(Register);
-        }
+        }*/
     }
 }

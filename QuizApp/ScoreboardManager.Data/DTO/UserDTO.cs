@@ -1,10 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BusinessManager.Business
+namespace DataManager.Data
 {
-    public class UserDTO
+    class UserDTO
     {
-        public UserDTO( string first, string last, string email, string password, string birth_day)
+        public UserDTO( string first, string last,string email,string password,string birth_day)
         {
             First_Name = first;
             Last_Name = last;
@@ -12,8 +16,10 @@ namespace BusinessManager.Business
             Password = password;
             Birth_Day = birth_day;
         }
+
         public UserDTO()
         {
+
         }
         public string Unique_id { get; set; }
         public string First_Name { get; set; }
@@ -23,3 +29,4 @@ namespace BusinessManager.Business
         public string Birth_Day { get; set; }
     }
 }
+

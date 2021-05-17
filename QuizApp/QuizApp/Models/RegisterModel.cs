@@ -23,9 +23,6 @@ namespace QuizApp.Models
         [Required(ErrorMessage = "This field is required")]
 
         public string Password { get; set; }
-        [Required(ErrorMessage = "This field is required")]
-
-        public string Adress { get; set; }
 
         [DisplayName("Birth Day")]
         [Required(ErrorMessage = "This field is required")]

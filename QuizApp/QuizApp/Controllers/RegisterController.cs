@@ -1,5 +1,5 @@
 ﻿using QuizApp.Models;
-using QuizApp.Services.Business;
+using BusinessManager.Business;
 using System;
 using System.Web.Mvc;
 
@@ -12,12 +12,11 @@ namespace QuizApp.Controllers
         {
             return View("Register");
         }
-        public ActionResult Register(RegisterModel RegistrationModel)
+        public ActionResult Register(RegisterModel registerModel)
         {
             if (!ModelState.IsValid) { return View("Register"); }
-            SecurityService security = new SecurityService();
-            Boolean Registration = security.Registrate(RegistrationModel);
-            if (Registration)
+            RegisterContainer registerContainer = new RegisterContainer();
+            if (registerContainer.StoreUser(registerModel.First_Name, registerModel.Last_Name, registerModel.Email, registerModel.Birth_Day, registerModel.Password))
             {
                 return RedirectToAction("", "Home");
             }
