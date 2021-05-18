@@ -6,7 +6,7 @@ namespace QuizApp.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        public ActionResult SelectCategory()
+        public ActionResult SelectCategory(ScoreboardInputModel scoreboardInputModel)
         {
             if (Session["Login"] == null)
             {

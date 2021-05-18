@@ -1,5 +1,7 @@
 ﻿@using System;
 @using System.Collections.Generic;
+@using System.ComponentModel.DataAnnotations;
+@using System.Net;
 
 @{
     ViewBag.Title = "SelectCategory";
@@ -7,18 +9,13 @@
 }
 
 <h2>Select a category</h2>
-<div>
-    <p>
-        <a href="@Url.Action("Prepare_Question", "Quiz", new { category = 15 })" class="btn btn-success">Games</a>
-    </p>
-</div>
-<div>
-    <p>
-        <a href="@Url.Action("Prepare_Question", "Quiz", new { category = 17 })" class="btn btn-success">Science</a>
-    </p>
-</div>
-<div>
-    <p>
-        <a href="@Url.Action("Prepare_Question", "Quiz", new { category = 23 })" class="btn btn-success">History</a>
-    </p>
-</div>
+@{
+    foreach (QuizApp.Models.ScoreboardInputModel.SelectedCategory category in QuizApp.Models.ScoreboardInputModel.SelectedCategory.GetValues(typeof(QuizApp.Models.ScoreboardInputModel.SelectedCategory)))
+    {
+        <div>
+            <p>
+                <a href="@Url.Action("Prepare_Question", "Quiz", new { category = (int)category })" class="btn btn-success">@category.ToString()</a>
+            </p>
+        </div>
+    }
+}

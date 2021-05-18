@@ -18,7 +18,7 @@ namespace QuizApp.Controllers
             RegisterContainer registerContainer = new RegisterContainer();
             if (registerContainer.StoreUser(registerModel.First_Name, registerModel.Last_Name, registerModel.Email, registerModel.Birth_Day, registerModel.Password))
             {
-                return RedirectToAction("", "Home");
+                return RedirectToAction("", "Login");
             }
             return View("RegisterError");
         }

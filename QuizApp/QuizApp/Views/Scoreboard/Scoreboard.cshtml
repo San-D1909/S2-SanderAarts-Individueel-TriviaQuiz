@@ -54,12 +54,12 @@
 
 <table>
     @{
+        List<BusinessManager.Business.ScoreboardDTO> scoreboard = Session["scoreboardList"] as List<BusinessManager.Business.ScoreboardDTO>; 
         <tr>
             <th>User</th>
             <th>Score</th>
             <th>Date</th>
         </tr>
-        List<BusinessManager.Business.ScoreboardDTO> scoreboard = Session["scoreboardList"] as List<BusinessManager.Business.ScoreboardDTO>;
         foreach (BusinessManager.Business.ScoreboardDTO score in scoreboard)
         {
             <tr>

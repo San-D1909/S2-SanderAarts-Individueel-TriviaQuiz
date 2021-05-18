@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -18,8 +19,12 @@ namespace QuizApp.Models
         public enum SelectedCategory
         {
             Games = 15,
-            Science = 17,
-            History = 23
+            Physics = 17,
+            Computerscience = 18,
+            History = 23,
+            Geography = 22,
+            Sports = 21,
+            Animals = 27
         }
         public SelectedDifficulty selectedDifficulty { get; set; }
         public enum SelectedDifficulty
