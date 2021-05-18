@@ -13,7 +13,6 @@ namespace UnitTest__QuizApp
     public class UnitTest1
     {
         GetQuestionDatabaseContext question_Context = new GetQuestionDatabaseContext();
-        MySqlConnection databaseConnection = new MySqlConnection(DB_Credentials.DbConnectionString);
         [TestMethod]
         public void Leave_Input_Empty_Scoreboard()
         {
@@ -24,7 +23,7 @@ namespace UnitTest__QuizApp
         [TestMethod]
         public void API_Is_Down()
         {
-            QuestionDTO questionDTO = question_Context.Get_Question_From_Database("medium", "15", DB_Credentials.DbConnectionString);
+            QuestionDTO questionDTO = question_Context.Get_Question_From_Database("medium", "15");
             Assert.IsTrue(questionDTO.Question.Length > 0);
         }
         [TestMethod]
@@ -34,7 +33,7 @@ namespace UnitTest__QuizApp
             List<int> list = new List<int>();
             for (int i = 0; i < 5; i++)
             {
-                int result = question_Context.Get_Random_Question_ID("medium", "15", databaseConnection);
+                int result = question_Context.Get_Random_Question_ID("medium", "15");
                 list.Add(result);
             }
             foreach (int result in list)

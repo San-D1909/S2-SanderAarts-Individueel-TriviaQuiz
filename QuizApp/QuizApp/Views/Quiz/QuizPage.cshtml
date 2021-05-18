@@ -80,14 +80,18 @@
             @foreach (var answer in Model.Answers)
             {
                 <div>
-                    <a href="@Url.Action("CheckAnswer", "CheckAnswer", new { chosen = Html.Encode(answer)})" class="btn btn-success">@Html.Raw(answer)</a>
+                    <a href="@Url.Action("CheckAnswer", "CheckAnswer", new { chosen = Html.Encode(answer) })" class="btn btn-success">@Html.Raw(answer)</a>
                 </div>
             }
         </div>
         <div class="col-4">
             <div class="container=fluid">
-                <h5> Current question: @Model.Current_Question / 10</h5>
-                <h5>Current Score: @Model.Score</h5>
+                @{
+                    BusinessManager.Business.ScoreModel scoreModel = Session["scoreModel"] as BusinessManager.Business.ScoreModel;
+                    Session["scoreModel"] = scoreModel;
+                }
+                <h5> Current question: @scoreModel.Current_Question / 10</h5>
+                <h5>Current Score: @scoreModel.Score</h5>
             </div>
         </div>
     </div>
@@ -112,7 +116,7 @@
         }
     };
 
-    const TIME_LIMIT = @ViewData["MaxTime"];
+    const TIME_LIMIT = @scoreModel.MaxTime;
     let timePassed = 0;
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;

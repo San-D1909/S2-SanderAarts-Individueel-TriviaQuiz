@@ -16,9 +16,6 @@ namespace QuizApp.Controllers
             questionModel.Answers.Add(questionModel.Correct_Answer);
             questionModel.Answers = Utility.Shuffle(questionModel.Answers);
 
-            //Sets a maxtime to answer a question in a tempdata.
-            ViewData["MaxTime"] = scoreModel.MaxTime;
-
             //Sets time to know how long it took to answer the question.
             questionModel.Time_Taken = DateTime.Now;
 

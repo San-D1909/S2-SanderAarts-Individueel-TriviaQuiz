@@ -1,0 +1,31 @@
+﻿@model BusinessManager.Business.ScoreModel
+@using BusinessManager.Business
+@{
+    ViewBag.Title = "AnswerResults";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AnswerResults</h2>
+@{
+    QuestionModel questionModel = Session["questionModel"] as QuestionModel;
+    Session["questionModel"] = questionModel;
+    if (Model.Correct == true)
+    {
+        <div>
+            <p>
+                Good job '@questionModel.Correct_Answer' was the correct answer!
+                <a href="@Url.Action("Next_Question", "CheckAnswer")" class="btn btn-success">Next Question</a>
+            </p>
+        </div>
+
+    }
+    else
+    {
+        <div>
+            <p>
+                That was the wrong answer, the correct answer was '@questionModel.Correct_Answer'.
+                <a href="@Url.Action("Next_Question", "CheckAnswer")" class="btn btn-warning">Next Question</a>
+            </p>
+        </div>
+    }
+}

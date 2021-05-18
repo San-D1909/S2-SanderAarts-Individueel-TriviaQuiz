@@ -9,6 +9,7 @@ namespace DataManager.Data
 {
     class Utility
     {
+        private static readonly MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
         public static void Check_databaseConnectionState(MySqlConnection databaseConnection)
         {
             if (databaseConnection.State == System.Data.ConnectionState.Open)
@@ -16,17 +17,18 @@ namespace DataManager.Data
                 databaseConnection.Close();
             }
         }
-        public static bool StoreData(MySqlCommand storeData, MySqlConnection databaseConnection, bool prepare)
+        public static bool StoreData(MySqlCommand sqlCommand, bool prepare)
         {
             Check_databaseConnectionState(databaseConnection);
             try
             {
+                sqlCommand.Connection = databaseConnection;
                 databaseConnection.Open();
                 if (prepare == true)
                 {
-                    storeData.Prepare();
+                    sqlCommand.Prepare();
                 }
-                MySqlDataReader executeString = storeData.ExecuteReader();
+                MySqlDataReader executeString = sqlCommand.ExecuteReader();
                 databaseConnection.Close();
                 return true;
             }
@@ -36,14 +38,15 @@ namespace DataManager.Data
                 return false;
             }
         }
-        public static List<string> GetData(MySqlCommand GetData, MySqlConnection databaseConnection)
+        public static List<string> GetData(MySqlCommand sqlCommand)
         {
             Check_databaseConnectionState(databaseConnection);
             List<string> results = new List<string> { };
             try
             {
+                sqlCommand.Connection = databaseConnection;
                 databaseConnection.Open();
-                MySqlDataReader executeString = GetData.ExecuteReader();
+                MySqlDataReader executeString = sqlCommand.ExecuteReader();
                 while (executeString.Read())
                 {
                     for (int i = 0; i < executeString.FieldCount; i++)

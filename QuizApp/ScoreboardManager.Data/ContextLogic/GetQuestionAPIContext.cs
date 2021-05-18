@@ -30,17 +30,16 @@ namespace DataManager.Data
         }
         public bool Store_question(QuestionDTO questionDTO, string difficulty, string category)
         {
-            MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
-            MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionDTO.Question + "'", databaseConnection);
-            List<string> results = Utility.GetData(checkQuestion, databaseConnection);
+            MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionDTO.Question + "'");
+            List<string> results = Utility.GetData(checkQuestion);
             if (results.Count >= 1)
             {
                 return true;
             }
             else
             {
-                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionDTO.Question + "','" + category + "','" + questionDTO.Incorrect_Answers[0] + "','" + questionDTO.Incorrect_Answers[1] + "','" + questionDTO.Incorrect_Answers[2] + "','" + questionDTO.Correct_Answer + "','" + difficulty + "')", databaseConnection);
-                Boolean succes = Utility.StoreData(insertQuestion, databaseConnection, false);
+                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionDTO.Question + "','" + category + "','" + questionDTO.Incorrect_Answers[0] + "','" + questionDTO.Incorrect_Answers[1] + "','" + questionDTO.Incorrect_Answers[2] + "','" + questionDTO.Correct_Answer + "','" + difficulty + "')");
+                Boolean succes = Utility.StoreData(insertQuestion, false);
                 if (succes == true)
                 {
                     return true;

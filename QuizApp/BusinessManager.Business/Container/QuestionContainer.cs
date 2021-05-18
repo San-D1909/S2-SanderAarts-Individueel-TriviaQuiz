@@ -24,7 +24,7 @@ namespace BusinessManager.Business
             }
             else
             {
-                questionModel = new QuestionModel(repo.Get_Question_From_Database(apiRequestModel.Difficulty, apiRequestModel.Category, DB_Credentials.DbConnectionString));
+                questionModel = new QuestionModel(repo.Get_Question_From_Database(apiRequestModel.Difficulty, apiRequestModel.Category));
                 return questionModel;
             }
         }

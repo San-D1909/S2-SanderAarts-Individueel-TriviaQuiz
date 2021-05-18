@@ -1,17 +1,24 @@
-﻿namespace BusinessManager.Business
+﻿using System;
+
+namespace BusinessManager.Business
 {
     public class CompareAnswers
-    { 
-        public static ScoreModel Checker(string chosen, string correct, ScoreModel scoreModel, double timeUsed)
+    {
+        public static ScoreModel Checker(string chosen, QuestionModel questionModel, ScoreModel scoreModel)
         {
-            if (chosen == correct)
+            //Adds 1 to the question count.
+            scoreModel.Current_Question += 1;
+
+            //Calculates the time that is used.
+            TimeSpan timeUsed = DateTime.Now - questionModel.Time_Taken;
+
+            if (chosen == questionModel.Correct_Answer)
             {
-                scoreModel = CalculateScore.Calculation(timeUsed, scoreModel);
+                scoreModel = CalculateScore.Calculation(timeUsed.TotalSeconds, scoreModel);
+                scoreModel.Correct = true;
+                return scoreModel;
             }
-            else
-            {
-                scoreModel.Score = 0;
-            }
+            scoreModel.Correct = false;
             return scoreModel;
         }
     }

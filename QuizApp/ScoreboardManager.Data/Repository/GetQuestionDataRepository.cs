@@ -11,10 +11,10 @@ namespace DataManager.Data
         private IGetQuestionAPIContext apiContext;
         private IGetQuestionDatabaseContext databaseContext;
 
-        public QuestionDTO Get_Question_From_Database(string difficulty, string category, string DbConnectionString)
+        public QuestionDTO Get_Question_From_Database(string difficulty, string category)
         {
             databaseContext = new GetQuestionDatabaseContext();
-            return databaseContext.Get_Question_From_Database(difficulty, category, DbConnectionString);
+            return databaseContext.Get_Question_From_Database(difficulty, category);
         }
 
         public string Get_JSON_From_API(string requestString)
