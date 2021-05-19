@@ -1,6 +1,6 @@
 ﻿namespace BusinessManager.Business
 {
-    public class DB_Credentials
+    public class DatabaseCredentials
     {
         private static string dbIp = "127.0.0.1";
         private static string dbPort = "3306";

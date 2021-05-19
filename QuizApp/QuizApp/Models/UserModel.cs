@@ -6,20 +6,20 @@ namespace QuizApp.Models
     {
         public UserModel(BusinessManager.Business.UserDTO dto)
         {
-            Unique_id = dto.Unique_id;
-            First_Name = dto.First_Name;
-            Last_Name = dto.Last_Name;
+            UniqueID = dto.UniqueID;
+            FirstName = dto.FirstName;
+            LastName = dto.LastName;
             Email = dto.Email;
-            Birth_Day = dto.Birth_Day;
+            BirthDay = dto.BirthDay;
         }
 
         public UserModel()
         {
 
         }
-        public string Unique_id { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
+        public string UniqueID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "This field is required")]
         [Display(Name = "Enter Email")]
@@ -28,6 +28,6 @@ namespace QuizApp.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-        public string Birth_Day { get; set; }
+        public string BirthDay { get; set; }
     }
 }

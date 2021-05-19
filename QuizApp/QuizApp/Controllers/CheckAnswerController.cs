@@ -15,7 +15,7 @@ namespace QuizApp.Controllers
             //Calculates the score based on how much time is used.
             scoreModel = CompareAnswers.Checker(chosen, questionModel ,scoreModel);
 
-            scoreModel = Utility.Get_Unique_Question_ID_And_Add_To_QuestionList(questionModel, scoreModel);
+            scoreModel = Utility.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
 
             Session["questionModel"] = questionModel;
             Session["scoreModel"] = scoreModel;
@@ -23,19 +23,19 @@ namespace QuizApp.Controllers
             return View("~/Views/Quiz/AnswerResults.cshtml", scoreModel);
         }
 
-        public ActionResult Next_Question()
+        public ActionResult NextQuestion()
         {
             ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
             Session["scoreModel"] = scoreModel;
 
-            if (scoreModel.Current_Question > scoreModel.Question_Amount)
+            if (scoreModel.CurrentQuestion > scoreModel.QuestionAmount)
             {//Check if the current questionnumber is bigger than the amount of questions.
                 PrepareNextQuiz(scoreModel);
                 return RedirectToAction("FinalScore", "Scoreboard");
             }
             else
             {
-                return RedirectToAction("Prepare_Question", "Quiz");
+                return RedirectToAction("PrepareQuestion", "Quiz");
             }
         }
 
@@ -43,7 +43,7 @@ namespace QuizApp.Controllers
         {
             TempData["finalScore"] = scoreModel.Score;
             scoreModel.Score = 0;
-            scoreModel.Current_Question = 1;
+            scoreModel.CurrentQuestion = 1;
             Session["questionModel"] = scoreModel;
         }
     }

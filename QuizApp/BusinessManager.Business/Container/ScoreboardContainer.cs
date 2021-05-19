@@ -10,22 +10,22 @@ namespace BusinessManager.Business
     public class ScoreboardContainer
     {
 
-        public List<ScoreboardDTO> Get_Scoreboard_Data(string difficulty, int category, string timeSpan)
+        public List<ScoreboardDTO> SelectScoreboardData(string difficulty, int category, string timeSpan)
         {
             List<ScoreboardDTO> scoreboard = new List<ScoreboardDTO>();
             ScoreboardRepository repo = new ScoreboardRepository();
-            var scoreboardDTO = repo.Get_Scoreboard(difficulty, category, timeSpan);
+            var scoreboardDTO = repo.SelectScoreboardData(difficulty, category, timeSpan);
             foreach (var DTO in scoreboardDTO)
             {
                 scoreboard.Add(new ScoreboardDTO(DTO));
             }
             return scoreboard;
         }
-        public void Submit_To_Scoreboard(int category, string difficulty, int question_Amount, List<string> question_List, int unique_ID, int finalScore)
+        public void InsertToScoreboard(int category, string difficulty, int questionAmount, List<string> questionList, int uniqueID, int finalScore)
         {
-            DataManager.Data.SubmitDTO submitDTO = new DataManager.Data.SubmitDTO { Category = category, Difficulty = difficulty, Question_Amount = question_Amount, Question_List = question_List, Unique_ID = unique_ID, Score = finalScore };
+            SubmitDTO submitDTO = new SubmitDTO { Category = category, Difficulty = difficulty, QuestionAmount = questionAmount, QuestionList = questionList, UniqueID = uniqueID, Score = finalScore };
             SubmitRepository repo = new SubmitRepository();
-            repo.Submit_To_Scoreboard(submitDTO);
+            repo.InsertToScoreboard(submitDTO);
         }
     }
 }

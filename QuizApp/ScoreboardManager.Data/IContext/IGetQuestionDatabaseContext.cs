@@ -8,6 +8,6 @@ namespace DataManager.Data
 {
     public interface IGetQuestionDatabaseContext
     {
-        QuestionDTO Get_Question_From_Database(string difficulty, string category);
+        QuestionDTO SelectQuestionDatabase(string difficulty, string category);
     }
 }

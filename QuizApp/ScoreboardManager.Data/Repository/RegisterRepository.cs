@@ -14,10 +14,10 @@ namespace DataManager.Data
             this.context = new RegisterDatabaseContext();
         }
              
-        public bool StoreUser( string first, string last, string email, string password, string birth_day)
+        public bool InsertUser( string first, string last, string email, string password, string birth_day)
         {
             UserDTO userDTO = new UserDTO(first,last,email,password,birth_day);
-            if(context.StoreUser(userDTO))
+            if(context.InsertUser(userDTO))
             {
                 return true;
             }

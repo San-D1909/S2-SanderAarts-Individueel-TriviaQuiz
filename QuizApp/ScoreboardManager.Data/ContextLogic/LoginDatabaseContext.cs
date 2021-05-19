@@ -26,7 +26,7 @@ namespace DataManager.Data
             List<string> results = Utility.GetData(getUserData, true);
             if (results != null && results.Count > 0)
             {
-                userDTO = new UserDTO { Unique_id = results[0], First_Name = results[1], Last_Name = results[2], Email = email };
+                userDTO = new UserDTO { UniqueID = results[0], FirstName = results[1], LastName = results[2], Email = email };
             }
             return userDTO;
         }

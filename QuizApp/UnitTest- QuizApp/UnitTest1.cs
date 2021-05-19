@@ -17,13 +17,13 @@ namespace UnitTest__QuizApp
         public void Leave_Input_Empty_Scoreboard()
         {
             ScoreboardContainer container = new ScoreboardContainer();
-            var results = container.Get_Scoreboard_Data("0", 0, "AllTime");
+            var results = container.SelectScoreboardData("0", 0, "AllTime");
             Assert.IsTrue(results.Count > 0);
         }
         [TestMethod]
         public void API_Is_Down()
         {
-            QuestionDTO questionDTO = question_Context.Get_Question_From_Database("medium", "15");
+            QuestionDTO questionDTO = question_Context.SelectQuestionDatabase("medium", "15");
             Assert.IsTrue(questionDTO.Question.Length > 0);
         }
         [TestMethod]
@@ -33,7 +33,7 @@ namespace UnitTest__QuizApp
             List<int> list = new List<int>();
             for (int i = 0; i < 5; i++)
             {
-                int result = question_Context.Get_Random_Question_ID("medium", "15");
+                int result = question_Context.SelectQuestionID("medium", "15");
                 list.Add(result);
             }
             foreach (int result in list)
@@ -54,14 +54,14 @@ namespace UnitTest__QuizApp
         {
             GetQuestionDataRepository repo = new GetQuestionDataRepository();
             List<string> incorrect = new List<string> { "fout1", "fout2", "fout3" };
-            Assert.IsTrue(repo.Store_question("Dit is een unit_test", incorrect, "Juist", "Hard", "15"));
+            Assert.IsTrue(repo.InsertQuestionDatabase("Dit is een unit_test", incorrect, "Juist", "Hard", "15"));
         }
         [TestMethod]
         public void LoginTest()
         {
             LoginContainer container = new LoginContainer { };
             var results = container.Login("t@t", "t");
-            Assert.IsTrue(results.Unique_id != "" || results.Unique_id != null);
+            Assert.IsTrue(results.UniqueID != "" || results.UniqueID != null);
         }
     }
 }

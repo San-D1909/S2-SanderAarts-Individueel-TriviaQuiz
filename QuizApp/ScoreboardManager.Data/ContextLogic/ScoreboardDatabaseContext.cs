@@ -9,12 +9,12 @@ namespace DataManager.Data
 {
     class ScoreboardDatabaseContext : IScoreboardContext
     {
-        public IEnumerable<ScoreboardDTO> GetScoreboardData(string difficulty, int category, string timeSpan)
+        public IEnumerable<ScoreboardDTO> SelectScoreboardData(string difficulty, int category, string timeSpan)
         {
-            List<ScoreboardDTO> Scoreboard_Data = new List<ScoreboardDTO>();
+            List<ScoreboardDTO> ListScoreboardData = new List<ScoreboardDTO>();
             if (difficulty == "0" || category == 0)
             {
-                Scoreboard_Data = EmptyUserInput(difficulty, category, Scoreboard_Data);
+                ListScoreboardData = EmptyUserInput(difficulty, category, ListScoreboardData);
             }
             else
             {
@@ -33,11 +33,11 @@ namespace DataManager.Data
                     startDate = now.AddYears(-40);
                 }
                 string startString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
-                MySqlCommand Get_Scoreboard_ID = new MySqlCommand("SELECT `id` FROM `scoreboard` WHERE `category` = " + category + " AND `difficulty` LIKE '" + difficulty + "' AND `date` BETWEEN '" + startString + "' AND '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY score DESC LIMIT 5");
-                List<string> scoreboardID= Utility.GetData(Get_Scoreboard_ID);
-                Scoreboard_Data = ListWithRequestedScores(scoreboardID, Scoreboard_Data);
+                MySqlCommand SelectQuestionIDCommand = new MySqlCommand("SELECT `id` FROM `scoreboard` WHERE `category` = " + category + " AND `difficulty` LIKE '" + difficulty + "' AND `date` BETWEEN '" + startString + "' AND '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY score DESC LIMIT 5");
+                List<string> scoreboardID= Utility.GetData(SelectQuestionIDCommand);
+                ListScoreboardData = ConvertToList(scoreboardID, ListScoreboardData);
             }
-            return (Scoreboard_Data);
+            return (ListScoreboardData);
         }
         public List<ScoreboardDTO> EmptyUserInput(string difficulty, int category, List<ScoreboardDTO> Scoreboard_Data)
         {
@@ -54,12 +54,12 @@ namespace DataManager.Data
             {
                 command = "SELECT `id` FROM `scoreboard` WHERE `category` = " + category + " ORDER BY score DESC LIMIT 5";
             }
-            MySqlCommand Get_Question_ID = new MySqlCommand(command);
-            List<string> scoreboardID = Utility.GetData(Get_Question_ID);
-            Scoreboard_Data = ListWithRequestedScores(scoreboardID, Scoreboard_Data);
+            MySqlCommand SelectQuestionIDCommand = new MySqlCommand(command);
+            List<string> scoreboardID = Utility.GetData(SelectQuestionIDCommand);
+            Scoreboard_Data = ConvertToList(scoreboardID, Scoreboard_Data);
             return Scoreboard_Data;
         }
-        public List<ScoreboardDTO> ListWithRequestedScores(List<string> scoreboardID, List<ScoreboardDTO> Scoreboard_Data)
+        public List<ScoreboardDTO> ConvertToList(List<string> scoreboardID, List<ScoreboardDTO> Scoreboard_Data)
         {
             foreach (string ID in scoreboardID)
             {
@@ -69,7 +69,7 @@ namespace DataManager.Data
             }
             foreach (ScoreboardDTO user in Scoreboard_Data)
             {
-                user.First_Name = GetNameFromUniqueID(Convert.ToString(user.User_ID));
+                user.FirstName = GetNameFromUniqueID(Convert.ToString(user.UserID));
             }
             return Scoreboard_Data;
         }

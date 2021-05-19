@@ -12,23 +12,23 @@ namespace QuizApp.Models
         public ScoreBoardModel(ScoreboardDTO dto)
         {
             ID = dto.ID;
-            User_ID = dto.User_ID;
+            UserID = dto.UserID;
             Category = dto.Category;
             Difficulty = dto.Difficulty;
-            Question_Amount = dto.Question_Amount;
-            Question_List = dto.Question_List;
+            QuestionAmount = dto.Question_Amount;
+            QuestionList = dto.QuestionList;
             Score = dto.Score;
             Date = dto.Date;
-            First_Name = dto.First_Name;
+            FirstName = dto.FirstName;
         }
         public int ID { get; set; }
-        public int User_ID { get; set; }
+        public int UserID { get; set; }
         public int Category { get; set; }
         public string Difficulty { get; set; }
-        public int Question_Amount { get; set; }
-        public int Question_List { get; set; }
+        public int QuestionAmount { get; set; }
+        public int QuestionList { get; set; }
         public int Score { get; set; }
         public DateTime Date { get; set; }
-        public string First_Name { get; set; }
+        public string FirstName { get; set; }
     }
 }

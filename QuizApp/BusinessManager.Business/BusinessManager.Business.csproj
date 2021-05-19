@@ -98,7 +98,7 @@
     <Compile Include="Container\QuestionContainer.cs" />
     <Compile Include="Container\RegisterContainer.cs" />
     <Compile Include="DTO\APIRequestModel.cs" />
-    <Compile Include="DTO\DB_Credentials.cs" />
+    <Compile Include="DTO\DatabaseCredentials.cs" />
     <Compile Include="DTO\QuestionModel.cs" />
     <Compile Include="DTO\ScoreboardDTO.cs" />
     <Compile Include="DTO\ScoreModel.cs" />

@@ -8,11 +8,11 @@ namespace DataManager.Data
 {
     public class SubmitDTO
     {
-        public int Unique_ID { get; set; }
+        public int UniqueID { get; set; }
         public int Category { get; set; }
         public string Difficulty { get; set; }
         public int Score { get; set; }
-        public int Question_Amount { get; set; }
-        public List<string> Question_List { get; set; }
+        public int QuestionAmount { get; set; }
+        public List<string> QuestionList { get; set; }
     }
 }

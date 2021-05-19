@@ -9,6 +9,6 @@ namespace DataManager.Data
 {
     public interface IScoreboardContext
     {
-        IEnumerable<ScoreboardDTO> GetScoreboardData(string difficulty, int category, string timeSpan);
+        IEnumerable<ScoreboardDTO> SelectScoreboardData(string difficulty, int category, string timeSpan);
     }
 }

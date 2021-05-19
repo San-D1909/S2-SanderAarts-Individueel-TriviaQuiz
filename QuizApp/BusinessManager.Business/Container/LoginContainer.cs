@@ -12,8 +12,8 @@ namespace BusinessManager.Business
         public UserDTO Login(string email,string password)
         {
             LoginRepository repo = new LoginRepository();
-            var results = repo.Login(email, password);
-            UserDTO userDTO = new UserDTO(results);
+
+            UserDTO userDTO = new UserDTO(repo.LoginCheck(email, password));
             return userDTO;
         }
     }

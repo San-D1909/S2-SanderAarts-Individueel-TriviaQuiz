@@ -13,26 +13,6 @@ namespace BusinessManager.Business
                 databaseConnection.Close();
             }
         }
-        public static bool StoreData(MySqlCommand storeData, MySqlConnection databaseConnection, bool prepare)
-        {
-            Check_databaseConnectionState(databaseConnection);
-            try
-            {
-                databaseConnection.Open();
-                if (prepare == true)
-                {
-                    storeData.Prepare();
-                }
-                MySqlDataReader executeString = storeData.ExecuteReader();
-                databaseConnection.Close();
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("error: " + e.Message);
-                return false;
-            }
-        }
         public static List<string> GetData(MySqlCommand GetData, MySqlConnection databaseConnection)
         {
             Check_databaseConnectionState(databaseConnection);

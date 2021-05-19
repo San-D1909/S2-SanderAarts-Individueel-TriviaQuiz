@@ -7,24 +7,21 @@ using System.Threading.Tasks;
 
 namespace DataManager.Data
 {
-    class RegisterDatabaseContext: IRegisterDatabaseContext
+    class RegisterDatabaseContext : IRegisterDatabaseContext
     {
-        bool IRegisterDatabaseContext.StoreUser(UserDTO userDTO)
+        bool IRegisterDatabaseContext.InsertUser(UserDTO userDTO)
         {
-            MySqlCommand storeData = new MySqlCommand( "INSERT INTO `user`(`firstname`, `lastname`, `email`, `password`, `birth_day`) VALUES (@val1,@val2,@val3,@val4,@val5);");
-            storeData.Parameters.AddWithValue("@val1", userDTO.First_Name);
-            storeData.Parameters.AddWithValue("@val2", userDTO.Last_Name);
+            MySqlCommand storeData = new MySqlCommand("INSERT INTO `user`(`firstname`, `lastname`, `email`, `password`, `birth_day`) VALUES (@val1,@val2,@val3,@val4,@val5);");
+            storeData.Parameters.AddWithValue("@val1", userDTO.FirstName);
+            storeData.Parameters.AddWithValue("@val2", userDTO.LastName);
             storeData.Parameters.AddWithValue("@val3", userDTO.Email);
             storeData.Parameters.AddWithValue("@val4", userDTO.Password);
-            storeData.Parameters.AddWithValue("@val5", userDTO.Birth_Day);
+            storeData.Parameters.AddWithValue("@val5", userDTO.BirthDay);
             if (Utility.StoreData(storeData, true))
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

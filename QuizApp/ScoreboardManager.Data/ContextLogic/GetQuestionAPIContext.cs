@@ -11,7 +11,7 @@ namespace DataManager.Data
 {
     class GetQuestionAPIContext : IGetQuestionAPIContext
     {
-        public string Get_JSON_From_API(string requestString)
+        public string SelectJSONFromAPI(string requestString)
         {
             WebRequest requestObject = WebRequest.Create(requestString);
             requestObject.Method = "GET";
@@ -28,7 +28,7 @@ namespace DataManager.Data
             resultJSON = resultJSON.Remove(resultJSON.Length - 2, 2);
             return resultJSON;
         }
-        public bool Store_question(QuestionDTO questionDTO, string difficulty, string category)
+        public bool InsertQuestionDatabase(QuestionDTO questionDTO, string difficulty, string category)
         {
             MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionDTO.Question + "'");
             List<string> results = Utility.GetData(checkQuestion);
@@ -38,7 +38,7 @@ namespace DataManager.Data
             }
             else
             {
-                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionDTO.Question + "','" + category + "','" + questionDTO.Incorrect_Answers[0] + "','" + questionDTO.Incorrect_Answers[1] + "','" + questionDTO.Incorrect_Answers[2] + "','" + questionDTO.Correct_Answer + "','" + difficulty + "')");
+                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionDTO.Question + "','" + category + "','" + questionDTO.IncorrectAnswers[0] + "','" + questionDTO.IncorrectAnswers[1] + "','" + questionDTO.IncorrectAnswers[2] + "','" + questionDTO.CorrectAnswer + "','" + difficulty + "')");
                 Boolean succes = Utility.StoreData(insertQuestion, false);
                 if (succes == true)
                 {

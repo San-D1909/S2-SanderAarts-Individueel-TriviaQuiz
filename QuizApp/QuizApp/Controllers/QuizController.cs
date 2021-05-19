@@ -9,7 +9,7 @@ namespace QuizApp.Controllers
     {
         public QuestionModel CreateQuestion(APIRequestModel apiRequestModel)
         {
-            QuestionModel questionModel = QuestionContainer.Fill_QuestionModel(apiRequestModel);
+            QuestionModel questionModel = QuestionContainer.FillQuestionModel(apiRequestModel);
             ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
 
             questionModel.Answers = questionModel.Incorrect_Answers;
@@ -17,14 +17,14 @@ namespace QuizApp.Controllers
             questionModel.Answers = Utility.Shuffle(questionModel.Answers);
 
             //Sets time to know how long it took to answer the question.
-            questionModel.Time_Taken = DateTime.Now;
+            questionModel.TimeTaken = DateTime.Now;
 
             Session["scoreModel"] = scoreModel;
             Session["questionModel"] = questionModel;
             Session["apiRequestModel"] = apiRequestModel;
             return questionModel;
         }
-        public ActionResult Prepare_Question(string category)
+        public ActionResult PrepareQuestion(string category)
         {
             if (Session["Login"] == null)
             {

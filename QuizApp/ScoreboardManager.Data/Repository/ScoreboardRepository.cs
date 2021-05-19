@@ -13,9 +13,9 @@ namespace DataManager.Data
         {
             this.context = new ScoreboardDatabaseContext();
         }
-        public List<ScoreboardDTO> Get_Scoreboard(string difficulty, int category, string timeSpan)
+        public List<ScoreboardDTO> SelectScoreboardData(string difficulty, int category, string timeSpan)
         {
-            return context.GetScoreboardData(difficulty, category, timeSpan).ToList();
+            return context.SelectScoreboardData(difficulty, category, timeSpan).ToList();
         }
     }
 }

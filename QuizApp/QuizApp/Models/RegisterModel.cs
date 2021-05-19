@@ -7,11 +7,11 @@ namespace QuizApp.Models
     {
         [DisplayName("First Name")]
         [Required(ErrorMessage = "This field is required")]
-        public string First_Name { get; set; }
+        public string FirstName { get; set; }
 
         [DisplayName("Last Name")]
         [Required(ErrorMessage = "This field is required")]
-        public string Last_Name { get; set; }
+        public string LastName { get; set; }
 
         [DataType(DataType.EmailAddress)]
         [DisplayName("E-Mail")]
@@ -27,7 +27,7 @@ namespace QuizApp.Models
         [DisplayName("Birth Day")]
         [Required(ErrorMessage = "This field is required")]
 
-        public string Birth_Day { get; set; }
+        public string BirthDay { get; set; }
 
 
 

@@ -5,10 +5,10 @@ namespace DataManager.Data
 {
     public class QuestionDTO
     {
-        public QuestionDTO(string question,List<string> incorrect_Answers,string correct_Answer)
+        public QuestionDTO(string question,List<string> incorrectAnswers,string correctAnswer)
         {
-            Correct_Answer = correct_Answer;
-            Incorrect_Answers = incorrect_Answers;
+            CorrectAnswer = correctAnswer;
+            IncorrectAnswers = incorrectAnswers;
             Question = question;
         }
 
@@ -17,7 +17,7 @@ namespace DataManager.Data
 
         }
         public string Question { get; set; }
-        public List<string> Incorrect_Answers { get; set; }
-        public string Correct_Answer { get; set; }
+        public List<string> IncorrectAnswers { get; set; }
+        public string CorrectAnswer { get; set; }
     }
 }

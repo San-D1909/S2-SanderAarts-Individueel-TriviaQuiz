@@ -11,22 +11,22 @@ namespace DataManager.Data
         private IGetQuestionAPIContext apiContext;
         private IGetQuestionDatabaseContext databaseContext;
 
-        public QuestionDTO Get_Question_From_Database(string difficulty, string category)
+        public QuestionDTO SelectQuestionDatabase(string difficulty, string category)
         {
             databaseContext = new GetQuestionDatabaseContext();
-            return databaseContext.Get_Question_From_Database(difficulty, category);
+            return databaseContext.SelectQuestionDatabase(difficulty, category);
         }
 
-        public string Get_JSON_From_API(string requestString)
+        public string SelectJSONFromAPI(string requestString)
         {
             apiContext = new GetQuestionAPIContext();
-            return apiContext.Get_JSON_From_API(requestString);
+            return apiContext.SelectJSONFromAPI(requestString);
         }
-        public bool Store_question(string question, List<string> incorrect_Answers, string correct_Answer, string difficulty, string category)
+        public bool InsertQuestionDatabase(string question, List<string> incorrect_Answers, string correct_Answer, string difficulty, string category)
         {
             QuestionDTO questionDTO = new QuestionDTO(question,incorrect_Answers,correct_Answer);
             apiContext = new GetQuestionAPIContext();
-            return apiContext.Store_question(questionDTO, difficulty, category);
+            return apiContext.InsertQuestionDatabase(questionDTO, difficulty, category);
         }
     }
 }

@@ -7,10 +7,10 @@ namespace BusinessManager.Business
         public static ScoreModel Checker(string chosen, QuestionModel questionModel, ScoreModel scoreModel)
         {
             //Adds 1 to the question count.
-            scoreModel.Current_Question += 1;
+            scoreModel.CurrentQuestion += 1;
 
             //Calculates the time that is used.
-            TimeSpan timeUsed = DateTime.Now - questionModel.Time_Taken;
+            TimeSpan timeUsed = DateTime.Now - questionModel.TimeTaken;
 
             if (chosen == questionModel.Correct_Answer)
             {

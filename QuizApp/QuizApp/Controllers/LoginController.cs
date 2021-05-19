@@ -17,10 +17,10 @@ namespace QuizApp.Controllers
             {
                 LoginContainer container = new LoginContainer { };
                 userModel = new UserModel(container.Login(userModel.Email, userModel.Password));
-                if (userModel.Unique_id != "0" && userModel.Unique_id != null)
+                if (userModel.UniqueID != "0" && userModel.UniqueID != null)
                 {
                     Session["Login"] = userModel;
-                    TempData["FirstName"] = userModel.First_Name;
+                    TempData["FirstName"] = userModel.FirstName;
                     return RedirectToAction("", "Home");
                 }
                 else

@@ -4,26 +4,26 @@ namespace BusinessManager.Business
 {
     public class ScoreModel
     {
-        private static int current_Question = 1;
+        private static int currentQuestion = 1;
         private static double maxTime = 30;
-        private static int question_Amount = 10;
+        private static int questionAmount = 10;
         public double MaxTime
         {
             get { return maxTime; }
             set { maxTime = value; }
         }
-        public int Question_Amount
+        public int QuestionAmount
         {
-            get { return question_Amount; }
-            set { question_Amount = value; }
+            get { return questionAmount; }
+            set { questionAmount = value; }
         }
-        public int Current_Question
+        public int CurrentQuestion
         {
-            get { return current_Question; }
-            set { current_Question = value; }
+            get { return currentQuestion; }
+            set { currentQuestion = value; }
         }
         public int Score { get; set; }
         public bool Correct { get; set; }
-        public List<string> Question_List { get; set; }
+        public List<string> QuestionList { get; set; }
     }
 }

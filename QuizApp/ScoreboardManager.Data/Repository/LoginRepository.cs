@@ -14,7 +14,7 @@ namespace DataManager.Data
             this.context = new LoginDatabaseContext();
         }
 
-        public UserDTO Login(string email, string password)
+        public UserDTO LoginCheck(string email, string password)
         {
             return context.LoginCheck(email, password);
         }

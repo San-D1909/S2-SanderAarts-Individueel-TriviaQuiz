@@ -8,6 +8,6 @@ namespace DataManager.Data
 {
     interface IRegisterDatabaseContext
     {
-        bool StoreUser(UserDTO userDTO);
+        bool InsertUser(UserDTO userDTO);
     }
 }
