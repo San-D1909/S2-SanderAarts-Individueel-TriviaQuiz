@@ -16,7 +16,7 @@ namespace DataManager.Data
 
         public UserDTO Login(string email, string password)
         {
-            return context.Login(email, password);
+            return context.LoginCheck(email, password);
         }
     }
 }

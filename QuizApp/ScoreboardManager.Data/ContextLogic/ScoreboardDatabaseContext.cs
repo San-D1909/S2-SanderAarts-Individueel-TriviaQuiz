@@ -9,12 +9,12 @@ namespace DataManager.Data
 {
     class ScoreboardDatabaseContext : IScoreboardContext
     {
-        public IEnumerable<ScoreboardDTO> Get_Scoreboard_Data(string difficulty, int category, string timeSpan)
+        public IEnumerable<ScoreboardDTO> GetScoreboardData(string difficulty, int category, string timeSpan)
         {
             List<ScoreboardDTO> Scoreboard_Data = new List<ScoreboardDTO>();
             if (difficulty == "0" || category == 0)
             {
-                Scoreboard_Data = Get_Empty_Input(difficulty, category, Scoreboard_Data);
+                Scoreboard_Data = EmptyUserInput(difficulty, category, Scoreboard_Data);
             }
             else
             {
@@ -35,11 +35,11 @@ namespace DataManager.Data
                 string startString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
                 MySqlCommand Get_Scoreboard_ID = new MySqlCommand("SELECT `id` FROM `scoreboard` WHERE `category` = " + category + " AND `difficulty` LIKE '" + difficulty + "' AND `date` BETWEEN '" + startString + "' AND '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "' ORDER BY score DESC LIMIT 5");
                 List<string> scoreboardID= Utility.GetData(Get_Scoreboard_ID);
-                Scoreboard_Data = Fill_List(scoreboardID, Scoreboard_Data);
+                Scoreboard_Data = ListWithRequestedScores(scoreboardID, Scoreboard_Data);
             }
             return (Scoreboard_Data);
         }
-        public List<ScoreboardDTO> Get_Empty_Input(string difficulty, int category, List<ScoreboardDTO> Scoreboard_Data)
+        public List<ScoreboardDTO> EmptyUserInput(string difficulty, int category, List<ScoreboardDTO> Scoreboard_Data)
         {
             string command = "";
             if (difficulty == "0" && category == 0)
@@ -56,10 +56,10 @@ namespace DataManager.Data
             }
             MySqlCommand Get_Question_ID = new MySqlCommand(command);
             List<string> scoreboardID = Utility.GetData(Get_Question_ID);
-            Scoreboard_Data = Fill_List(scoreboardID, Scoreboard_Data);
+            Scoreboard_Data = ListWithRequestedScores(scoreboardID, Scoreboard_Data);
             return Scoreboard_Data;
         }
-        public List<ScoreboardDTO> Fill_List(List<string> scoreboardID, List<ScoreboardDTO> Scoreboard_Data)
+        public List<ScoreboardDTO> ListWithRequestedScores(List<string> scoreboardID, List<ScoreboardDTO> Scoreboard_Data)
         {
             foreach (string ID in scoreboardID)
             {
@@ -69,11 +69,11 @@ namespace DataManager.Data
             }
             foreach (ScoreboardDTO user in Scoreboard_Data)
             {
-                user.First_Name = Get_UserName(Convert.ToString(user.User_ID));
+                user.First_Name = GetNameFromUniqueID(Convert.ToString(user.User_ID));
             }
             return Scoreboard_Data;
         }
-        public static string Get_UserName(string user_ID)
+        private static string GetNameFromUniqueID(string user_ID)
         {
             MySqlCommand Get_Question_ID = new MySqlCommand("SELECT `firstname` FROM `user` WHERE `unique_id` ='" + user_ID + "'");
             List<string> results = Utility.GetData(Get_Question_ID);

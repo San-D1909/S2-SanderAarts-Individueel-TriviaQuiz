@@ -8,6 +8,6 @@ namespace DataManager.Data
 {
     public interface ILoginDatabaseContext
     {
-        UserDTO Login(string email, string password);
+        UserDTO LoginCheck(string email, string password);
     }
 }

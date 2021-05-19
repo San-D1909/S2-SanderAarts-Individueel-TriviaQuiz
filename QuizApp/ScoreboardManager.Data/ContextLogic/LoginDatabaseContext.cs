@@ -9,41 +9,25 @@ namespace DataManager.Data
 {
     public class LoginDatabaseContext : ILoginDatabaseContext
     {
-        UserDTO ILoginDatabaseContext.Login(string email, string password)
+        UserDTO ILoginDatabaseContext.LoginCheck(string email, string password)
         {
+            UserDTO userDTO = new UserDTO();
             if (email.Length > 0 && password.Length > 0)
             {
-                UserDTO userDTO = Login(email, password);
-                return userDTO;
+                return GetLoginData(email, password, userDTO);
             }
             return null;
         }
-        private UserDTO Login(string email, string password)
+        private UserDTO GetLoginData(string email, string password,UserDTO userDTO)
         {
-            UserDTO userDTO = new UserDTO();
-            MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
-            MySqlCommand getUserData = new MySqlCommand("SELECT * FROM user WHERE email=@val1 AND password=@val2", databaseConnection);
+            MySqlCommand getUserData = new MySqlCommand("SELECT `unique_id`,`firstname`,`lastname` FROM user WHERE email=@val1 AND password=@val2");
             getUserData.Parameters.AddWithValue("@val1", email);
             getUserData.Parameters.AddWithValue("@val2", password);
-            Utility.Check_databaseConnectionState(databaseConnection);
-            try
+            List<string> results = Utility.GetData(getUserData, true);
+            if (results != null && results.Count > 0)
             {
-                databaseConnection.Open();
-                getUserData.Prepare();
-                var executeString = getUserData.ExecuteReader();
-                while (executeString.Read())
-                {
-                    userDTO.Unique_id = executeString.GetString(0);
-                    userDTO.First_Name = executeString.GetString(1);
-                    userDTO.Last_Name = executeString.GetString(2);
-                    userDTO.Email = executeString.GetString(3);
-                }
+                userDTO = new UserDTO { Unique_id = results[0], First_Name = results[1], Last_Name = results[2], Email = email };
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("error: " + e.Message);
-            }
-            databaseConnection.Close();
             return userDTO;
         }
     }

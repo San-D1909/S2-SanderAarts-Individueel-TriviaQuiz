@@ -15,7 +15,7 @@ namespace DataManager.Data
         }
         public List<ScoreboardDTO> Get_Scoreboard(string difficulty, int category, string timeSpan)
         {
-            return context.Get_Scoreboard_Data(difficulty, category, timeSpan).ToList();
+            return context.GetScoreboardData(difficulty, category, timeSpan).ToList();
         }
     }
 }

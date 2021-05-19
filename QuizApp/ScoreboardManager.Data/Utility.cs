@@ -9,7 +9,7 @@ namespace DataManager.Data
 {
     class Utility
     {
-        private static readonly MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
+        public static readonly MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
         public static void Check_databaseConnectionState(MySqlConnection databaseConnection)
         {
             if (databaseConnection.State == System.Data.ConnectionState.Open)
@@ -38,12 +38,16 @@ namespace DataManager.Data
                 return false;
             }
         }
-        public static List<string> GetData(MySqlCommand sqlCommand)
+        public static List<string> GetData(MySqlCommand sqlCommand,bool prepare = false )
         {
             Check_databaseConnectionState(databaseConnection);
             List<string> results = new List<string> { };
             try
             {
+/*                if (prepare == true)
+                {
+                    sqlCommand.Prepare();
+                }*/
                 sqlCommand.Connection = databaseConnection;
                 databaseConnection.Open();
                 MySqlDataReader executeString = sqlCommand.ExecuteReader();
@@ -51,7 +55,7 @@ namespace DataManager.Data
                 {
                     for (int i = 0; i < executeString.FieldCount; i++)
                     {
-                        results.Add(executeString.GetString(i));
+                        results.Add(executeString.GetValue(i).ToString());
                     }
                 }
                 databaseConnection.Close();
