@@ -14,8 +14,8 @@ namespace QuizApp.Controllers
 
             //Calculates the score based on how much time is used.
             scoreModel = CompareAnswers.Checker(chosen, questionModel ,scoreModel);
-
-            scoreModel = Utility.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
+            QuestionContainer container = new QuestionContainer();
+            scoreModel = container.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
 
             Session["questionModel"] = questionModel;
             Session["scoreModel"] = scoreModel;

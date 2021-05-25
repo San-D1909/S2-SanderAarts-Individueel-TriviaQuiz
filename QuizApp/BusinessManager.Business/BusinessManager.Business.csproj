@@ -92,7 +92,6 @@
   <ItemGroup>
     <Compile Include="Classes\CalculateScore.cs" />
     <Compile Include="Classes\CompareAnswers.cs" />
-    <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="Container\LoginContainer.cs" />
     <Compile Include="Container\QuestionContainer.cs" />

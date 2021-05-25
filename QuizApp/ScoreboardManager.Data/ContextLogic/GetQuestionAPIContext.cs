@@ -30,16 +30,24 @@ namespace DataManager.Data
         }
         public bool InsertQuestionDatabase(QuestionDTO questionDTO, string difficulty, string category)
         {
-            MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionDTO.Question + "'");
-            List<string> results = Utility.GetData(checkQuestion);
+            MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = @val1");
+            checkQuestion.Parameters.AddWithValue("@val1", questionDTO.Question);
+            List<string> results = Utility.GetData(checkQuestion,true);
             if (results.Count >= 1)
             {
                 return true;
             }
             else
             {
-                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES ('" + questionDTO.Question + "','" + category + "','" + questionDTO.IncorrectAnswers[0] + "','" + questionDTO.IncorrectAnswers[1] + "','" + questionDTO.IncorrectAnswers[2] + "','" + questionDTO.CorrectAnswer + "','" + difficulty + "')");
-                Boolean succes = Utility.StoreData(insertQuestion, false);
+                MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES (@val1,@val2,@val3,@val4,@val5,@val6,@val7)");
+                insertQuestion.Parameters.AddWithValue("@val1", questionDTO.Question);
+                insertQuestion.Parameters.AddWithValue("@val2", category);
+                insertQuestion.Parameters.AddWithValue("@val3", questionDTO.IncorrectAnswers[0]);
+                insertQuestion.Parameters.AddWithValue("@val4", questionDTO.IncorrectAnswers[1]);
+                insertQuestion.Parameters.AddWithValue("@val5", questionDTO.IncorrectAnswers[2]);
+                insertQuestion.Parameters.AddWithValue("@val6", questionDTO.CorrectAnswer);
+                insertQuestion.Parameters.AddWithValue("@val7", difficulty);
+                Boolean succes = Utility.StoreData(insertQuestion, true);
                 if (succes == true)
                 {
                     return true;

@@ -13,21 +13,5 @@ namespace BusinessManager.Business
             var newList = list.OrderBy(x => random.Next(0, 3)).ToList();
             return newList;
         }
-        public static ScoreModel SelectQuestionIDAddToQuestionList(QuestionModel questionModel, ScoreModel scoreModel)
-        {
-            MySqlConnection databaseConnection = new MySqlConnection(DatabaseCredentials.DbConnectionString);
-            MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM question WHERE `question` = '" + questionModel.Question + "'", databaseConnection);
-            List<string> results = Database.GetData(Get_Question_ID, databaseConnection);
-            if (scoreModel.QuestionList == null)
-            {
-                List<string> question1 = new List<string> { results[0] };
-                scoreModel.QuestionList = question1;
-            }
-            else
-            {
-                scoreModel.QuestionList.Add(results[0]);
-            }
-            return scoreModel;
-        }
     }
 }

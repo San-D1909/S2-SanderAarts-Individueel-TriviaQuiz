@@ -44,12 +44,12 @@ namespace DataManager.Data
             List<string> results = new List<string> { };
             try
             {
-/*                if (prepare == true)
-                {
-                    sqlCommand.Prepare();
-                }*/
                 sqlCommand.Connection = databaseConnection;
                 databaseConnection.Open();
+                if (prepare == true)
+                {
+                    sqlCommand.Prepare();
+                }
                 MySqlDataReader executeString = sqlCommand.ExecuteReader();
                 while (executeString.Read())
                 {

@@ -2,6 +2,7 @@
 @model ScoreboardInputModel
 
 @{
+    List<BusinessManager.Business.ScoreboardDTO> scoreboard = Session["scoreboardList"] as List<BusinessManager.Business.ScoreboardDTO>;
     ViewBag.Title = "Scoreboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -53,8 +54,7 @@
 </form>
 
 <table>
-    @{
-        List<BusinessManager.Business.ScoreboardDTO> scoreboard = Session["scoreboardList"] as List<BusinessManager.Business.ScoreboardDTO>; 
+    @{      
         <tr>
             <th>User</th>
             <th>Score</th>
