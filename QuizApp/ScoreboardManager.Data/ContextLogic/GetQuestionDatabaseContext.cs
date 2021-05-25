@@ -15,7 +15,7 @@ namespace DataManager.Data
             MySqlCommand getMaxId = new MySqlCommand("SELECT `id` FROM `question` WHERE `category` = @val1 AND `difficulty` LIKE @val2 ORDER BY `id` DESC");
             getMaxId.Parameters.AddWithValue("@val1", category);
             getMaxId.Parameters.AddWithValue("@val2", difficulty);
-            List<string> Id = Utility.GetData(getMaxId,true);
+            List<string> Id = DatabaseClass.GetData(getMaxId,true);
             int index = random.Next(0,Convert.ToInt32(Id[0]));
             return index;
         }
@@ -24,7 +24,7 @@ namespace DataManager.Data
             QuestionDTO questionDTO = new QuestionDTO { };
             MySqlCommand getQuestionData = new MySqlCommand("SELECT * FROM `question` WHERE `id`= @val1");
             getQuestionData.Parameters.AddWithValue("@val1", SelectQuestionID(difficulty, category));
-            List<string> results = Utility.GetData(getQuestionData,true);
+            List<string> results = DatabaseClass.GetData(getQuestionData,true);
             questionDTO.Question = results[2];
             List<string> incorrect_Answers = new List<string> { results[3], results[4], results[5] };
             questionDTO.IncorrectAnswers = incorrect_Answers;

@@ -32,7 +32,7 @@ namespace DataManager.Data
         {
             MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = @val1");
             checkQuestion.Parameters.AddWithValue("@val1", questionDTO.Question);
-            List<string> results = Utility.GetData(checkQuestion,true);
+            List<string> results = DatabaseClass.GetData(checkQuestion,true);
             if (results.Count >= 1)
             {
                 return true;
@@ -47,7 +47,7 @@ namespace DataManager.Data
                 insertQuestion.Parameters.AddWithValue("@val5", questionDTO.IncorrectAnswers[2]);
                 insertQuestion.Parameters.AddWithValue("@val6", questionDTO.CorrectAnswer);
                 insertQuestion.Parameters.AddWithValue("@val7", difficulty);
-                Boolean succes = Utility.StoreData(insertQuestion, true);
+                Boolean succes = DatabaseClass.StoreData(insertQuestion, true);
                 if (succes == true)
                 {
                     return true;

@@ -17,7 +17,7 @@ namespace DataManager.Data
             storeData.Parameters.AddWithValue("@val3", userDTO.Email);
             storeData.Parameters.AddWithValue("@val4", userDTO.Password);
             storeData.Parameters.AddWithValue("@val5", userDTO.BirthDay);
-            if (Utility.StoreData(storeData, true))
+            if (DatabaseClass.StoreData(storeData, true))
             {
                 return true;
             }

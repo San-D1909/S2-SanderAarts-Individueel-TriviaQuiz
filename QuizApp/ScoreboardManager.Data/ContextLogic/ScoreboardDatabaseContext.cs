@@ -38,7 +38,7 @@ namespace DataManager.Data
                 SelectQuestionIDCommand.Parameters.AddWithValue("@val2", difficulty);
                 SelectQuestionIDCommand.Parameters.AddWithValue("@val3", startString);
                 SelectQuestionIDCommand.Parameters.AddWithValue("@val4", now.ToString("yyyy-MM-dd HH:mm:ss"));
-                List<string> scoreboardID= Utility.GetData(SelectQuestionIDCommand,true);
+                List<string> scoreboardID= DatabaseClass.GetData(SelectQuestionIDCommand,true);
                 ListScoreboardData = ConvertToList(scoreboardID, ListScoreboardData);
             }
             return (ListScoreboardData);
@@ -49,19 +49,19 @@ namespace DataManager.Data
             if (difficulty == "0" && category == 0)
             {
                 MySqlCommand command = new MySqlCommand("SELECT `id` FROM `scoreboard` ORDER BY score DESC LIMIT 5");
-                scoreboardID = Utility.GetData(command);
+                scoreboardID = DatabaseClass.GetData(command);
             }
             else if (category == 0)
             {
                 MySqlCommand command = new MySqlCommand("SELECT `id` FROM `scoreboard` WHERE `difficulty` = '" + difficulty + "' ORDER BY score DESC LIMIT 5");
                 command.Parameters.AddWithValue("@val1", difficulty);
-                scoreboardID = Utility.GetData(command, true);
+                scoreboardID = DatabaseClass.GetData(command, true);
             }
             else if (difficulty == "0")
             {
                 MySqlCommand command = new MySqlCommand("SELECT `id` FROM `scoreboard` WHERE `category` = " + category + " ORDER BY score DESC LIMIT 5");
                 command.Parameters.AddWithValue("@val1", category);
-                scoreboardID = Utility.GetData(command, true);
+                scoreboardID = DatabaseClass.GetData(command, true);
             }
             return ConvertToList(scoreboardID, Scoreboard_Data);
         }
@@ -71,7 +71,7 @@ namespace DataManager.Data
             {
                 MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `id` = @val1");
                 Get_Question_ID.Parameters.AddWithValue("@val1", ID);
-                var results = Utility.GetData(Get_Question_ID,true);
+                var results = DatabaseClass.GetData(Get_Question_ID,true);
                 Scoreboard_Data.Add(new ScoreboardDTO(results[0], results[1], results[2], results[3], results[4], results[5], results[6], results[7]));
             }
             foreach (ScoreboardDTO user in Scoreboard_Data)
@@ -84,7 +84,7 @@ namespace DataManager.Data
         {
             MySqlCommand Get_Question_ID = new MySqlCommand("SELECT `firstname` FROM `user` WHERE `unique_id` = @val1");
             Get_Question_ID.Parameters.AddWithValue("@val1", user_ID);
-            List<string> results = Utility.GetData(Get_Question_ID,true);
+            List<string> results = DatabaseClass.GetData(Get_Question_ID,true);
             return results[0];
         }
     }

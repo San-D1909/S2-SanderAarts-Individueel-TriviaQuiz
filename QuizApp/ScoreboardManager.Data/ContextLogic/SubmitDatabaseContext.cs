@@ -12,7 +12,7 @@ namespace DataManager.Data
         public int SelectQuestionListID()
         {
             MySqlCommand SelectQuestionIDCommand = new MySqlCommand("SELECT MAX(`id`) FROM `question_list` WHERE 1");
-            List<string> results = Utility.GetData(SelectQuestionIDCommand);
+            List<string> results = DatabaseClass.GetData(SelectQuestionIDCommand);
             return Convert.ToInt32(results[0]);
         }
         public bool InsertQuestionList(List<string> Question_List)
@@ -30,7 +30,7 @@ namespace DataManager.Data
                 InsertQuestionListCommand.Parameters.AddWithValue("@val8", Question_List[7]);
                 InsertQuestionListCommand.Parameters.AddWithValue("@val9", Question_List[8]);
                 InsertQuestionListCommand.Parameters.AddWithValue("@val10", Question_List[9]);
-                Utility.StoreData(InsertQuestionListCommand, true);
+                DatabaseClass.StoreData(InsertQuestionListCommand, true);
                 return true;
             }
             return false;
@@ -45,7 +45,7 @@ namespace DataManager.Data
             SelectQuestionIDCommand.Parameters.AddWithValue("@val4", submitDTO.QuestionAmount);
             SelectQuestionIDCommand.Parameters.AddWithValue("@val5", SelectQuestionListID());
             SelectQuestionIDCommand.Parameters.AddWithValue("@val6", submitDTO.Score);
-            Utility.StoreData(SelectQuestionIDCommand, true);
+            DatabaseClass.StoreData(SelectQuestionIDCommand, true);
         }
     }
 }

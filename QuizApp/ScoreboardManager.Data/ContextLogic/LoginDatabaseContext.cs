@@ -23,7 +23,7 @@ namespace DataManager.Data
             MySqlCommand getUserData = new MySqlCommand("SELECT `unique_id`,`firstname`,`lastname` FROM user WHERE email=@val1 AND password=@val2");
             getUserData.Parameters.AddWithValue("@val1", email);
             getUserData.Parameters.AddWithValue("@val2", password);
-            List<string> results = Utility.GetData(getUserData, true);
+            List<string> results = DatabaseClass.GetData(getUserData, true);
             if (results != null && results.Count > 0)
             {
                 userDTO = new UserDTO { UniqueID = results[0], FirstName = results[1], LastName = results[2], Email = email };
