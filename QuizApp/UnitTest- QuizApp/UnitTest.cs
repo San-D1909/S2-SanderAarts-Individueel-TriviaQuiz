@@ -6,7 +6,7 @@ using BusinessManager.Business;
 using MySql.Data.MySqlClient;
 using DataManager.Data;
 
-namespace UnitTest__QuizApp
+namespace UnitTestQuizApp
 {
     [TestClass]
     public class UnitTest

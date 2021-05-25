@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp", "QuizApp\QuizApp.csproj", "{AF5E7F2A-5A87-4B9F-AA91-2BC8AFF28E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest- QuizApp", "UnitTest- QuizApp\UnitTest- QuizApp.csproj", "{E4DF3790-827A-4B48-A406-F986A47604B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestQuizApp", "UnitTest- QuizApp\UnitTestQuizApp.csproj", "{E4DF3790-827A-4B48-A406-F986A47604B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.Data", "ScoreboardManager.Data\DataManager.Data.csproj", "{DA7AD8FA-72FF-40DF-B5CD-5E7C25C2C17F}"
 EndProject
