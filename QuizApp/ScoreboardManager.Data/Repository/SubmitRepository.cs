@@ -17,9 +17,9 @@ namespace DataManager.Data
         {
             this.context = new SubmitDatabaseContext();
         }
-        public void InsertToScoreboard(SubmitDTO submitDTO)
+        public bool InsertToScoreboard(SubmitDTO submitDTO)
         {
-            context.InsertToScoreboard(submitDTO);
+            return context.InsertToScoreboard(submitDTO);
         }
     }
 }

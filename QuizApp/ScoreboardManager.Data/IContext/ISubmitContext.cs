@@ -8,6 +8,6 @@ namespace DataManager.Data
 {
     public interface ISubmitContext
     {
-        void InsertToScoreboard(SubmitDTO submitDTO);
+        bool InsertToScoreboard(SubmitDTO submitDTO);
     }
 }

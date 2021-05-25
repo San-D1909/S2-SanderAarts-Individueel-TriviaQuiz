@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataManager.Data
 {
-    class DatabaseClass
+    public class DatabaseClass
     {
         private static MySqlConnection databaseConnection = new MySqlConnection("Datasource=127.0.0.1;port=3306;username=root;password=;database= quizapp;");
         public static void Check_databaseConnectionState(MySqlConnection databaseConnection)

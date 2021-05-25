@@ -35,7 +35,7 @@ namespace DataManager.Data
             }
             return false;
         }
-        public void InsertToScoreboard(SubmitDTO submitDTO)
+        public bool InsertToScoreboard(SubmitDTO submitDTO)
         {
             InsertQuestionList(submitDTO.QuestionList);
             MySqlCommand SelectQuestionIDCommand = new MySqlCommand("INSERT INTO `scoreboard` ( `user`, `category`, `difficulty`, `amount_of_questions`, `question_list`, `score`, `date`) VALUES(@val1,@val2,@val3,@val4,@val5,@val6, current_timestamp());");
@@ -45,7 +45,14 @@ namespace DataManager.Data
             SelectQuestionIDCommand.Parameters.AddWithValue("@val4", submitDTO.QuestionAmount);
             SelectQuestionIDCommand.Parameters.AddWithValue("@val5", SelectQuestionListID());
             SelectQuestionIDCommand.Parameters.AddWithValue("@val6", submitDTO.Score);
-            DatabaseClass.StoreData(SelectQuestionIDCommand, true);
+            if(DatabaseClass.StoreData(SelectQuestionIDCommand, true))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

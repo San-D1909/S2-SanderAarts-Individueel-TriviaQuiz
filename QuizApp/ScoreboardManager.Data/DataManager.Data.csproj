@@ -112,7 +112,7 @@
     <Compile Include="ContextLogic\SubmitDatabaseContext.cs" />
     <Compile Include="DTO\SubmitDTO.cs" />
     <Compile Include="Repository\SubmitRepository.cs" />
-    <Compile Include="Utility.cs" />
+    <Compile Include="DatabaseClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

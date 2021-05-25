@@ -6,11 +6,10 @@ using BusinessManager.Business;
 using MySql.Data.MySqlClient;
 using DataManager.Data;
 
-
 namespace UnitTest__QuizApp
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
         GetQuestionDatabaseContext question_Context = new GetQuestionDatabaseContext();
         [TestMethod]
@@ -62,6 +61,20 @@ namespace UnitTest__QuizApp
             LoginContainer container = new LoginContainer { };
             var results = container.Login("t@t", "t");
             Assert.IsTrue(results.UniqueID != "" || results.UniqueID != null);
+        }
+        [TestMethod]
+        public void GetQuestionID()
+        {
+            GetQuestionIDRepository repo = new GetQuestionIDRepository();
+            Assert.IsTrue(repo.SelectQuestionIDAddToQuestionList("How fast is USB 3.1 Gen 2 theoretically?")>0);
+        }
+        [TestMethod]
+        public void SubmitAScore()
+        {
+            List<string> questionList = new List<string> { "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
+            SubmitDTO submitDTO = new SubmitDTO { Category = 15, Difficulty = "easy", QuestionAmount = 10, QuestionList = questionList, UniqueID = 8, Score = 0 };
+            SubmitRepository repo = new SubmitRepository();
+            repo.InsertToScoreboard(submitDTO);
         }
     }
 }
