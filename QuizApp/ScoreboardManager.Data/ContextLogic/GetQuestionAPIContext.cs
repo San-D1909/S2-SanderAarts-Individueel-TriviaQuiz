@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace DataManager.Data
 {
-    class GetQuestionAPIContext : IGetQuestionAPIContext
+    public class GetQuestionAPIContext : IGetQuestionAPIContext
     {
         public string SelectJSONFromAPI(string requestString)
         {

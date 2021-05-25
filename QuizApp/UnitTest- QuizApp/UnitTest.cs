@@ -13,20 +13,14 @@ namespace UnitTest__QuizApp
     {
         GetQuestionDatabaseContext question_Context = new GetQuestionDatabaseContext();
         [TestMethod]
-        public void Leave_Input_Empty_Scoreboard()
+        public void LeaveInputEmptyScoreboard()
         {
             ScoreboardContainer container = new ScoreboardContainer();
             var results = container.SelectScoreboardData("0", 0, "AllTime");
             Assert.IsTrue(results.Count > 0);
         }
         [TestMethod]
-        public void API_Is_Down()
-        {
-            QuestionDTO questionDTO = question_Context.SelectQuestionDatabase("medium", "15");
-            Assert.IsTrue(questionDTO.Question.Length > 0);
-        }
-        [TestMethod]
-        public void Random_is_random()
+        public void RandomIsrandom()
         {
             GetQuestionDatabaseContext context = new GetQuestionDatabaseContext();
             List<int> list = new List<int>();
@@ -49,7 +43,7 @@ namespace UnitTest__QuizApp
             }
         }
         [TestMethod]
-        public void Insert_Question()
+        public void InsertQuestion()
         {
             GetQuestionDataRepository repo = new GetQuestionDataRepository();
             List<string> incorrect = new List<string> { "fout1", "fout2", "fout3" };
@@ -60,7 +54,7 @@ namespace UnitTest__QuizApp
         {
             LoginContainer container = new LoginContainer { };
             var results = container.Login("t@t", "t");
-            Assert.IsTrue(results.UniqueID != "" || results.UniqueID != null);
+            Assert.IsTrue(results.UniqueID != "" && results.UniqueID != null);
         }
         [TestMethod]
         public void GetQuestionID()

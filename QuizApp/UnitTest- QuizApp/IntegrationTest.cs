@@ -11,12 +11,11 @@ namespace UnitTest__QuizApp
     [TestClass]
     public class IntegrationTest
     {
-        GetQuestionDatabaseContext question_Context = new GetQuestionDatabaseContext();
         [TestMethod]
-        public void API_Is_Down()
+        public void APIIsWorking()
         {
-            QuestionDTO questionDTO = question_Context.SelectQuestionDatabase("medium", "15");
-            Assert.IsTrue(questionDTO.Question.Length > 0);
+            GetQuestionAPIContext aPIContext = new GetQuestionAPIContext();
+            Assert.IsTrue(aPIContext.SelectJSONFromAPI("https://opentdb.com/api.php?amount=10").Length > 0);
         }
         [TestMethod]
         public void DBisWorking()
