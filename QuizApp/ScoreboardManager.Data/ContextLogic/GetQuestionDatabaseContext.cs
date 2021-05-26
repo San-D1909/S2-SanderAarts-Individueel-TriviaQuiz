@@ -16,8 +16,7 @@ namespace DataManager.Data
             getMaxId.Parameters.AddWithValue("@val1", category);
             getMaxId.Parameters.AddWithValue("@val2", difficulty);
             List<string> Id = DatabaseClass.GetData(getMaxId,true);
-            int index = random.Next(0,Convert.ToInt32(Id[0]));
-            return index;
+            return random.Next(0, Convert.ToInt32(Id[0]));
         }
         public QuestionDTO SelectQuestionDatabase(string difficulty, string category)
         {

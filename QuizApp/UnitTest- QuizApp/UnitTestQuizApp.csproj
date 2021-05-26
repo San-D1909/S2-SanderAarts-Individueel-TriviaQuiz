@@ -98,9 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IntegrationTest.cs" />
+    <Compile Include="ScoreboardUnitTests.cs" />
+    <Compile Include="LoginUnitTests.cs" />
+    <Compile Include="RegisterUnitTests.cs" />
+    <Compile Include="QuestionUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

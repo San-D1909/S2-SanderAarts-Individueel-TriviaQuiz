@@ -10,7 +10,7 @@ namespace BusinessManager.Business
 {
     public class QuestionContainer
     {
-        public static QuestionModel FillQuestionModel(APIRequestModel apiRequestModel)
+        public QuestionModel FillQuestionModel(APIRequestModel apiRequestModel)
         {
             GetQuestionDataRepository repo = new GetQuestionDataRepository();
             //Creates a variable URL based on user input.

@@ -41,7 +41,7 @@ namespace DataManager.Data
                 List<string> scoreboardID= DatabaseClass.GetData(SelectQuestionIDCommand,true);
                 ListScoreboardData = ConvertToList(scoreboardID, ListScoreboardData);
             }
-            return (ListScoreboardData);
+            return ListScoreboardData;
         }
         public List<ScoreboardDTO> EmptyUserInput(string difficulty, int category, List<ScoreboardDTO> Scoreboard_Data)
         {

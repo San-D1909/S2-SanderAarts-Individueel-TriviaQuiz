@@ -21,11 +21,15 @@ namespace BusinessManager.Business
             }
             return scoreboard;
         }
-        public void InsertToScoreboard(int category, string difficulty, int questionAmount, List<string> questionList, int uniqueID, int finalScore)
+        public bool InsertToScoreboard(int category, string difficulty, int questionAmount, List<string> questionList, int uniqueID, int finalScore)
         {
             SubmitDTO submitDTO = new SubmitDTO { Category = category, Difficulty = difficulty, QuestionAmount = questionAmount, QuestionList = questionList, UniqueID = uniqueID, Score = finalScore };
             SubmitRepository repo = new SubmitRepository();
-            repo.InsertToScoreboard(submitDTO);
+            if(repo.InsertToScoreboard(submitDTO))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

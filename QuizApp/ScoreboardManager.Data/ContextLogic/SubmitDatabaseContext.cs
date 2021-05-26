@@ -45,14 +45,7 @@ namespace DataManager.Data
             SelectQuestionIDCommand.Parameters.AddWithValue("@val4", submitDTO.QuestionAmount);
             SelectQuestionIDCommand.Parameters.AddWithValue("@val5", SelectQuestionListID());
             SelectQuestionIDCommand.Parameters.AddWithValue("@val6", submitDTO.Score);
-            if(DatabaseClass.StoreData(SelectQuestionIDCommand, true))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return DatabaseClass.StoreData(SelectQuestionIDCommand, true);
         }
     }
 }

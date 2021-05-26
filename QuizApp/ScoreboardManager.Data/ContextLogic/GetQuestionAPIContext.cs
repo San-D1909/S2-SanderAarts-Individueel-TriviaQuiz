@@ -25,19 +25,14 @@ namespace DataManager.Data
             }
             //Manipulate string to useable JSON
             resultJSON = resultJSON.Replace("{\"response_code\":0,\"results\":[", "");
-            resultJSON = resultJSON.Remove(resultJSON.Length - 2, 2);
-            return resultJSON;
+            return resultJSON.Remove(resultJSON.Length - 2, 2);
         }
         public bool InsertQuestionDatabase(QuestionDTO questionDTO, string difficulty, string category)
         {
             MySqlCommand checkQuestion = new MySqlCommand("SELECT * FROM question WHERE `question` = @val1");
             checkQuestion.Parameters.AddWithValue("@val1", questionDTO.Question);
             List<string> results = DatabaseClass.GetData(checkQuestion,true);
-            if (results.Count >= 1)
-            {
-                return true;
-            }
-            else
+            if (results.Count == 0)
             {
                 MySqlCommand insertQuestion = new MySqlCommand("INSERT INTO `question`(`question`, `category`,`incorrect_answer1`, `incorrect_answer2`, `incorrect_answer3`, `correct_answer`,`difficulty`) VALUES (@val1,@val2,@val3,@val4,@val5,@val6,@val7)");
                 insertQuestion.Parameters.AddWithValue("@val1", questionDTO.Question);
@@ -47,13 +42,12 @@ namespace DataManager.Data
                 insertQuestion.Parameters.AddWithValue("@val5", questionDTO.IncorrectAnswers[2]);
                 insertQuestion.Parameters.AddWithValue("@val6", questionDTO.CorrectAnswer);
                 insertQuestion.Parameters.AddWithValue("@val7", difficulty);
-                Boolean succes = DatabaseClass.StoreData(insertQuestion, true);
-                if (succes == true)
+                if (DatabaseClass.StoreData(insertQuestion, true) != true)
                 {
-                    return true;
+                    return false;
                 }
-                return false;
             }
+            return true;
         }
     }
 }

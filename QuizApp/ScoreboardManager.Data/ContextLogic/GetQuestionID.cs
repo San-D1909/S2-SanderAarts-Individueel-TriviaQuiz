@@ -13,8 +13,7 @@ namespace DataManager.Data
         {
             MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM question WHERE `question` = @val1");
             Get_Question_ID.Parameters.AddWithValue("@val1", question);
-            List<string> results = DatabaseClass.GetData(Get_Question_ID,true);
-            return Convert.ToInt32(results[0]);
+            return Convert.ToInt32(DatabaseClass.GetData(Get_Question_ID, true)[0]);
         }
     }
 }

@@ -25,9 +25,7 @@ namespace QuizApp.Controllers
 
         public ActionResult NextQuestion()
         {
-            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
-            Session["scoreModel"] = scoreModel;
-
+            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;         
             if (scoreModel.CurrentQuestion > scoreModel.QuestionAmount)
             {//Check if the current questionnumber is bigger than the amount of questions.
                 PrepareNextQuiz(scoreModel);
@@ -35,6 +33,7 @@ namespace QuizApp.Controllers
             }
             else
             {
+                Session["scoreModel"] = scoreModel;
                 return RedirectToAction("PrepareQuestion", "Quiz");
             }
         }
@@ -44,7 +43,7 @@ namespace QuizApp.Controllers
             TempData["finalScore"] = scoreModel.Score;
             scoreModel.Score = 0;
             scoreModel.CurrentQuestion = 1;
-            Session["questionModel"] = scoreModel;
+            Session["scoreModel"] = scoreModel;
         }
     }
 }

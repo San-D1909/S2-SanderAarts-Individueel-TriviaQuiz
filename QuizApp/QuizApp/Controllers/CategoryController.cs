@@ -1,21 +1,26 @@
-﻿using QuizApp.Models;
+﻿using BusinessManager.Business;
+using QuizApp.Models;
 using System.Web.Mvc;
 
 namespace QuizApp.Controllers
 {
     public class CategoryController : Controller
     {
-        // GET: Category
         public ActionResult SelectCategory(ScoreboardInputModel scoreboardInputModel)
         {
             if (Session["Login"] == null)
             {
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("", "Login");
             }
-            BusinessManager.Business.ScoreModel scoreModel = new BusinessManager.Business.ScoreModel { };
-            scoreModel.Score = 0;
-            Session["scoreModel"] = scoreModel;
+            PrepareNextQuiz(new ScoreModel { });          
             return View();
+        }
+        public void PrepareNextQuiz(ScoreModel scoreModel)
+        {
+            TempData["finalScore"] = scoreModel.Score;
+            scoreModel.Score = 0;
+            scoreModel.CurrentQuestion = 1;
+            Session["scoreModel"] = scoreModel;
         }
     }
 }
