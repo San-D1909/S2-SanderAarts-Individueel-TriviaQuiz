@@ -64,3 +64,9 @@ C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTe
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\obj\Debug\UnitTestQuizApp.csproj.CopyComplete
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\obj\Debug\UnitTest- QuizApp.dll
 C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\obj\Debug\UnitTest- QuizApp.pdb
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\Castle.Core.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\Moq.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\Castle.Core.xml
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\Moq.xml
+C:\School\Leerjaar 1\Software\Semester 2\Eigen project\TriviaQuiz\QuizApp\UnitTest- QuizApp\bin\Debug\System.Threading.Tasks.Extensions.xml

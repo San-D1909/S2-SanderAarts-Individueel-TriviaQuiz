@@ -9,11 +9,10 @@ namespace BusinessManager.Business
 {
     public class LoginContainer
     {
+        public LoginRepository loginRepository = new LoginRepository();
         public UserDTO Login(string email,string password)
         {
-            LoginRepository repo = new LoginRepository();
-
-            UserDTO userDTO = new UserDTO(repo.LoginCheck(email, password));
+            UserDTO userDTO = new UserDTO(loginRepository.LoginCheck(email, password));
             return userDTO;
         }
     }

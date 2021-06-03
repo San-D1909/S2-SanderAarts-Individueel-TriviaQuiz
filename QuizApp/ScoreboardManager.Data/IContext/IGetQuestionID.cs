@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataManager.Data
 {
-    interface IGetQuestionID
+    public interface IGetQuestionID
     {
         int SelectQuestionIDAddToQuestionList(string question);
     }

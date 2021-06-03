@@ -31,7 +31,6 @@ namespace BusinessManager.Business
         }
         public ScoreModel SelectQuestionIDAddToQuestionList(QuestionModel questionModel, ScoreModel scoreModel)
         {
-            GetQuestionIDRepository getQuestionIDRepository = new GetQuestionIDRepository();
             int ID = getQuestionIDRepository.SelectQuestionIDAddToQuestionList(questionModel.Question);
             if (scoreModel.QuestionList == null)
             {
