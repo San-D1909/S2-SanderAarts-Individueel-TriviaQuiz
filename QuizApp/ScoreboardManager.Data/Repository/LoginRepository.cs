@@ -9,14 +9,25 @@ namespace DataManager.Data
     public class LoginRepository
     {
         private ILoginDatabaseContext context;
+        public ILoginDatabaseContext Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+            }
+        }
         public LoginRepository()
         {
-            this.context = new LoginDatabaseContext();
+            this.Context = new LoginDatabaseContext();
         }
 
         public UserDTO LoginCheck(string email, string password)
         {
-            return context.LoginCheck(email, password);
+            return Context.LoginCheck(email, password);
         }
     }
 }

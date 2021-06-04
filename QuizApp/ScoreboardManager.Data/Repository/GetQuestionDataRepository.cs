@@ -10,23 +10,45 @@ namespace DataManager.Data
     {
         private IGetQuestionAPIContext apiContext;
         private IGetQuestionDatabaseContext databaseContext;
+        public IGetQuestionAPIContext ApiContext
+        {
+            get
+            {
+                return apiContext;
+            }
+            set
+            {
+                apiContext = value;
+            }
+        }
+        public IGetQuestionDatabaseContext DatabaseContext
+        {
+            get
+            {
+                return databaseContext;
+            }
+            set
+            {
+                databaseContext = value;
+            }
+        }
 
         public QuestionDTO SelectQuestionDatabase(string difficulty, string category)
         {
-            databaseContext = new GetQuestionDatabaseContext();
-            return databaseContext.SelectQuestionDatabase(difficulty, category);
+            DatabaseContext = new GetQuestionDatabaseContext();
+            return DatabaseContext.SelectQuestionDatabase(difficulty, category);
         }
 
         public string SelectJSONFromAPI(string requestString)
         {
-            apiContext = new GetQuestionAPIContext();
-            return apiContext.SelectJSONFromAPI(requestString);
+            ApiContext = new GetQuestionAPIContext();
+            return ApiContext.SelectJSONFromAPI(requestString);
         }
         public bool InsertQuestionDatabase(string question, List<string> incorrect_Answers, string correct_Answer, string difficulty, string category)
         {
             QuestionDTO questionDTO = new QuestionDTO(question,incorrect_Answers,correct_Answer);
-            apiContext = new GetQuestionAPIContext();
-            return apiContext.InsertQuestionDatabase(questionDTO, difficulty, category);
+            ApiContext = new GetQuestionAPIContext();
+            return ApiContext.InsertQuestionDatabase(questionDTO, difficulty, category);
         }
     }
 }

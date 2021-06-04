@@ -12,28 +12,28 @@ namespace UnitTestQuizApp
     [TestClass]
     public class QuestionUnitTests
     {
-        public QuestionContainer container = new QuestionContainer { };
+        public QuestionContainer questionContainer = new QuestionContainer { };
         public QuestionModel questionModel = new Mock<QuestionModel>().Object;
         public ScoreModel scoreModel = new Mock<ScoreModel>().Object;
+        public QuestionDTO questionDTO = new Mock<QuestionDTO>().Object;
 
         [TestMethod]
         public void InsertQuestion()
         {
-            GetQuestionDataRepository repo = new GetQuestionDataRepository();
-            List<string> incorrect = new List<string> { "fout1", "fout2", "fout3" };
-            Assert.IsTrue(repo.InsertQuestionDatabase("Dit is een unit_test", incorrect, "Juist", "Hard", "15"));
+            var Iface = new Mock<IGetQuestionAPIContext>();
+            Iface.Setup(x => x.InsertQuestionDatabase(questionDTO, "test","test")).Returns(true);
+            questionContainer.getQuestionDataRepository.ApiContext = Iface.Object;
+            Assert.IsTrue(questionContainer.getQuestionDataRepository.ApiContext.InsertQuestionDatabase(questionDTO, "test", "test"));
         }
         [TestMethod]
         public void GetQuestionID()
         {
             var Iface = new Mock<IGetQuestionID>();
             Iface.Setup(x => x.SelectQuestionIDAddToQuestionList("In which year was League of Legends released?")).Returns(718);
-            container.getQuestionIDRepository.Context = Iface.Object;
-
-            //container.getQuestionIDRepository = repo.Object;
+            questionContainer.getQuestionIDRepository.Context = Iface.Object;
             questionModel.Question = "In which year was League of Legends released?";
-            ScoreModel scoreModel1 = container.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
-            Assert.IsTrue(scoreModel1.QuestionList[0]=="718");
+            scoreModel = questionContainer.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
+            Assert.IsTrue(scoreModel.QuestionList[0]=="718");
         }
         [TestMethod]
         public void QuestionsAreRandom()

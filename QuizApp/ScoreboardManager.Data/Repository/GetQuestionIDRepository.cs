@@ -8,7 +8,18 @@ namespace DataManager.Data
 {
     public class GetQuestionIDRepository
     {
-        public IGetQuestionID Context;
+        private IGetQuestionID context;
+        public IGetQuestionID Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+            }
+        }
         public GetQuestionIDRepository()
         {
             this.Context = new GetQuestionID();

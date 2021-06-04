@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using BusinessManager.Business;
 using MySql.Data.MySqlClient;
 using DataManager.Data;
+using Moq;
 
 namespace UnitTestQuizApp
 {
@@ -12,17 +13,23 @@ namespace UnitTestQuizApp
     public class LoginUnitTests
     {
         private LoginContainer container = new LoginContainer { };
+        private DataManager.Data.UserDTO userDTO = new Mock<DataManager.Data.UserDTO>().Object;
         [TestMethod]
         public void LoginTest()
         {
+            var Iface = new Mock<ILoginDatabaseContext>();
+            Iface.Setup(x => x.LoginCheck("t@t", "t")).Returns(userDTO);
+            container.LoginRepository.Context = Iface.Object;
             var results = container.Login("t@t", "t");
-            Assert.IsTrue(results.UniqueID != "" && results.UniqueID != null);
+            Assert.IsTrue(container.Login("t@t", "t") != null);
         }
         [TestMethod]
         public void InvalidLoginForbidden()
         {
-            var results = container.Login("test@t", "test");
-            Assert.IsFalse(results.UniqueID != "" && results.UniqueID != null);
+            var Iface = new Mock<ILoginDatabaseContext>();
+            Iface.Setup(x => x.LoginCheck("t@t", "t")).Returns(userDTO);
+            container.LoginRepository.Context = Iface.Object;
+            Assert.IsFalse(container.Login("test@t", "test") != null);
         }
     }
 }

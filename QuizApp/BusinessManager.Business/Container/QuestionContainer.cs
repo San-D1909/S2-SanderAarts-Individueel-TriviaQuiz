@@ -10,8 +10,30 @@ namespace BusinessManager.Business
 {
     public class QuestionContainer
     {
-        public GetQuestionDataRepository getQuestionDataRepository = new GetQuestionDataRepository();
-        public GetQuestionIDRepository getQuestionIDRepository = new GetQuestionIDRepository();
+        public GetQuestionIDRepository getQuestionIDRepository 
+        {
+            get
+            {
+                return QuestionIDRepository;
+            }
+            set
+            {
+                QuestionIDRepository = value;
+            }
+        }
+        public GetQuestionDataRepository getQuestionDataRepository
+        {
+            get
+            {
+                return QuestionDataRepository;
+            }
+            set
+            {
+                QuestionDataRepository = value;
+            }
+        }
+        private GetQuestionDataRepository QuestionDataRepository = new GetQuestionDataRepository();
+        private GetQuestionIDRepository QuestionIDRepository = new GetQuestionIDRepository();
         public QuestionModel FillQuestionModel(APIRequestModel apiRequestModel)
         {
             //Creates a variable URL based on user input.
