@@ -10,9 +10,20 @@ namespace BusinessManager.Business
     public class RegisterContainer
     {
         public RegisterRepository registerRepository = new RegisterRepository();
-        public bool InsertUser( string first, string last, string email,string birthDay,string password)
+        public RegisterRepository RegisterRepository
         {
-            if (registerRepository.InsertUser( first, last, email, password, birthDay))
+            get
+            {
+                return registerRepository;
+            }
+            set
+            {
+                registerRepository = value;
+            }
+        }
+        public bool InsertUser( UserDTO userDTO)
+        {
+            if (RegisterRepository.InsertUser( userDTO.FirstName,userDTO.LastName,userDTO.Email, userDTO.Password,userDTO.BirthDay))
             {
                 return true;
             }

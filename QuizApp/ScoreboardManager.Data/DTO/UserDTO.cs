@@ -1,4 +1,5 @@
 ﻿namespace DataManager.Data
+
 {
     public class UserDTO
     {

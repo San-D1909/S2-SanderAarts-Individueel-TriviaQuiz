@@ -9,13 +9,24 @@ namespace DataManager.Data
     public class ScoreboardRepository
     {
         private IScoreboardContext context;
+        public IScoreboardContext Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+            }
+        }
         public ScoreboardRepository()
         {
-            this.context = new ScoreboardDatabaseContext();
+            this.Context = new ScoreboardDatabaseContext();
         }
         public List<ScoreboardDTO> SelectScoreboardData(string difficulty, int category, string timeSpan)
         {
-            return context.SelectScoreboardData(difficulty, category, timeSpan).ToList();
+            return Context.SelectScoreboardData(difficulty, category, timeSpan).ToList();
         }
     }
 }

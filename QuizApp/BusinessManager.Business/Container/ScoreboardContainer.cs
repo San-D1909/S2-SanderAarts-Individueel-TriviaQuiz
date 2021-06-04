@@ -9,12 +9,34 @@ namespace BusinessManager.Business
 {
     public class ScoreboardContainer
     {
-        public ScoreboardRepository scoreboardRepository = new ScoreboardRepository();
-        public SubmitRepository submitRepository = new SubmitRepository();
+        public ScoreboardRepository ScoreboardRepository
+        {
+            get
+            {
+                return scoreboardRepository;
+            }
+            set
+            {
+                scoreboardRepository = value;
+            }
+        }
+        public SubmitRepository SubmitRepository
+        {
+            get
+            {
+                return submitRepository;
+            }
+            set
+            {
+                submitRepository = value;
+            }
+        }
+        private ScoreboardRepository scoreboardRepository = new ScoreboardRepository();
+        private SubmitRepository submitRepository = new SubmitRepository();
         public List<ScoreboardDTO> SelectScoreboardData(string difficulty, int category, string timeSpan)
         {
             List<ScoreboardDTO> scoreboard = new List<ScoreboardDTO>();
-            var scoreboardDTO = scoreboardRepository.SelectScoreboardData(difficulty, category, timeSpan);
+            var scoreboardDTO = ScoreboardRepository.SelectScoreboardData(difficulty, category, timeSpan);
             foreach (var DTO in scoreboardDTO)
             {
                 scoreboard.Add(new ScoreboardDTO(DTO));
@@ -24,7 +46,7 @@ namespace BusinessManager.Business
         public bool InsertToScoreboard(int category, string difficulty, int questionAmount, List<string> questionList, int uniqueID, int finalScore)
         {
             SubmitDTO submitDTO = new SubmitDTO { Category = category, Difficulty = difficulty, QuestionAmount = questionAmount, QuestionList = questionList, UniqueID = uniqueID, Score = finalScore };
-            if(submitRepository.InsertToScoreboard(submitDTO))
+            if(SubmitRepository.InsertToScoreboard(submitDTO))
             {
                 return true;
             }

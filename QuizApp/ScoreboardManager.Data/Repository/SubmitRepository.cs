@@ -9,17 +9,28 @@ namespace DataManager.Data
     public class SubmitRepository
     {
         private ISubmitContext context;
+        public ISubmitContext Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+            }
+        }
         public SubmitRepository(ISubmitContext context)
         {
-            this.context = context;
+            this.Context = context;
         }
         public SubmitRepository()
         {
-            this.context = new SubmitDatabaseContext();
+            this.Context = new SubmitDatabaseContext();
         }
         public bool InsertToScoreboard(SubmitDTO submitDTO)
         {
-            return context.InsertToScoreboard(submitDTO);
+            return Context.InsertToScoreboard(submitDTO);
         }
     }
 }

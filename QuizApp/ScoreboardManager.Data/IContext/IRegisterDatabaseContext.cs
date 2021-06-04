@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataManager.Data
 {
-    interface IRegisterDatabaseContext
+    public interface IRegisterDatabaseContext
     {
         bool InsertUser(UserDTO userDTO);
     }

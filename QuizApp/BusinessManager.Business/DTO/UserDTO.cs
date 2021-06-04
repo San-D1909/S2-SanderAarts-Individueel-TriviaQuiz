@@ -20,6 +20,10 @@ namespace BusinessManager.Business
             Email = data.Email;
             BirthDay = data.BirthDay;
         }
+        public UserDTO()
+        {
+        }
+
         public string UniqueID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

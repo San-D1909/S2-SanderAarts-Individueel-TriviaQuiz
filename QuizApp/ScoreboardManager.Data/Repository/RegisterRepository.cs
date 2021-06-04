@@ -9,15 +9,26 @@ namespace DataManager.Data
     public class RegisterRepository
     {
         private IRegisterDatabaseContext context;
+        public IRegisterDatabaseContext Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                context = value;
+            }
+        }
         public RegisterRepository()
         {
-            this.context = new RegisterDatabaseContext();
+            this.Context = new RegisterDatabaseContext();
         }
              
         public bool InsertUser( string first, string last, string email, string password, string birth_day)
         {
-            UserDTO userDTO = new UserDTO(first,last,email,password,birth_day);
-            if(context.InsertUser(userDTO))
+            UserDTO userDTO = new UserDTO(first, last, email, password, birth_day);
+            if (Context.InsertUser(userDTO))
             {
                 return true;
             }

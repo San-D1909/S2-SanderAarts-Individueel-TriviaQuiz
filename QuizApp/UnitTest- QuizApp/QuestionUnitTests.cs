@@ -21,7 +21,7 @@ namespace UnitTestQuizApp
         public void InsertQuestion()
         {
             var Iface = new Mock<IGetQuestionAPIContext>();
-            Iface.Setup(x => x.InsertQuestionDatabase(questionDTO, "test","test")).Returns(true);
+            Iface.Setup(x => x.InsertQuestionDatabase(It.IsAny<QuestionDTO>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             questionContainer.getQuestionDataRepository.ApiContext = Iface.Object;
             Assert.IsTrue(questionContainer.getQuestionDataRepository.ApiContext.InsertQuestionDatabase(questionDTO, "test", "test"));
         }
@@ -29,9 +29,9 @@ namespace UnitTestQuizApp
         public void GetQuestionID()
         {
             var Iface = new Mock<IGetQuestionID>();
-            Iface.Setup(x => x.SelectQuestionIDAddToQuestionList("In which year was League of Legends released?")).Returns(718);
+            Iface.Setup(x => x.SelectQuestionIDAddToQuestionList(It.IsAny<string>())).Returns(718);
             questionContainer.getQuestionIDRepository.Context = Iface.Object;
-            questionModel.Question = "In which year was League of Legends released?";
+            questionModel.Question = "test string";
             scoreModel = questionContainer.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
             Assert.IsTrue(scoreModel.QuestionList[0]=="718");
         }

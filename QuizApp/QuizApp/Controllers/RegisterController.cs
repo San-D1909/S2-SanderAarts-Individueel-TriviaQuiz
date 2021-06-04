@@ -16,7 +16,8 @@ namespace QuizApp.Controllers
         {
             if (!ModelState.IsValid) { return View("Register"); }
             RegisterContainer registerContainer = new RegisterContainer();
-            if (registerContainer.InsertUser(registerModel.FirstName, registerModel.LastName, registerModel.Email, registerModel.BirthDay, registerModel.Password))
+            UserDTO userDTO = new UserDTO(registerModel.FirstName, registerModel.LastName, registerModel.Email, registerModel.Password, registerModel.BirthDay);
+            if (registerContainer.InsertUser(userDTO))
             {
                 return RedirectToAction("Index", "Login");
             }

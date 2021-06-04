@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using BusinessManager.Business;
 using MySql.Data.MySqlClient;
 using DataManager.Data;
+using Moq;
 
 namespace UnitTestQuizApp
 {
@@ -14,15 +15,20 @@ namespace UnitTestQuizApp
         private ScoreboardContainer container = new ScoreboardContainer();
         [TestMethod]
         public void LeaveInputEmptyScoreboard()
-        {        
+        {
+            var Iface = new Mock<IScoreboardContext>();
+            Iface.Setup(x => x.SelectScoreboardData("0", 0, "AllTime")).Returns(new List<DataManager.Data.ScoreboardDTO>());
+            container.ScoreboardRepository.Context = Iface.Object;
             var results = container.SelectScoreboardData("0", 0, "AllTime");
-            Assert.IsTrue(results.Count > 0);
+            Assert.IsTrue(results!=null);
         }
         [TestMethod]
         public void SubmitAScore()
-        {
-            List<string> questionList = new List<string> { "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
-            Assert.IsTrue(container.InsertToScoreboard(15, "easy",  10, questionList, 8,  0)==true);
+        { 
+            var Iface = new Mock<ISubmitContext>();
+            Iface.Setup(x => x.InsertToScoreboard(It.IsAny<SubmitDTO>())).Returns(true);
+            container.SubmitRepository.Context = Iface.Object;
+            Assert.IsTrue(container.InsertToScoreboard(15, "easy",  10, It.IsAny<List<string>>(), 8,  0));
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using BusinessManager.Business;
 using MySql.Data.MySqlClient;
 using DataManager.Data;
+using Moq;
 
 namespace UnitTestQuizApp
 {
@@ -15,7 +16,11 @@ namespace UnitTestQuizApp
         [TestMethod]
         public void RegisterTest()
         {
-            Assert.IsTrue(container.InsertUser("unit", "test", "unit@test", "", "unittest")==true);
+            BusinessManager.Business.UserDTO userbus = new Mock<BusinessManager.Business.UserDTO>().Object;
+            var Iface = new Mock<IRegisterDatabaseContext>();
+            Iface.Setup(x => x.InsertUser(It.IsAny<DataManager.Data.UserDTO>())).Returns(true);
+            container.registerRepository.Context = Iface.Object;
+            Assert.IsTrue(container.InsertUser(userbus));
         }
     }
 }

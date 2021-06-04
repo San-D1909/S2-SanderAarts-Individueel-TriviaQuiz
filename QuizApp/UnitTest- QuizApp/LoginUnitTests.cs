@@ -20,7 +20,6 @@ namespace UnitTestQuizApp
             var Iface = new Mock<ILoginDatabaseContext>();
             Iface.Setup(x => x.LoginCheck("t@t", "t")).Returns(userDTO);
             container.LoginRepository.Context = Iface.Object;
-            var results = container.Login("t@t", "t");
             Assert.IsTrue(container.Login("t@t", "t") != null);
         }
         [TestMethod]
