@@ -13,14 +13,14 @@ namespace UnitTestQuizApp
     public class RegisterUnitTests
     {
         private RegisterContainer container = new RegisterContainer { };
+        public BusinessManager.Business.UserDTO user = new Mock<BusinessManager.Business.UserDTO>().Object;
         [TestMethod]
         public void RegisterTest()
         {
-            BusinessManager.Business.UserDTO userbus = new Mock<BusinessManager.Business.UserDTO>().Object;
             var Iface = new Mock<IRegisterDatabaseContext>();
             Iface.Setup(x => x.InsertUser(It.IsAny<DataManager.Data.UserDTO>())).Returns(true);
             container.registerRepository.Context = Iface.Object;
-            Assert.IsTrue(container.InsertUser(userbus));
+            Assert.IsTrue(container.InsertUser(user));
         }
     }
 }
