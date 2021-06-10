@@ -15,7 +15,7 @@ namespace UnitTestQuizApp
         private LoginContainer container = new LoginContainer { };
         private DataManager.Data.UserDTO userDTO = new Mock<DataManager.Data.UserDTO>().Object;
         [TestMethod]
-        public void LoginTest()
+        public void CorrectCredentialsLoginTest()
         {
             var Iface = new Mock<ILoginDatabaseContext>();
             Iface.Setup(x => x.LoginCheck("t@t", "t")).Returns(userDTO);
@@ -23,7 +23,7 @@ namespace UnitTestQuizApp
             Assert.IsTrue(container.Login("t@t", "t") != null);
         }
         [TestMethod]
-        public void InvalidLoginForbidden()
+        public void InvalidCredentialsLoginTest()
         {
             var Iface = new Mock<ILoginDatabaseContext>();
             Iface.Setup(x => x.LoginCheck("t@t", "t")).Returns(userDTO);
