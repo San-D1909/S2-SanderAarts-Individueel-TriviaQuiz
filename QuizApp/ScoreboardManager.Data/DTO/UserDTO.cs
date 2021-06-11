@@ -11,7 +11,6 @@
             Password = password;
             BirthDay = birth_day;
         }
-
         public UserDTO()
         {
 

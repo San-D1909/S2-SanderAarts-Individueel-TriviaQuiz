@@ -19,7 +19,7 @@ namespace UnitTestQuizApp
 
         [TestMethod]
         public void InsertQuestion()
-        {
+        {//Tests the code that is used to add a question to the DB that is not yet in the DB.
             var Iface = new Mock<IGetQuestionAPIContext>();
             Iface.Setup(x => x.InsertQuestionDatabase(It.IsAny<QuestionDTO>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             questionContainer.getQuestionDataRepository.ApiContext = Iface.Object;
@@ -27,7 +27,7 @@ namespace UnitTestQuizApp
         }
         [TestMethod]
         public void GetQuestionID()
-        {
+        {//Tests the code that gets the ID of the current question
             var Iface = new Mock<IGetQuestionID>();
             Iface.Setup(x => x.SelectQuestionIDAddToQuestionList(It.IsAny<string>())).Returns(718);
             questionContainer.getQuestionIDRepository.Context = Iface.Object;
@@ -37,7 +37,7 @@ namespace UnitTestQuizApp
         }
         [TestMethod]
         public void QuestionsAreRandom()
-        {
+        {//tests if the container recieves a random question each time so a user doenst get double questions in the quiz.
             GetQuestionDatabaseContext question_Context = new GetQuestionDatabaseContext();
             List<int> list = new List<int>();
             for (int i = 0; i < 5; i++)
