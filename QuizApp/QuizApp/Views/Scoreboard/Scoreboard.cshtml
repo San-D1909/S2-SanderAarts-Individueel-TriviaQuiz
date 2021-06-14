@@ -32,19 +32,16 @@
         <div class="col-3">
             @Html.DropDownList("SelectedCategory",
      new SelectList(Enum.GetValues(typeof(ScoreboardInputModel.SelectedCategory))),
-     "Select Category",
      new { @class = "form-control" })
         </div>
         <div class="col-3">
             @Html.DropDownList("SelectedDifficulty",
      new SelectList(Enum.GetValues(typeof(ScoreboardInputModel.SelectedDifficulty))),
-     "Select Difficulty",
      new { @class = "form-control" })
         </div>
         <div class="col-3">
             @Html.DropDownList("SelectedTimeSpan",
      new SelectList(Enum.GetValues(typeof(ScoreboardInputModel.SelectedTimeSpan))),
-     "Select TimeSpan",
      new { @class = "form-control" })
         </div>
         <div class="col-3">
