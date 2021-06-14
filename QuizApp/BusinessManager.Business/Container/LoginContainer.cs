@@ -23,13 +23,7 @@ namespace BusinessManager.Business
         }
         public UserDTO Login(string email, string password)
         {
-            var results = LoginRepository.LoginCheck(email, password);
-            if (results != null)
-            {
-                UserDTO userDTO = new UserDTO(results);
-                return userDTO;
-            }
-            return null;
+            return new UserDTO ( LoginRepository.LoginCheck(email, password) );
         }
     }
 }

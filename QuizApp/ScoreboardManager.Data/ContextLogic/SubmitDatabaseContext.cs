@@ -30,8 +30,7 @@ namespace DataManager.Data
                 InsertQuestionListCommand.Parameters.AddWithValue("@val8", Question_List[7]);
                 InsertQuestionListCommand.Parameters.AddWithValue("@val9", Question_List[8]);
                 InsertQuestionListCommand.Parameters.AddWithValue("@val10", Question_List[9]);
-                DatabaseClass.StoreData(InsertQuestionListCommand, true);
-                return true;
+                return DatabaseClass.StoreData(InsertQuestionListCommand, true);
             }
             return false;
         }

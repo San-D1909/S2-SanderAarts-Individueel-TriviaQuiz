@@ -46,11 +46,7 @@ namespace BusinessManager.Business
         public bool InsertToScoreboard(ScoreboardDTO scoreboardDTO)
         {
             SubmitDTO submitDTO = new SubmitDTO { Category = scoreboardDTO.Category, Difficulty = scoreboardDTO.Difficulty, UniqueID = scoreboardDTO.UserID, Score = scoreboardDTO.Score ,QuestionList = scoreboardDTO.QuestionList};
-            if(SubmitRepository.InsertToScoreboard(submitDTO))
-            {
-                return true;
-            }
-            return false;
+            return SubmitRepository.InsertToScoreboard(submitDTO);
         }
     }
 }

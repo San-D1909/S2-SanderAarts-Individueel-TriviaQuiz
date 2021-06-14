@@ -23,11 +23,7 @@ namespace BusinessManager.Business
         }
         public bool InsertUser( UserDTO userDTO)
         {
-            if (RegisterRepository.InsertUser( userDTO.FirstName,userDTO.LastName,userDTO.Email, userDTO.Password,userDTO.BirthDay))
-            {
-                return true;
-            }
-            return false;
+            return RegisterRepository.InsertUser(userDTO.FirstName, userDTO.LastName, userDTO.Email, userDTO.Password, userDTO.BirthDay);
         }
     }
 }

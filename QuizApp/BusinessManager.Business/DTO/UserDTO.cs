@@ -14,6 +14,10 @@ namespace BusinessManager.Business
         }
         public UserDTO(DataManager.Data.UserDTO data)
         {
+            if (data == null)
+            {
+                return;
+            }
             UniqueID = data.UniqueID;
             FirstName = data.FirstName;
             LastName = data.LastName;
