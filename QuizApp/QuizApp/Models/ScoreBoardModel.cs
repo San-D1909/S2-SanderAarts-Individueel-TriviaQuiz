@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
 namespace QuizApp.Models
 {
     public class ScoreBoardModel
@@ -16,7 +15,7 @@ namespace QuizApp.Models
             Category = dto.Category;
             Difficulty = dto.Difficulty;
             QuestionAmount = dto.Question_Amount;
-            QuestionList = dto.QuestionList;
+            QuestionListID = dto.QuestionListID;
             Score = dto.Score;
             Date = dto.Date;
             FirstName = dto.FirstName;
@@ -26,7 +25,7 @@ namespace QuizApp.Models
         public int Category { get; set; }
         public string Difficulty { get; set; }
         public int QuestionAmount { get; set; }
-        public int QuestionList { get; set; }
+        public string QuestionListID { get; set; }
         public int Score { get; set; }
         public DateTime Date { get; set; }
         public string FirstName { get; set; }

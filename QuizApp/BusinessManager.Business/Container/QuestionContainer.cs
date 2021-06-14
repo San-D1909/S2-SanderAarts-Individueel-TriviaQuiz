@@ -10,7 +10,7 @@ namespace BusinessManager.Business
 {
     public class QuestionContainer
     {
-        public GetQuestionIDRepository getQuestionIDRepository 
+        public GetQuestionIDRepository getQuestionIDRepository
         {
             get
             {
@@ -35,34 +35,27 @@ namespace BusinessManager.Business
         private GetQuestionDataRepository QuestionDataRepository = new GetQuestionDataRepository();
         private GetQuestionIDRepository QuestionIDRepository = new GetQuestionIDRepository();
         public QuestionModel FillQuestionModel(APIRequestModel apiRequestModel)
+        {//Get question from API or DB
+            QuestionModel questionModel = FetchQuestionFromAPI(apiRequestModel);
+            if (questionModel.Question == null)
+            {//Checks if API responded with a question otherwise uses code below to get one from the DB.
+                questionModel = new QuestionModel(getQuestionDataRepository.SelectQuestionDatabase(apiRequestModel.Difficulty, apiRequestModel.Category));
+            }
+            return questionModel;
+        }
+        public QuestionModel FetchQuestionFromAPI(APIRequestModel apiRequestModel)
         {
             //Creates a variable URL based on user input.
             string requestString = "" + apiRequestModel.BaseURL + "amount=" + apiRequestModel.Amount + "&category=" + apiRequestModel.Category + "&difficulty = medium" + "&type=" + apiRequestModel.Type + "";
             string rawJSON = getQuestionDataRepository.SelectJSONFromAPI(requestString);
             QuestionModel questionModel = JsonConvert.DeserializeObject<QuestionModel>(rawJSON);
-            if (questionModel.Question != null)
-            {
-                getQuestionDataRepository.InsertQuestionDatabase(questionModel.Question, questionModel.Incorrect_Answers, questionModel.Correct_Answer, apiRequestModel.Difficulty, apiRequestModel.Category);
-                return questionModel;
-            }
-            else
-            {
-                questionModel = new QuestionModel(getQuestionDataRepository.SelectQuestionDatabase(apiRequestModel.Difficulty, apiRequestModel.Category));
-                return questionModel;
-            }
+            getQuestionDataRepository.InsertQuestionDatabase(questionModel.Question, questionModel.Incorrect_Answers, questionModel.Correct_Answer, apiRequestModel.Difficulty, apiRequestModel.Category);
+            return questionModel;
         }
-        public ScoreModel SelectQuestionIDAddToQuestionList(QuestionModel questionModel, ScoreModel scoreModel)
-        {
-            int ID = getQuestionIDRepository.SelectQuestionIDAddToQuestionList(questionModel.Question);
-            if (scoreModel.QuestionList == null)
-            {
-                scoreModel.QuestionList  = new List<string> { ID.ToString() };
-            }
-            else
-            {
-                scoreModel.QuestionList.Add(ID.ToString());
-            }
-            return scoreModel;
+        public List<string> SelectQuestionIDAddToQuestionList(string question, List<string> list)
+        {//Searches in the DB for the ID of the current question and adds it to the list
+            list.Add(getQuestionIDRepository.SelectQuestionIDAddToQuestionList(question).ToString());
+            return list;
         }
     }
 }

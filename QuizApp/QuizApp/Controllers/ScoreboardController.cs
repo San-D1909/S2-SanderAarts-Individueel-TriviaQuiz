@@ -25,8 +25,9 @@ namespace QuizApp.Controllers
         {
             APIRequestModel apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
             UserModel userModel = Session["Login"] as UserModel;
+            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
             ScoreboardContainer container = new ScoreboardContainer();
-            ScoreboardDTO scoreboardDTO = new ScoreboardDTO { Category = Convert.ToInt32(apiRequestModel.Category), Difficulty = apiRequestModel.Difficulty, UserID = Convert.ToInt32(userModel.UniqueID), Score = (int)TempData["finalScore"] };
+            ScoreboardDTO scoreboardDTO = new ScoreboardDTO { Category = Convert.ToInt32(apiRequestModel.Category), Difficulty = apiRequestModel.Difficulty, UserID = Convert.ToInt32(userModel.UniqueID), Score = (int)TempData["finalScore"],QuestionList = scoreModel.QuestionList};
             container.InsertToScoreboard(scoreboardDTO);
             return RedirectToAction("Scoreboard");
         }

@@ -22,8 +22,13 @@ namespace BusinessManager.Business
             get { return currentQuestion; }
             set { currentQuestion = value; }
         }
+        public List<string> QuestionList
+        {
+            get { return questionList; }
+            set { questionList = value; }
+        }
         public int Score { get; set; }
         public bool Correct { get; set; }
-        public List<string> QuestionList { get; set; }
+        private List<string> questionList = new List<string>();
     }
 }

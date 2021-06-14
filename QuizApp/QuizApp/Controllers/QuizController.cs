@@ -11,37 +11,27 @@ namespace QuizApp.Controllers
         {
             QuestionContainer container = new QuestionContainer { };
             QuestionModel questionModel = container.FillQuestionModel(apiRequestModel);
-            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
 
-            questionModel.Answers = questionModel.Incorrect_Answers;
-            questionModel.Answers.Add(questionModel.Correct_Answer);
-            questionModel.Answers = Utility.Shuffle(questionModel.Answers);
-
-            //Sets time to know how long it took to answer the question.
-            questionModel.TimeTaken = DateTime.Now;
-
-            Session["scoreModel"] = scoreModel;
-            Session["questionModel"] = questionModel;
-            Session["apiRequestModel"] = apiRequestModel;
+            Session["questionModel"] = Utility.PrepareQuestion(questionModel);
             return questionModel;
         }
-        public ActionResult PrepareQuestion(string category)
+        public ActionResult PrepareQuestion()
+        {
+            APIRequestModel apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
+            QuestionModel questionmodel = CreateQuestion(apiRequestModel);
+            Session["apiRequestModel"] = apiRequestModel;
+            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
+        }
+        public ActionResult PrepareQuiz(string category)
         {
             if (Session["Login"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
             APIRequestModel apiRequestModel = new APIRequestModel { };
-            if (category != null)
-            {
-                apiRequestModel.Category = category;
-            }
-            else if (Session["apiRequestModel"] != null)
-            {
-                apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
-            }
-            QuestionModel questionmodel = CreateQuestion(apiRequestModel);
-            return View("~/Views/Quiz/QuizPage.cshtml", questionmodel);
+            apiRequestModel.Category = category;
+            Session["apiRequestModel"] = apiRequestModel; 
+            return RedirectToAction("PrepareQuestion");
         }
     }
 }

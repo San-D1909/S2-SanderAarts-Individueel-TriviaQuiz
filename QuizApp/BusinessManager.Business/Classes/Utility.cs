@@ -13,5 +13,16 @@ namespace BusinessManager.Business
             var newList = list.OrderBy(x => random.Next(0, 3)).ToList();
             return newList;
         }
+        public static QuestionModel PrepareQuestion(QuestionModel questionModel)
+        {
+            //creates a list with the answers and then shuffles it.
+            questionModel.Answers = questionModel.Incorrect_Answers;
+            questionModel.Answers.Add(questionModel.Correct_Answer);
+            questionModel.Answers = Utility.Shuffle(questionModel.Answers);
+
+            //Sets time to know how long it took to answer the question.
+            questionModel.TimeTaken = DateTime.Now;
+            return questionModel;
+        }
     }
 }

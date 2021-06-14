@@ -4,16 +4,17 @@ namespace BusinessManager.Business
 {
     public class CompareAnswers
     {
-        public static ScoreModel Checker(DateTime time, ScoreModel scoreModel)
+        public static ScoreModel Checker(string chosen, QuestionModel questionModel, ScoreModel scoreModel)
         {
-            //Adds 1 to the question count.
+            QuestionContainer container = new QuestionContainer();
+            scoreModel.QuestionList = container.SelectQuestionIDAddToQuestionList(questionModel.Question, scoreModel.QuestionList);
             scoreModel.CurrentQuestion += 1;
-
-            //Calculates the time that is used.
-            TimeSpan timeUsed = DateTime.Now - time;
-
-            scoreModel.Score += CalculateScore.Calculation(timeUsed.TotalSeconds, scoreModel.MaxTime);
-            scoreModel.Correct = true;
+            if (chosen == questionModel.Correct_Answer)
+            {            
+                TimeSpan timeUsed = DateTime.Now - questionModel.TimeTaken;//Calculates the time that is used.
+                scoreModel.Score += CalculateScore.Calculation(timeUsed.TotalSeconds, scoreModel.MaxTime);
+                scoreModel.Correct = true;
+            }
             return scoreModel;
         }
     }

@@ -32,7 +32,7 @@ namespace UnitTestQuizApp
             Iface.Setup(x => x.SelectQuestionIDAddToQuestionList(It.IsAny<string>())).Returns(718);
             questionContainer.getQuestionIDRepository.Context = Iface.Object;
             questionModel.Question = "test string";
-            scoreModel = questionContainer.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
+            scoreModel.QuestionList = questionContainer.SelectQuestionIDAddToQuestionList(questionModel.Question, scoreModel.QuestionList);
             Assert.IsTrue(scoreModel.QuestionList[0]=="718");
         }
         [TestMethod]

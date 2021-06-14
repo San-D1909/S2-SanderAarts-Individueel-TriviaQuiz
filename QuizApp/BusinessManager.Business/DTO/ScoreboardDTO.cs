@@ -15,7 +15,7 @@ namespace BusinessManager.Business
             Category = dto.Category;
             Difficulty = dto.Difficulty;
             Question_Amount = dto.QuestionAmount;
-            QuestionList = dto.QuestionList;
+            QuestionListID = dto.QuestionList;
             Score = dto.Score;
             Date = dto.Date;
             FirstName = dto.FirstName;
@@ -29,7 +29,8 @@ namespace BusinessManager.Business
         public int Category { get; set; }
         public string Difficulty { get; set; }
         public int Question_Amount { get; set; }
-        public int QuestionList { get; set; }
+        public string QuestionListID { get; set; }
+        public List<string> QuestionList { get; set; }
         public int Score { get; set; }
         public DateTime Date { get; set; }
         public string FirstName { get; set; }
