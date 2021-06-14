@@ -42,7 +42,7 @@ namespace DataManager.Data
             SelectQuestionIDCommand.Parameters.AddWithValue("@val1", submitDTO.UniqueID);
             SelectQuestionIDCommand.Parameters.AddWithValue("@val2", submitDTO.Category);
             SelectQuestionIDCommand.Parameters.AddWithValue("@val3", submitDTO.Difficulty);
-            SelectQuestionIDCommand.Parameters.AddWithValue("@val4", submitDTO.QuestionAmount);
+            SelectQuestionIDCommand.Parameters.AddWithValue("@val4", 10);
             SelectQuestionIDCommand.Parameters.AddWithValue("@val5", SelectQuestionListID());
             SelectQuestionIDCommand.Parameters.AddWithValue("@val6", submitDTO.Score);
             return DatabaseClass.StoreData(SelectQuestionIDCommand, true);

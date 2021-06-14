@@ -13,7 +13,11 @@ namespace QuizApp.Controllers
             QuestionModel questionModel = Session["questionModel"] as QuestionModel;
 
             //Calculates the score based on how much time is used.
-            scoreModel = CompareAnswers.Checker(chosen, questionModel ,scoreModel);
+            if (chosen == questionModel.Correct_Answer)
+            {
+                scoreModel = CompareAnswers.Checker(questionModel.TimeTaken, scoreModel);
+            }
+            scoreModel.CurrentQuestion += 1;
             QuestionContainer container = new QuestionContainer();
             scoreModel = container.SelectQuestionIDAddToQuestionList(questionModel, scoreModel);
 
@@ -25,7 +29,7 @@ namespace QuizApp.Controllers
 
         public ActionResult NextQuestion()
         {
-            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;         
+            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
             if (scoreModel.CurrentQuestion > scoreModel.QuestionAmount)
             {//Check if the current questionnumber is bigger than the amount of questions.
                 PrepareNextQuiz(scoreModel);

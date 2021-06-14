@@ -20,17 +20,17 @@ namespace DataManager.Data
             {
                 DateTime now = DateTime.Now;
                 DateTime startDate = now;
-                if (timeSpan == "PastWeek")
+                switch (timeSpan)
                 {
-                    startDate = now.AddDays(-7);
-                }
-                else if (timeSpan == "PastMonth")
-                {
-                    startDate = now.AddDays(-30);
-                }
-                else if (timeSpan == "AllTime")
-                {
-                    startDate = now.AddYears(-40);
+                    case "Pastweek":
+                        startDate = now.AddDays(-7);
+                        break;
+                    case "PastMonth":
+                        startDate = now.AddDays(-30);
+                        break;
+                    case "AllTime":
+                        startDate = now.AddYears(-40);
+                        break;
                 }
                 string startString = startDate.ToString("yyyy-MM-dd HH:mm:ss");
                 MySqlCommand SelectQuestionIDCommand = new MySqlCommand("SELECT `id` FROM `scoreboard` WHERE `category` = @val1 AND `difficulty` LIKE @val2 AND `date` BETWEEN @val3 AND @val4 ORDER BY score DESC LIMIT 5");
@@ -38,7 +38,7 @@ namespace DataManager.Data
                 SelectQuestionIDCommand.Parameters.AddWithValue("@val2", difficulty);
                 SelectQuestionIDCommand.Parameters.AddWithValue("@val3", startString);
                 SelectQuestionIDCommand.Parameters.AddWithValue("@val4", now.ToString("yyyy-MM-dd HH:mm:ss"));
-                List<string> scoreboardID= DatabaseClass.GetData(SelectQuestionIDCommand,true);
+                List<string> scoreboardID = DatabaseClass.GetData(SelectQuestionIDCommand, true);
                 ListScoreboardData = ConvertToList(scoreboardID, ListScoreboardData);
             }
             return ListScoreboardData;
@@ -71,7 +71,7 @@ namespace DataManager.Data
             {
                 MySqlCommand Get_Question_ID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `id` = @val1");
                 Get_Question_ID.Parameters.AddWithValue("@val1", ID);
-                var results = DatabaseClass.GetData(Get_Question_ID,true);
+                var results = DatabaseClass.GetData(Get_Question_ID, true);
                 Scoreboard_Data.Add(new ScoreboardDTO(results[0], results[1], results[2], results[3], results[4], results[5], results[6], results[7]));
             }
             foreach (ScoreboardDTO user in Scoreboard_Data)
@@ -84,7 +84,7 @@ namespace DataManager.Data
         {
             MySqlCommand Get_Question_ID = new MySqlCommand("SELECT `firstname` FROM `user` WHERE `unique_id` = @val1");
             Get_Question_ID.Parameters.AddWithValue("@val1", user_ID);
-            List<string> results = DatabaseClass.GetData(Get_Question_ID,true);
+            List<string> results = DatabaseClass.GetData(Get_Question_ID, true);
             return results[0];
         }
     }

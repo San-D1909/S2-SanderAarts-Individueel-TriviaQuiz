@@ -18,7 +18,7 @@ namespace UnitTestQuizApp
         public void CorrectCredentialsLoginTest()
         {
             var Iface = new Mock<ILoginDatabaseContext>();
-            Iface.Setup(x => x.LoginCheck("t@t", "t")).Returns(userDTO);
+            Iface.Setup(x => x.GetLoginData("t@t", "t")).Returns(userDTO);
             container.LoginRepository.Context = Iface.Object;
             Assert.IsTrue(container.Login("t@t", "t") != null);
         }
@@ -26,7 +26,7 @@ namespace UnitTestQuizApp
         public void InvalidCredentialsLoginTest()
         {
             var Iface = new Mock<ILoginDatabaseContext>();
-            Iface.Setup(x => x.LoginCheck("t@t", "t")).Returns(userDTO);
+            Iface.Setup(x => x.GetLoginData("t@t", "t")).Returns(userDTO);
             container.LoginRepository.Context = Iface.Object;
             Assert.IsFalse(container.Login("test@t", "test") != null);
         }

@@ -12,6 +12,7 @@ namespace UnitTestQuizApp
     [TestClass]
     public class ScoreboardUnitTests
     {
+        BusinessManager.Business.ScoreboardDTO DTO = new Mock<BusinessManager.Business.ScoreboardDTO>().Object;
         private ScoreboardContainer container = new ScoreboardContainer();
         [TestMethod]
         public void LeaveInputEmptyScoreboard()
@@ -28,7 +29,7 @@ namespace UnitTestQuizApp
             var Iface = new Mock<ISubmitContext>();
             Iface.Setup(x => x.InsertToScoreboard(It.IsAny<SubmitDTO>())).Returns(true);
             container.SubmitRepository.Context = Iface.Object;
-            Assert.IsTrue(container.InsertToScoreboard(15, "easy",  10, It.IsAny<List<string>>(), 8,  0));
+            Assert.IsTrue(container.InsertToScoreboard(DTO));
         }
     }
 }

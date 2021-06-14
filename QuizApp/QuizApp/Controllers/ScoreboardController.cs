@@ -24,10 +24,10 @@ namespace QuizApp.Controllers
         public ActionResult SubmitScoreAction()
         {
             APIRequestModel apiRequestModel = Session["apiRequestModel"] as APIRequestModel;
-            ScoreModel scoreModel = Session["scoreModel"] as ScoreModel;
             UserModel userModel = Session["Login"] as UserModel;
             ScoreboardContainer container = new ScoreboardContainer();
-            container.InsertToScoreboard(Convert.ToInt32(apiRequestModel.Category), apiRequestModel.Difficulty, scoreModel.QuestionAmount, scoreModel.QuestionList, Convert.ToInt32(userModel.UniqueID), (int)TempData["finalScore"]);
+            ScoreboardDTO scoreboardDTO = new ScoreboardDTO { Category = Convert.ToInt32(apiRequestModel.Category), Difficulty = apiRequestModel.Difficulty, UserID = Convert.ToInt32(userModel.UniqueID), Score = (int)TempData["finalScore"] };
+            container.InsertToScoreboard(scoreboardDTO);
             return RedirectToAction("Scoreboard");
         }
         public ActionResult FinalScore()

@@ -20,6 +20,10 @@ namespace BusinessManager.Business
             Date = dto.Date;
             FirstName = dto.FirstName;
         }
+        public ScoreboardDTO()
+        {
+
+        }
         public int ID { get; set; }
         public int UserID { get; set; }
         public int Category { get; set; }
