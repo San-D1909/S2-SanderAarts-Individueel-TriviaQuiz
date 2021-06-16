@@ -14,9 +14,7 @@ namespace DataManager.Data
             QuestionAmount = Convert.ToInt32(questionAmount);
             QuestionList = questionListID;
             Score = Convert.ToInt32(score);
-            Date = date.ToShortDateString();
-            //Date = Convert.ToDateTime(date);
-            
+            Date = date.ToShortDateString();            
         }
         public int ID { get; set; }
         public int UserID { get; set; }   
