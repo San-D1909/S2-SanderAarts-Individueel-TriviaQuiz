@@ -32,7 +32,7 @@ namespace BusinessManager.Business
         public string QuestionListID { get; set; }
         public List<string> QuestionList { get; set; }
         public int Score { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string FirstName { get; set; }
     }
 }

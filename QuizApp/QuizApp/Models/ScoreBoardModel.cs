@@ -27,7 +27,7 @@ namespace QuizApp.Models
         public int QuestionAmount { get; set; }
         public string QuestionListID { get; set; }
         public int Score { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string FirstName { get; set; }
     }
 }

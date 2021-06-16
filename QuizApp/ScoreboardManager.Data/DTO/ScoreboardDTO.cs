@@ -5,7 +5,7 @@ namespace DataManager.Data
 {
     public class ScoreboardDTO
     {
-        public ScoreboardDTO(string iD, string userID, string category, string difficulty, string questionAmount, string questionListID, string score, string date)
+        public ScoreboardDTO(string iD, string userID, string category, string difficulty, string questionAmount, string questionListID, string score, DateTime date)
         {
             ID = Convert.ToInt32(iD);
             UserID = Convert.ToInt32(userID);
@@ -14,7 +14,9 @@ namespace DataManager.Data
             QuestionAmount = Convert.ToInt32(questionAmount);
             QuestionList = questionListID;
             Score = Convert.ToInt32(score);
-            Date = Convert.ToDateTime(date);
+            Date = date.ToShortDateString();
+            //Date = Convert.ToDateTime(date);
+            
         }
         public int ID { get; set; }
         public int UserID { get; set; }   
@@ -23,7 +25,7 @@ namespace DataManager.Data
         public int QuestionAmount { get; set; }
         public string QuestionList { get; set; }
         public int Score { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string FirstName { get; set; }
     }
 }

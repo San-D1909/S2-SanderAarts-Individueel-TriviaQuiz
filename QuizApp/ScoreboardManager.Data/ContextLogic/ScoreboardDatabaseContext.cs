@@ -21,7 +21,7 @@ namespace DataManager.Data
             DateTime startDate = now;
             switch (timeSpan)
             {
-                case "Pastweek":
+                case "PastWeek":
                     startDate = now.AddDays(-7);
                     break;
                 case "PastMonth":
@@ -48,7 +48,7 @@ namespace DataManager.Data
                 MySqlCommand GetScoreboardID = new MySqlCommand("SELECT * FROM `scoreboard` WHERE `id` = @val1");
                 GetScoreboardID.Parameters.AddWithValue("@val1", ID);
                 var results = DatabaseClass.GetData(GetScoreboardID, true);
-                ScoreboardData.Add(new ScoreboardDTO(results[0], results[1], results[2], results[3], results[4], results[5], results[6], results[7]));
+                ScoreboardData.Add(new ScoreboardDTO(results[0], results[1], results[2], results[3], results[4], results[5], results[6], Convert.ToDateTime(results[7])));
             }
             foreach (ScoreboardDTO user in ScoreboardData)
             {
